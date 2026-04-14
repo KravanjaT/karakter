@@ -2,36 +2,203 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>AI Universa - Master Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Universa - Master Control</title>
     <style>
-        :root { --primary: #0f172a; --accent: #2563eb; --prod: #7c3aed; --bg: #f1f5f9; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .dashboard { background: white; padding: 50px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); text-align: center; max-width: 1000px; width: 90%; }
-        h1 { color: var(--primary); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; font-weight: 900; }
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .module-card { 
-            background: #f8fafc; border: 2px solid #e2e8f0; padding: 30px 15px; border-radius: 20px; 
-            text-decoration: none; color: var(--primary); font-weight: 800; transition: 0.3s;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-blue: #3b82f6;
+            --accent-purple: #7c3aed;
+            --accent-pink: #ec4899;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
-        .module-card:hover { border-color: var(--accent); transform: translateY(-5px); background: white; }
-        .module-card.prod-card:hover { border-color: var(--prod); }
-        .module-card span { font-size: 2.5rem; margin-bottom: 10px; }
-        .footer { margin-top: 30px; color: #64748b; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(circle at top left, #1e1b4b, #0f172a, #020617);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 60px;
+        }
+
+        .badge {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin: 0;
+            background: linear-gradient(to bottom, #fff 40%, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* GRID SISTEM */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            border-radius: 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* POSEBEN STIL ZA PRODUKCIJO IN STILING */
+        .card.special {
+            background: linear-gradient(145deg, rgba(124, 58, 237, 0.2), rgba(30, 41, 59, 0.7));
+        }
+
+        .card.extra-special {
+            background: linear-gradient(145deg, rgba(236, 72, 153, 0.2), rgba(30, 41, 59, 0.7));
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .card span.label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-top: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            margin-top: 80px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* DEKORATIVNI KROGI V OZADJU */
+        .glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: var(--accent-purple);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
-<div class="dashboard">
-    <h1>AI UNIVERSA • PRO-SYSTEM</h1>
+
+<div class="glow" style="top: -100px; left: -100px;"></div>
+<div class="glow" style="bottom: -100px; right: -100px; background: var(--accent-blue);"></div>
+
+<div class="container">
+    <header>
+        <div class="badge">Strict Realism Protocol</div>
+        <h1>AI UNIVERSA • PRO</h1>
+        <p class="subtitle">Enotna konzola za fotorealistično AI produkcijo</p>
+    </header>
+
     <div class="grid">
-        <a href="modules/male_module.html" class="module-card"><span>👨</span> MOŠKI</a>
-        <a href="modules/female_module.html" class="module-card"><span>👩</span> ŽENSKE</a>
-        <a href="modules/kids_module.html" class="module-card"><span>🧒</span> OTROCI</a>
-        <a href="modules/production_module.html" class="module-card prod-card" style="background: #f5f3ff; border-color: #ddd6fe;">
-            <span style="filter: grayscale(0);">🎬</span> PRODUKCIJA
+        <a href="modules/male_module.html" class="card">
+            <div class="icon">👨</div>
+            <h3>Moški</h3>
+            <span class="label">Faza 1 • DNA Sidro</span>
+        </a>
+
+        <a href="modules/female_module.html" class="card">
+            <div class="icon">👩</div>
+            <h3>Ženske</h3>
+            <span class="label">Faza 1 • DNA Sidro</span>
+        </a>
+
+        <a href="modules/kids_module.html" class="card">
+            <div class="icon">🧒</div>
+            <h3>Otroci</h3>
+            <span class="label">Faza 1 • DNA Sidro</span>
+        </a>
+
+        <a href="modules/production_module.html" class="card special">
+            <div class="icon">🎬</div>
+            <h3>Produkcija</h3>
+            <span class="label">Faza 2 • Geometrija</span>
+        </a>
+
+        <a href="modules/styling_module.html" class="card extra-special">
+            <div class="icon">🎭</div>
+            <h3>Stiling</h3>
+            <span class="label">Faza 3 • Niše & Moda</span>
         </a>
     </div>
-    <div class="footer">STRICT REALISM PROTOCOL V90 • 2026</div>
+
+    <footer>
+        © 2026 AI UNIVERSA SYSTEMS • ABSOLUTE CONSISTENCY ENGINE
+    </footer>
 </div>
+
 </body>
 </html>
