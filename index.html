@@ -14,6 +14,7 @@
             --accent-geo: #7c3aed;    
             --accent-style: #ec4899;  
             --accent-delivery: #eab308; /* Gold accent */
+            --accent-twin: #22d3ee;     /* Cyan accent for Twin Studio */
             --text-main: #f8fafc;
             --text-dim: #64748b;
             --border: rgba(255, 255, 255, 0.08);
@@ -187,8 +188,8 @@
         .style-card:hover { border-color: var(--accent-style); }
         .style-card:hover .phase-tag { color: var(--accent-style); border-color: var(--accent-style); }
 
+        /* FAZA 4: DELIVERY */
         .delivery-card {
-            grid-column: span 3;
             background: linear-gradient(145deg, rgba(234, 179, 8, 0.05), rgba(15, 23, 42, 0.8));
             border-color: rgba(234, 179, 8, 0.2);
         }
@@ -198,6 +199,18 @@
             box-shadow: 0 0 40px rgba(234, 179, 8, 0.15) !important;
         }
         .delivery-card .phase-tag { color: var(--accent-delivery); border-color: var(--accent-delivery); }
+
+        /* FAZA 5: DIGITAL TWIN */
+        .twin-card {
+            background: linear-gradient(145deg, rgba(34, 211, 238, 0.05), rgba(15, 23, 42, 0.8));
+            border-color: rgba(34, 211, 238, 0.2);
+        }
+        .twin-card h3 { color: var(--accent-twin); }
+        .twin-card:hover { 
+            border-color: var(--accent-twin) !important; 
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.15) !important;
+        }
+        .twin-card .phase-tag { color: var(--accent-twin); border-color: var(--accent-twin); }
 
         footer {
             margin-top: 40px;
@@ -216,7 +229,6 @@
 
         @media (max-width: 768px) {
             .grid, .grid-wide { grid-template-columns: 1fr; }
-            .delivery-card { grid-column: span 1; }
             h1 { font-size: 3rem; }
         }
     </style>
@@ -229,7 +241,7 @@
     <header>
         <div class="status-bar">
             <div class="pulse-dot"></div>
-            System Online: IDENTITY OS V1.3.0
+            System Online: IDENTITY OS V1.5.0
         </div>
         <h1>IDENTITY OS</h1>
         <div class="tagline">Character Production Pipeline</div>
@@ -271,12 +283,18 @@
         </a>
     </div>
 
-    <div class="section-label">03 // Asset Finalization</div>
-    <div class="grid">
+    <div class="section-label">03 // Asset Finalization & Cloning</div>
+    <div class="grid grid-wide">
         <a href="modules/delivery_module.html" class="card delivery-card">
             <div class="icon">📦</div>
-            <h3>Delivery & Product Studio</h3>
-            <span class="phase-tag">FAZA 4 / INTEGRACIJA IZDELKA & IZVOZ</span>
+            <h3>Delivery & Marketplace</h3>
+            <span class="phase-tag">FAZA 4 / INTEGRACIJA IZDELKA</span>
+        </a>
+
+        <a href="modules/twin_studio.html" class="card twin-card">
+            <div class="icon">👤</div>
+            <h3>Digital Twin Studio</h3>
+            <span class="phase-tag">FAZA 5 / MASTER TEMPLATE SWAP</span>
         </a>
     </div>
 
