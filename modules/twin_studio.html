@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Asset Studio V2.5</title>
+    <title>IDENTITY OS - Master Asset Studio V3.0</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --primary: #0f172a; --accent: #22d3ee; --bg: #020617; --home: #64748b; }
@@ -15,35 +15,44 @@
         .group { margin-bottom: 25px; }
         label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; letter-spacing: 1px; }
         textarea, select { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; line-height: 1.5; }
-        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 850px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
+        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 950px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
         .btn-copy { background: var(--accent); color: #000; border: none; padding: 20px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; margin-top: 20px; }
-        .btn-copy:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3); }
     </style>
 </head>
 <body>
 <div class="wrapper">
     <div class="panel">
-        <h1>👤 Asset Processor</h1>
+        <h1>👤 Asset Studio Reconstructor</h1>
         <div class="instruction">
-            <strong>ASSET UPGRADE PROTOCOL:</strong> [cite: 33]<br>
-            Uvozi katero koli svojo fotografijo (IMAGE 0). Ta modul jo bo "zaklenil" in obdelal po 10-slojnem protokolu za uporabo v vseh prihodnjih nišah.
+            <strong>STUDIO UPGRADE PROTOCOL:</strong><br>
+            Uvozi svojo RAW fotografijo (IMAGE 0). Ta modul jo bo prestavil v kontrolirano studijsko okolje, popravil osvetlitev in zaklenil tvojo DNA identiteto za prihodnjo uporabo[cite: 183, 190].
         </div>
 
         <div class="group">
-            <label>1. Opis naložene fotografije (Kaj je na sliki?)</label>
-            <textarea id="baseDesc" rows="4" placeholder="npr. Punca v črni majici sedi v kavarni, naravna svetloba, leva roka na mizi..." oninput="update()"></textarea>
+            <label>1. Opis Master poze (Kaj počneš na sliki?)</label>
+            <textarea id="baseDesc" rows="3" placeholder="npr. Moški v črni majici sedi, drži roko pred seboj, gleda v kamero..." oninput="update()"></textarea>
         </div>
 
         <div class="group">
-            <label>2. Tip Master Obdelave</label>
-            <select id="processing" onchange="update()">
-                <option value="Match exact identity and environment from Image 0. Enhance skin DNA with visible pores and natural sheen.">Standardna Master Obdelava (Protokol V90)</option>
-                <option value="Dramatic night-time enhancement with harsh on-camera flash and high-ISO grain.">Nočna Uredniška Obdelava (Harsh Flash)</option>
-                <option value="Golden hour natural light enhancement, soft shadows, warm amber tones.">Zlata Ura (Natural Glow)</option>
+            <label>2. Izberi Novo Studijsko Okolje</label>
+            <select id="studio" onchange="update()">
+                <option value="in a professional high-end photography studio with a clean, minimalist grey concrete backdrop">Professional Gallery Studio (Neutral)</option>
+                <option value="inside a dimly lit industrial warehouse with dramatic spotlights and shadows">Industrial Warehouse Studio (Vibe)</option>
+                <option value="in a minimalist luxury apartment with floor-to-ceiling windows and soft daylight">Luxury Daylight Studio (Soft)</option>
+                <option value="against a dark, textured charcoal wall with a single overhead spotlight">Dramatic Dark Studio (High Contrast)</option>
             </select>
         </div>
 
-        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ ASSET PROCESSOR PROMPT</button>
+        <div class="group">
+            <label>3. Svetlobni Master (Sloj 06)</label>
+            <select id="lighting" onchange="update()">
+                <option value="High-contrast on-camera flash, creating sharp specular highlights on skin and fabric.">Aggressive On-Camera Flash [cite: 102]</option>
+                <option value="Cinematic soft-box lighting, gentle wrap-around light with deep but soft shadows.">Cinematic Soft-Box (Editorial)</option>
+                <option value="Warm tungsten lighting from the side, creating a three-dimensional depth.">Tungsten Side Light (Depth)</option>
+            </select>
+        </div>
+
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ STUDIO RECONSTRUCTOR PROMPT</button>
         <button style="margin-top:15px; background:var(--home); color:white;" class="btn-copy" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
     <div class="output-box" id="out"></div>
@@ -51,29 +60,33 @@
 
 <script>
     function update() {
-        const base = document.getElementById('baseDesc').value || "[OPIŠI SVOJO SLIKO]";
-        const proc = document.getElementById('processing').value;
+        const base = document.getElementById('baseDesc').value || "[OPIŠI SVOJO POZO]";
+        const studio = document.getElementById('studio').value;
+        const light = document.getElementById('lighting').value;
 
-        const final = `MASTER ASSET PROCESSOR (V150 - DNA LOCK): [cite: 59, 183]
+        const final = `MASTER ASSET RECONSTRUCTOR (V3.0 - STUDIO LOCK): [cite: 12, 59]
 
-SLOJI 01-04 (Vsebina & DNA): [cite: 67, 73]
-[IMAGE 0 LOCK]: Use reference image 0 as the absolute master for identity, pose, and composition. Subject is ${base}. [cite: 190, 228]
-[IDENTITY]: Strictly match facial DNA, bone structure, eye color, and hair from Ref 0. 
-[UPGRADE]: ${proc} [cite: 136-139]
+SLOJI 01-04 (Vsebina & DNA):
+[IMAGE 0 LOCK]: Use reference image 0 as the master template for identity and pose. Subject is ${base}. [cite: 190]
+[STUDIO REBUILD]: Completely reconstruct the background and environment to be ${studio}. [cite: 80]
+[IDENTITY]: Strictly preserve facial DNA, bone structure, eye color, and hair from Ref 0. [cite: 194, 201]
 
-SLOJ 05 (KAMERA): Shot on 35mm prime lens, handheld shake, motion blur, digital noise for raw analog realism. [cite: 95, 157, 162]
+SLOJ 05 (KAMERA): Shot on 35mm prime lens, handheld documentary style, subtle digital noise, high-ISO grain for raw realism. [cite: 95, 157]
 
-SLOJI 06-08 (TEHNIČNI): Lighting must flawlessly match the environment of Ref 0. [cite: 102, 240] Atmosphere: visible dust particles caught in light beams. [cite: 108, 171] Dirty cinematic grading, heavy film grain, vignette. [cite: 114, 248]
+SLOJI 06-08 (TEHNIČNI):
+[LIGHTING]: ${light} [cite: 102]
+[ATMOSPHERE]: Visible dust particles and air motes caught in the light beams. [cite: 108]
+[COLOR]: Dirty cinematic grading, heavy film grain, slight vignette. [cite: 114]
 
-SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen matching image 0 DNA. [cite: 120, 137, 250] STRICTLY PROHIBIT new moles or freckles. Match ONLY existing skin marks. No plastic skin, no CGI, zero retouching. [cite: 147]
+SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen, realistic skin marks from Ref 0. [cite: 137, 139] STRICTLY PROHIBIT new moles or freckles. No plastic skin, no CGI, zero digital retouching. [cite: 147]
 
-SLOJ 10 (VZDUŠJE): Spontaneous, raw private moment, unposed production anchor. [cite: 127, 253]
+SLOJ 10 (VZDUŠJE): Spontaneous, raw production anchor, unposed but professional asset quality. [cite: 127]
 
-NEGATIVE PROMPT: perfect skin, airbrushed, CGI, soft studio lighting, clean background, 3D render, cartoon, doll-like, beauty filter, different heritage, new moles, extra freckles. [cite: 147, 257]`;
+NEGATIVE PROMPT: perfect skin, airbrushed, CGI, soft studio lighting, clean background, 3D render, cartoon, doll-like, beauty filter, different heritage, new moles. [cite: 257, 319]`;
 
         document.getElementById('out').innerText = final;
     }
-    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("ASSET PROMPT KOPIRAN!"); }
+    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("STUDIO PROMPT KOPIRAN!"); }
     update();
 </script>
 </body>
