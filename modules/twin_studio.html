@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Cleanse Studio V5.5</title>
+    <title>IDENTITY OS - Master Asset Studio V7.0</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --primary: #0f172a; --accent: #22d3ee; --bg: #020617; --home: #64748b; }
@@ -22,44 +22,35 @@
 <body>
 <div class="wrapper">
     <div class="panel">
-        <h1>👤 Master Cleanse Studio</h1>
+        <h1>👤 Identity Blueprint Lock</h1>
         <div class="instruction">
-            <strong>CLEAN STATE PROTOCOL:</strong><br>
-            Uporabi to za popolno odstranitev vseh rekvizitov (očal, kap, športnih rekvizitov). AI bo rekonstruiral karakterja v nevtralni studijski bazi.
+            <strong>IDENTITY PRESERVATION:</strong><br>
+            Uporabi to za obdelavo "čiste" fotografije. AI bo sliko le tehnično nadgradil (tekstura, svetloba), medtem ko bo tvoj obraz in frizuro ohranil 100 % identična.
         </div>
 
         <div class="group">
-            <label>1. Fiksni opisi DNA (Da AI ne ugiba)</label>
-            <input type="text" id="eyeDNA" placeholder="Barva oči (npr. hazel eyes, sharp detail)..." oninput="update()">
-            <input type="text" id="hairDNA" style="margin-top:10px;" placeholder="Pričeska (npr. brown wavy hair, visible forehead)..." oninput="update()">
+            <label>1. DNA Identiteta (Opiši realno stanje)</label>
+            <input type="text" id="faceDNA" placeholder="npr. oval face, light hazel eyes, specific jawline..." oninput="update()">
+            <input type="text" id="hairDNA" style="margin-top:10px;" placeholder="npr. dark brown wavy hair, specific messy bun texture..." oninput="update()">
         </div>
 
         <div class="group">
-            <label>2. Protokol Čiščenja (Kaj gre stran?)</label>
-            <select id="cleanse" onchange="update()">
-                <option value="FULL CLEANSE: Strictly remove all headwear, eyewear, and handheld objects. Reconstruct hidden anatomy with 100% precision.">Popolno čiščenje (Brez očal, kape in rekvizitov)</option>
-                <option value="OBJECT REMOVAL: Remove ball and medal only, keep face identity as is.">Samo odstranitev rekvizitov (Žoga, medalja)</option>
+            <label>2. Tip Master Obdelave</label>
+            <select id="lockMode" onchange="update()">
+                <option value="IMAGE-TO-IMAGE BLUEPRINT: Use Ref 0 as an absolute pixel-perfect blueprint for facial geometry. No changes to bone structure or hair volume.">Popolno ujemanje geometrije (Blueprint)</option>
+                <option value="STUDIO ENHANCEMENT: Keep original face and hair, only upgrade skin texture to professional 8K studio quality.">Studijska nadgradnja teksture</option>
             </select>
         </div>
 
         <div class="group">
-            <label>3. Nevtralna Oblačila</label>
-            <select id="clothing" onchange="update()">
-                <option value="wearing a premium minimalist heavyweight black cotton t-shirt">Črna Master majica</option>
-                <option value="wearing a simple clean white ribbed tank top">Bela Master majica (Tank top)</option>
-                <option value="wearing a neutral grey cashmere sweater">Siv Master pulover</option>
-            </select>
-        </div>
-
-        <div class="group">
-            <label>4. Studijsko Ozadje</label>
+            <label>3. Svetloba & Studio</label>
             <select id="studio" onchange="update()">
-                <option value="standing against a professional seamless grey studio cyclorama wall">Grey Cyclorama Studio</option>
-                <option value="against a clean white studio backdrop with soft professional shadows">White Fashion Studio</option>
+                <option value="against a professional grey cyclorama studio wall with high-end lighting">Professional Grey Studio</option>
+                <option value="inside a clean minimalist white studio with natural soft shadows">White Fashion Studio</option>
             </select>
         </div>
 
-        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ CLEAN MASTER PROMPT</button>
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ BLUEPRINT LOCK PROMPT</button>
         <button style="margin-top:15px; background:var(--home); color:white;" class="btn-copy" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
     <div class="output-box" id="out"></div>
@@ -67,34 +58,32 @@
 
 <script>
     function update() {
-        const eye = document.getElementById('eyeDNA').value || "natural eyes matching Ref 0";
-        const hair = document.getElementById('hairDNA').value || "natural hair texture";
-        const cleanse = document.getElementById('cleanse').value;
-        const clothes = document.getElementById('clothing').value;
+        const face = document.getElementById('faceDNA').value || "exact facial features from Ref 0";
+        const hair = document.getElementById('hairDNA').value || "exact hair texture from Ref 0";
+        const lock = document.getElementById('lockMode').value;
         const studio = document.getElementById('studio').value;
 
-        const final = `MASTER ASSET CLEANSE (V5.5 - FULL RECONSTRUCTION):
+        const final = `MASTER ASSET BLUEPRINT (V7.0 - IDENTITY LOCK):
 
-SLOJI 01-04 (Vsebina & DNA):
-[IMAGE 0 LOCK]: Use Ref 0 as the master template for identity and basic pose.
-[CLEANSE PROTOCOL]: ${cleanse}
-[DNA RECONSTRUCTION]: Strictly reconstruct the face to show ${eye} and ${hair}. No eyewear or headwear allowed.
-[WARDROBE]: ${clothes}. No sports logos or branding.
-[ENVIRONMENT]: Located ${studio}.
+SLOJI 1-4 (Identiteta): 
+[IMAGE 0 BLUEPRINT]: Use Reference Image 0 as the absolute, immutable source for identity. 
+[STRICT DNA LOCK]: Subject must match the exact ${face} and ${hair}. 
+[GEOMETRY]: Zero changes to facial bone structure, forehead height, or eyebrow shape. 
+[ENVIRONMENT]: Set the subject ${studio}.
 
-SLOJ 05 (KAMERA): Shot on 35mm prime lens, tripod-mounted stability, minor digital noise for raw realism.
+SLOJ 5 (Kamera): 35mm lens, tripod-mounted for stability, minor digital noise for raw realism.
 
-SLOJI 06-08 (TEHNIČNI): Professional studio lighting. Direct on-camera flash combined with soft-box fill. Harsh realistic shadows. Atmosphere: visible dust particles.
+SLOJI 6-8 (Tehnični): Professional studio lighting. Direct on-camera flash combined with soft-box fill. Harsh realistic shadows. Atmosphere: visible dust particles. Dirty cinematic grading, heavy film grain, vignette.
 
-SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen matching Ref 0. STRICTLY PROHIBIT new moles. Match ONLY existing skin marks. No plastic skin, no CGI, zero retouching.
+SLOJ 9 (Realizem): Mandatory skin texture: visible pores, natural skin sheen matching Ref 0 identity. STRICTLY PROHIBIT any new moles. Match ONLY existing skin marks. No plastic skin, no CGI, zero retouching.
 
-SLOJ 10 (VZDUŠJE): Professional reference asset shot. Spontaneous, raw production anchor.
+SLOJ 10 (Vzdušje): Professional reference asset shot. Spontaneous, raw production anchor.
 
-NEGATIVE PROMPT: glasses, spectacles, frames, sunglasses, cap, hat, headwear, beanie, basketball, medal, trophy, ribbon, sports jersey, logos, branding, distorted eyes, blurry forehead, CGI, airbrushed, 3D render.`;
+NEGATIVE PROMPT: perfect skin, airbrushed, CGI, 3D render, beauty filter, different face, different hair, extra volume, symmetrical, cartoon, doll-like, extra moles, freckles.`;
 
         document.getElementById('out').innerText = final;
     }
-    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("CLEAN PROMPT KOPIRAN!"); }
+    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("BLUEPRINT PROMPT KOPIRAN!"); }
     update();
 </script>
 </body>
