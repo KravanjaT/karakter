@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Digital Twin Studio V2.2</title>
+    <title>IDENTITY OS - Master Asset Studio V2.5</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --primary: #0f172a; --accent: #22d3ee; --bg: #020617; --home: #64748b; }
@@ -12,48 +12,38 @@
         .panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px); padding: 40px; border-radius: 32px; border: 1px solid rgba(34, 211, 238, 0.3); }
         h1 { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 900; margin-top: 0; }
         .instruction { background: rgba(34, 211, 238, 0.05); padding: 20px; border-radius: 16px; border-left: 4px solid var(--accent); margin-bottom: 25px; font-size: 0.8rem; color: #a5f3fc; }
-        .group { margin-bottom: 20px; }
-        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
-        select, input, textarea { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; }
-        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 900px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
+        .group { margin-bottom: 25px; }
+        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; letter-spacing: 1px; }
+        textarea, select { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; line-height: 1.5; }
+        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 850px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
         .btn-copy { background: var(--accent); color: #000; border: none; padding: 20px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; margin-top: 20px; }
+        .btn-copy:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3); }
     </style>
 </head>
 <body>
 <div class="wrapper">
     <div class="panel">
-        <h1>👤 Digital Twin Studio</h1>
+        <h1>👤 Asset Processor</h1>
         <div class="instruction">
-            <strong>IDENTITY INJECTION PROTOCOL:</strong><br>
-            Uporabi svojo bazno fotografijo (IMAGE 0) in vanjo "vbrizgaj" izdelek (IMAGE 1). AI bo obdržal tvojo identiteto in nadgradil realizem.
+            <strong>ASSET UPGRADE PROTOCOL:</strong> [cite: 33]<br>
+            Uvozi katero koli svojo fotografijo (IMAGE 0). Ta modul jo bo "zaklenil" in obdelal po 10-slojnem protokolu za uporabo v vseh prihodnjih nišah.
         </div>
 
         <div class="group">
-            <label>1. Izberi Master Pozo (Tvoja slika Ref 0)</label>
-            <select id="pose" onchange="update()">
-                <option value="Beauty Close-up: focus on face and hands near chin, holding a small object.">01 - Beauty Close-up (Kreme/Nakit)</option>
-                <option value="Lifestyle Lean: leaning on a cafe table, relaxed posture with a drink in hand.">02 - Lifestyle Lean (Kava/Pijače)</option>
-                <option value="Canvas Showcase: standing straight, holding a flat canvas/object with both hands.">03 - Canvas Showcase (Grafiti/Slike)</option>
-                <option value="Tech Interaction: looking down at hands while interacting with a gadget.">04 - Tech Interaction (Gadgeti/Telefon)</option>
-                <option value="Luxury Seated: sitting in a premium car/chair, holding object on the knee.">05 - Luxury Seated (Old Money/Auto)</option>
+            <label>1. Opis naložene fotografije (Kaj je na sliki?)</label>
+            <textarea id="baseDesc" rows="4" placeholder="npr. Punca v črni majici sedi v kavarni, naravna svetloba, leva roka na mizi..." oninput="update()"></textarea>
+        </div>
+
+        <div class="group">
+            <label>2. Tip Master Obdelave</label>
+            <select id="processing" onchange="update()">
+                <option value="Match exact identity and environment from Image 0. Enhance skin DNA with visible pores and natural sheen.">Standardna Master Obdelava (Protokol V90)</option>
+                <option value="Dramatic night-time enhancement with harsh on-camera flash and high-ISO grain.">Nočna Uredniška Obdelava (Harsh Flash)</option>
+                <option value="Golden hour natural light enhancement, soft shadows, warm amber tones.">Zlata Ura (Natural Glow)</option>
             </select>
         </div>
 
-        <div class="group">
-            <label>2. Izdelek za integracijo (Iz Ref 1)</label>
-            <input type="text" id="product" placeholder="npr. mat črna steklenička, grafit na platnu..." oninput="update()">
-        </div>
-
-        <div class="group">
-            <label>3. Nadgradnja Realizma (Sloj 09)</label>
-            <select id="skin" onchange="update()">
-                <option value="visible pores, natural skin texture, light catching fine downy hair, realistic imperfections">Popolna tekstura kože (Sloj 09)</option>
-                <option value="slightly oily skin sheen, sweat beads, high detail on pores and moles">Surov/Znojen realizm (Gym/Outdoor)</option>
-                <option value="soft morning glow, natural subsurface scattering, zero digital smoothing">Mehak jutranji realizm (Home/Beauty)</option>
-            </select>
-        </div>
-
-        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ TWIN INJECTOR PROMPT</button>
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ ASSET PROCESSOR PROMPT</button>
         <button style="margin-top:15px; background:var(--home); color:white;" class="btn-copy" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
     <div class="output-box" id="out"></div>
@@ -61,28 +51,29 @@
 
 <script>
     function update() {
-        const pose = document.getElementById('pose').value;
-        const prod = document.getElementById('product').value || "[IZDELEK]";
-        const skin = document.getElementById('skin').value;
+        const base = document.getElementById('baseDesc').value || "[OPIŠI SVOJO SLIKO]";
+        const proc = document.getElementById('processing').value;
 
-        const final = `MASTER TWIN INJECTOR (V150):
+        const final = `MASTER ASSET PROCESSOR (V150 - DNA LOCK): [cite: 59, 183]
 
-SLOJI 01-04 (Vsebina & DNA): 
-[IMAGE 0 LOCK]: Use reference image 0 as the master identity, pose, and composition template. Subject is ${pose}. 
-[IMAGE 1 LOCK]: Integrate the EXACT product from reference image 1 (${prod}) into the subject's hands. 
-[ACTION]: Flawlessly merge the identity of Ref 0 with the product DNA of Ref 1. Maintain the original silhouette.
+SLOJI 01-04 (Vsebina & DNA): [cite: 67, 73]
+[IMAGE 0 LOCK]: Use reference image 0 as the absolute master for identity, pose, and composition. Subject is ${base}. [cite: 190, 228]
+[IDENTITY]: Strictly match facial DNA, bone structure, eye color, and hair from Ref 0. 
+[UPGRADE]: ${proc} [cite: 136-139]
 
-SLOJ 05 (Kamera): Shot on 35mm prime lens, handheld shake, digital noise, chromatic aberration for raw analog feel [cite: 93-96].
+SLOJ 05 (KAMERA): Shot on 35mm prime lens, handheld shake, motion blur, digital noise for raw analog realism. [cite: 95, 157, 162]
 
-SLOJI 06-08 (Tehnični): Match environmental lighting from Ref 0. Apply a direct on-camera fill flash on the subject and product. Atmosphere: visible dust particles and paint/haze motes[cite: 102, 108].
+SLOJI 06-08 (TEHNIČNI): Lighting must flawlessly match the environment of Ref 0. [cite: 102, 240] Atmosphere: visible dust particles caught in light beams. [cite: 108, 171] Dirty cinematic grading, heavy film grain, vignette. [cite: 114, 248]
 
-SLOJ 09 (Realizem): MANDATORY: ${skin}. No plastic skin, no CGI, no airbrushing. Skin must show pores and fine details [cite: 136-147].
+SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen matching image 0 DNA. [cite: 120, 137, 250] STRICTLY PROHIBIT new moles or freckles. Match ONLY existing skin marks. No plastic skin, no CGI, zero retouching. [cite: 147]
 
-SLOJ 10 (Vzdušje): Spontaneous, unposed, private archive moment[cite: 127].`;
+SLOJ 10 (VZDUŠJE): Spontaneous, raw private moment, unposed production anchor. [cite: 127, 253]
+
+NEGATIVE PROMPT: perfect skin, airbrushed, CGI, soft studio lighting, clean background, 3D render, cartoon, doll-like, beauty filter, different heritage, new moles, extra freckles. [cite: 147, 257]`;
 
         document.getElementById('out').innerText = final;
     }
-    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("TWIN PROMPT KOPIRAN!"); }
+    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("ASSET PROMPT KOPIRAN!"); }
     update();
 </script>
 </body>
