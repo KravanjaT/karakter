@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Asset Studio V3.0</title>
+    <title>IDENTITY OS - Master Asset Studio V4.5</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --primary: #0f172a; --accent: #22d3ee; --bg: #020617; --home: #64748b; }
@@ -12,9 +12,9 @@
         .panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px); padding: 40px; border-radius: 32px; border: 1px solid rgba(34, 211, 238, 0.3); }
         h1 { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 900; margin-top: 0; }
         .instruction { background: rgba(34, 211, 238, 0.05); padding: 20px; border-radius: 16px; border-left: 4px solid var(--accent); margin-bottom: 25px; font-size: 0.8rem; color: #a5f3fc; }
-        .group { margin-bottom: 25px; }
+        .group { margin-bottom: 20px; }
         label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; letter-spacing: 1px; }
-        textarea, select { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; line-height: 1.5; }
+        textarea, select { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; }
         .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 950px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
         .btn-copy { background: var(--accent); color: #000; border: none; padding: 20px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; margin-top: 20px; }
     </style>
@@ -22,37 +22,35 @@
 <body>
 <div class="wrapper">
     <div class="panel">
-        <h1>👤 Asset Studio Reconstructor</h1>
+        <h1>👤 True Reference Studio</h1>
         <div class="instruction">
-            <strong>STUDIO UPGRADE PROTOCOL:</strong><br>
-            Uvozi svojo RAW fotografijo (IMAGE 0). Ta modul jo bo prestavil v kontrolirano studijsko okolje, popravil osvetlitev in zaklenil tvojo DNA identiteto za prihodnjo uporabo[cite: 183, 190].
+            <strong>TRUE ASSET PROTOCOL:</strong><br>
+            Vse elemente (žogo, medaljo, športna oblačila) zamenjamo s profesionalno studijsko podobo. To bo tvoja "Glavna referenca" za vse prihodnje projekte.
         </div>
 
         <div class="group">
-            <label>1. Opis Master poze (Kaj počneš na sliki?)</label>
-            <textarea id="baseDesc" rows="3" placeholder="npr. Moški v črni majici sedi, drži roko pred seboj, gleda v kamero..." oninput="update()"></textarea>
+            <label>1. Opis poze (Ref 0)</label>
+            <textarea id="baseDesc" rows="3" placeholder="npr. Punca stoji, gleda v kamero, dlani v nivoju prsi..." oninput="update()"></textarea>
         </div>
 
         <div class="group">
-            <label>2. Izberi Novo Studijsko Okolje</label>
+            <label>2. Studijsko "Clean" Ozadje (Sloj 03)</label>
             <select id="studio" onchange="update()">
-                <option value="in a professional high-end photography studio with a clean, minimalist grey concrete backdrop">Professional Gallery Studio (Neutral)</option>
-                <option value="inside a dimly lit industrial warehouse with dramatic spotlights and shadows">Industrial Warehouse Studio (Vibe)</option>
-                <option value="in a minimalist luxury apartment with floor-to-ceiling windows and soft daylight">Luxury Daylight Studio (Soft)</option>
-                <option value="against a dark, textured charcoal wall with a single overhead spotlight">Dramatic Dark Studio (High Contrast)</option>
+                <option value="standing against a professional seamless grey studio cyclorama wall with clean floor-to-wall transition">Professional Grey Cyclorama (Nevtralno)</option>
+                <option value="standing against a minimalist white studio backdrop with soft professional shadows">Clean White Studio (Visoka moda)</option>
+                <option value="against a dark charcoal seamless studio paper backdrop with dramatic fall-off">Dark Charcoal Backdrop (Dramatično)</option>
             </select>
         </div>
 
         <div class="group">
-            <label>3. Svetlobni Master (Sloj 06)</label>
-            <select id="lighting" onchange="update()">
-                <option value="High-contrast on-camera flash, creating sharp specular highlights on skin and fabric.">Aggressive On-Camera Flash [cite: 102]</option>
-                <option value="Cinematic soft-box lighting, gentle wrap-around light with deep but soft shadows.">Cinematic Soft-Box (Editorial)</option>
-                <option value="Warm tungsten lighting from the side, creating a three-dimensional depth.">Tungsten Side Light (Depth)</option>
+            <label>3. Reset Garderobe & Telesa</label>
+            <select id="reset" onchange="update()">
+                <option value="RECONSTRUCTION: Strictly remove ball and medal. Replace sports gear with a premium heavyweight black cotton t-shirt. Clean skin texture on hands.">Nevtralna črna majica (Clean Base)</option>
+                <option value="RECONSTRUCTION: Remove ball and medal. Replace with a minimalist white ribbed tank top. Natural skin sheen on shoulders.">Bela majica brez rokavov (Athletic Base)</option>
             </select>
         </div>
 
-        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ STUDIO RECONSTRUCTOR PROMPT</button>
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ TRUE REFERENCE PROMPT</button>
         <button style="margin-top:15px; background:var(--home); color:white;" class="btn-copy" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
     <div class="output-box" id="out"></div>
@@ -60,33 +58,34 @@
 
 <script>
     function update() {
-        const base = document.getElementById('baseDesc').value || "[OPIŠI SVOJO POZO]";
+        const base = document.getElementById('baseDesc').value || "[OPIŠI POZO]";
         const studio = document.getElementById('studio').value;
-        const light = document.getElementById('lighting').value;
+        const reset = document.getElementById('reset').value;
 
-        const final = `MASTER ASSET RECONSTRUCTOR (V3.0 - STUDIO LOCK): [cite: 12, 59]
+        const final = `MASTER TRUE REFERENCE (V4.5 - STUDIO RECONSTRUCTION):
 
 SLOJI 01-04 (Vsebina & DNA):
-[IMAGE 0 LOCK]: Use reference image 0 as the master template for identity and pose. Subject is ${base}. [cite: 190]
-[STUDIO REBUILD]: Completely reconstruct the background and environment to be ${studio}. [cite: 80]
-[IDENTITY]: Strictly preserve facial DNA, bone structure, eye color, and hair from Ref 0. [cite: 194, 201]
+[IMAGE 0 LOCK]: Use Ref 0 as the master identity template. Subject is ${base}. [cite: 190, 228]
+[SUBTRACTION]: ${reset} [cite: 116, 250]
+[SCENE]: Located ${studio}. [cite: 82, 231]
+[IDENTITY]: Strictly preserve facial bone structure, eye color, and hair from Ref 0. [cite: 201-207]
 
-SLOJ 05 (KAMERA): Shot on 35mm prime lens, handheld documentary style, subtle digital noise, high-ISO grain for raw realism. [cite: 95, 157]
+SLOJ 05 (KAMERA): Shot on 35mm prime lens, tripod-mounted for stability, minor digital noise for raw realism. [cite: 95, 157, 237]
 
 SLOJI 06-08 (TEHNIČNI):
-[LIGHTING]: ${light} [cite: 102]
-[ATMOSPHERE]: Visible dust particles and air motes caught in the light beams. [cite: 108]
-[COLOR]: Dirty cinematic grading, heavy film grain, slight vignette. [cite: 114]
+[LIGHTING]: Professional studio lighting. Direct on-camera flash combined with soft-box fill. Harsh realistic shadows. [cite: 102, 240]
+[ATMOSPHERE]: Clean studio air with minor visible dust particles caught in the flash beam. [cite: 108, 171, 243]
+[COLOR]: Dirty cinematic grading, heavy film grain, subtle vignette. [cite: 114, 248]
 
-SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen, realistic skin marks from Ref 0. [cite: 137, 139] STRICTLY PROHIBIT new moles or freckles. No plastic skin, no CGI, zero digital retouching. [cite: 147]
+SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen matching Ref 0 DNA. STRICTLY PROHIBIT any new moles. No plastic skin, no CGI, zero digital retouching. [cite: 120, 137, 250]
 
-SLOJ 10 (VZDUŠJE): Spontaneous, raw production anchor, unposed but professional asset quality. [cite: 127]
+SLOJ 10 (VZDUŠJE): Spontaneous, raw production anchor. A professional reference asset shot. [cite: 127, 253]
 
-NEGATIVE PROMPT: perfect skin, airbrushed, CGI, soft studio lighting, clean background, 3D render, cartoon, doll-like, beauty filter, different heritage, new moles. [cite: 257, 319]`;
+NEGATIVE PROMPT: ball, basketball, medal, trophy, ribbon, sports jersey, logo, branding, glasses, perfect skin, airbrushed, CGI, 3D render, beauty filter, new moles. [cite: 147, 257, 318]`;
 
         document.getElementById('out').innerText = final;
     }
-    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("STUDIO PROMPT KOPIRAN!"); }
+    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("TRUE REFERENCE PROMPT KOPIRAN!"); }
     update();
 </script>
 </body>
