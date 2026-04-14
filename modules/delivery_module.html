@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>IDENTITY OS - Delivery & Product Studio</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #eab308; --bg: #020617; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f8fafc; padding: 40px; margin: 0; }
+        .wrapper { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px); padding: 40px; border-radius: 32px; border: 1px solid rgba(234, 179, 8, 0.2); }
+        h1 { font-size: 1.8rem; font-weight: 900; color: var(--accent); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .group { margin-bottom: 20px; }
+        label { display: block; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
+        select, input, textarea { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; }
+        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; height: 800px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
+        .btn-main { background: var(--accent); color: #000; border: none; padding: 20px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(234, 179, 8, 0.3); }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="panel">
+        <h1>📦 Product Integration</h1>
+        
+        <div class="group">
+            <label>1. Izdelek (Kaj drži v rokah?)</label>
+            <input type="text" id="product" placeholder="npr. minimal kozmetična steklenička, spray paint platno..." oninput="update()">
+        </div>
+
+        <div class="group">
+            <label>2. Akcija (Kaj počne z izdelkom?)</label>
+            <select id="action" onchange="update()">
+                <option value="carefully holding and presenting it towards the camera">Predstavlja kameri (Presenting)</option>
+                <option value="actively using it in a candid unposed motion">Aktivno uporablja (In-use)</option>
+                <option value="cradling it with fingers showing natural grip and tension">Nežno drži s poudarkom na detajlu rok</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <label>3. Okolje (Sloj 03)</label>
+            <input type="text" id="scene" placeholder="npr. industrialna galerija, luksuzna kopalnica..." oninput="update()">
+        </div>
+
+        <div class="group">
+            <label>4. Pakiranje & Cena ($)</label>
+            <select id="package" onchange="update()">
+                <option value="50">Basic Portfolio (DNA + 3 Angles)</option>
+                <option value="250">Professional Bible (12 Angles + Product Kit)</option>
+                <option value="1000">Enterprise (Full Identity & Commercial Rights)</option>
+            </select>
+        </div>
+
+        <button class="btn-main" onclick="copy()">📋 KOPIRAJ FINALNI PRODORNI PROMPT</button>
+        <button style="margin-top:15px;" class="btn-main" onclick="window.location.href='../index.html'" style="background: #64748b;">🏠 NAZAJ NA DASHBOARD</button>
+    </div>
+
+    <div class="output-box" id="out"></div>
+</div>
+
+<script>
+    function update() {
+        const prod = document.getElementById('product').value || "[IZDELEK]";
+        const act = document.getElementById('action').value;
+        const sc = document.getElementById('scene').value || "Professional studio setting";
+        const price = document.getElementById('package').value;
+
+        const prompt = `MASTER PRODUCTION PROMPT (V120 - PRODUCT LOCK):
+
+SLOJ 01-04 (VSEBINA): Hyper-realistic raw waist-up medium portrait shot. Subject: The specific character (STRICT DNA LOCK: match facial bone structure, light hazel eyes, and skin DNA from anchor image). ACTION: ${act} ${prod}. Fingers show natural skin tension and grip. Scene is ${sc}. 
+
+SLOJ 05 (KAMERA): Shot on 35mm prime lens, handheld shake, subtle motion blur, digital noise[cite: 93, 162]. 
+
+SLOJ 06-08 (TEHNIČNI): Lighting: Harsh on-camera flash as primary[cite: 102, 240]. Atmosphere: visible dust particles and paint/haze motes caught in the flash beam[cite: 108, 171]. Dirty cinematic grading, heavy film grain[cite: 114, 248].
+
+SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, realistic imperfections (freckles, moles), natural asymmetry, zero digital retouching[cite: 120, 141, 250]. No plastic skin, no CGI[cite: 147].
+
+SLOJ 10 (VZDUŠJE): Spontaneous, raw, unguarded private moment[cite: 125, 253].
+
+VALUATION: Estimated Asset Value: $${price} USD.`;
+
+        document.getElementById('out').innerText = prompt;
+    }
+    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("PROMPT KOPIRAN!"); }
+    update();
+</script>
+</body>
+</html>
