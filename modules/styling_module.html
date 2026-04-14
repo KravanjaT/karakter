@@ -2,213 +2,108 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>AI Universa - Wardrobe & Niche Studio V100</title>
+    <title>IDENTITY OS - Delivery & Double Anchor Studio</title>
     <style>
-        :root { --primary: #0f172a; --accent: #ec4899; --bg: #f8fafc; --phase2: #7c3aed; --home: #64748b; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
-        .wrapper { max-width: 1750px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; }
-        .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; height: fit-content; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
+        :root { --primary: #0f172a; --accent: #eab308; --bg: #020617; --home: #64748b; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f8fafc; padding: 40px; margin: 0; }
         
-        .header { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #f1f5f9; }
-        .badge { background: var(--accent); color: #fff; padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { margin: 10px 0; font-size: 1.4rem; color: var(--primary); font-weight: 900; }
-
-        h2 { font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin: 25px 0 12px 0; border-left: 4px solid var(--accent); padding-left: 10px; }
-        .group { margin-bottom: 18px; }
-        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 6px; }
-        select, textarea, input { width: 100%; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 12px; background: #fff; font-size: 0.9rem; cursor: pointer; box-sizing: border-box; }
+        /* NOISE OVERLAY */
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 100; }
         
-        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; height: 1100px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 20px; }
+        .wrapper { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; z-index: 10; position: relative; }
+        .panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px); padding: 40px; border-radius: 32px; border: 1px solid rgba(234, 179, 8, 0.2); }
+        h1 { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 900; margin-top: 0; }
         
-        .btn-copy { background: var(--accent); color: white; border: none; padding: 20px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 10px; transition: 0.3s; text-transform: uppercase; box-shadow: 0 10px 20px rgba(236, 72, 153, 0.2); }
-        .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(236, 72, 153, 0.3); }
-
-        .btn-nav { background: var(--home); color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.9rem; font-weight: 800; margin-top: 10px; transition: 0.3s; text-transform: uppercase; }
-        .btn-nav.phase2 { background: var(--phase2); margin-top: 20px; }
+        .instruction { background: rgba(234, 179, 8, 0.05); padding: 20px; border-radius: 16px; border-left: 4px solid var(--accent); margin-bottom: 25px; font-size: 0.8rem; line-height: 1.6; color: #fde68a; }
+        .group { margin-bottom: 20px; }
+        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; letter-spacing: 1px; }
+        input, select, textarea { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: inherit; font-size: 0.9rem; }
         
-        .niche-selector { background: #fff1f2; padding: 20px; border-radius: 18px; border: 1px solid #fecdd3; margin-bottom: 25px; }
+        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains+Mono', monospace; font-size: 0.85rem; height: 900px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
+        .btn-copy { background: var(--accent); color: #000; border: none; padding: 20px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; margin-top: 20px; }
+        .btn-copy:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(234, 179, 8, 0.3); }
     </style>
 </head>
 <body>
-
 <div class="wrapper">
     <div class="panel">
-        <div class="header">
-            <span class="badge">V100 • Wardrobe & Niche Studio</span>
-            <h1>🎭 Stiling in Produkcija</h1>
+        <h1>📦 Delivery & Double Anchor</h1>
+        
+        <div class="instruction">
+            <strong>DOUBLE LOCK PROTOCOL:</strong><br>
+            • IMAGE 0: Character DNA Anchor (Oseba)<br>
+            • IMAGE 1: Product Anchor (Izdelek/Grafit)
         </div>
 
-        <div class="niche-selector">
-            <div class="group">
-                <label>🎯 IZBERI NIŠO (Market demand)</label>
-                <select id="niche" onchange="updateNiche()">
-                    <option value="business">1. Business & Corporate (Poslovno)</option>
-                    <option value="luxury">2. Luxury & Wealth (Prestiž)</option>
-                    <option value="fitness">3. Fitness & Health (Šport)</option>
-                    <option value="urban">4. Urban & Streetwear (Ulično)</option>
-                    <option value="tech">5. Tech & Innovation (Tehnologija)</option>
-                    <option value="nature">6. Nature & Adventure (Narava)</option>
-                    <option value="home">7. Home & Lifestyle (Udobje)</option>
-                    <option value="medical">8. Medical & Wellness (Zdravstvo)</option>
-                    <option value="auto">9. Automotive & Racing (Avtomobili)</option>
-                    <option value="casual">10. Casual & Social (Vsakdanje)</option>
-                </select>
-            </div>
-        </div>
-
-        <h2>1. Izgled in Oblačila</h2>
         <div class="group">
-            <label>Obleka (Outfit)</label>
-            <select id="outfit" onchange="update()"></select>
-        </div>
-        <div class="group">
-            <label>Obutev (Footwear)</label>
-            <select id="footwear" onchange="update()"></select>
-        </div>
-
-        <h2>2. Scena in Predmeti</h2>
-        <div class="group">
-            <label>Okolje (Scenery)</label>
-            <select id="scene" onchange="update()"></select>
-        </div>
-        <div class="group">
-            <label>Predmet v roki / Interakcija (Object)</label>
-            <select id="object" onchange="update()"></select>
-        </div>
-
-        <h2>3. Kamera in Kot</h2>
-        <div class="group">
-            <label>Zorni kot (Povzeto iz Faze 2)</label>
-            <select id="angle" onchange="update()">
-                <option value="waist-up medium shot, 3/4 view">Srednji posnetek (3/4)</option>
-                <option value="full body standing shot">Celotna postava</option>
-                <option value="extreme close-up macro, focus on face">Makro obraz</option>
-                <option value="sitting relaxed, candid angle">Sedeča poza</option>
+            <label>1. Izberi Končno Okolje (Sloj 03)</label>
+            <select id="background" onchange="update()">
+                <option value="in a raw industrial art gallery with exposed concrete walls and minimalist spotlights">Industrialna Galerija</option>
+                <option value="in a high-end luxury penthouse with city lights bokeh in the background">Luksuzni Penthouse</option>
+                <option value="in a messy, lived-in artist studio with paint splatters and canvases leaning against walls">Umetniški Atelje (Lived-in)</option>
+                <option value="outside on a busy urban street with cinematic night-time traffic reflections">Mestna Ulica (Noč)</option>
+                <option value="in a minimalist modern bathroom with harsh top lighting and steamy mirrors">Kopalnica (Modern)</option>
             </select>
         </div>
 
-        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ STYLING PROMPT</button>
-        
-        <button class="btn-nav phase2" onclick="window.location.href='production_module.html'">⬅ NAZAJ NA GEOMETRIJO (FAZA 2)</button>
-        <button class="btn-nav" onclick="window.location.href='../index.html'">🏠 NAZAJ NA NADZORNO PLOŠČO</button>
+        <div class="group">
+            <label>Ali pa vpiši svoje ozadje</label>
+            <input type="text" id="customScene" placeholder="npr. na sončni plaži ob sončnem zahodu" oninput="update()">
+        </div>
+
+        <div class="group">
+            <label>2. Akcija & Grip (Interakcija z izdelkom)</label>
+            <select id="action" onchange="update()">
+                <option value="carefully holding and presenting the specific product directly towards the camera with both hands">Predstavitev kameri (Dve roki)</option>
+                <option value="holding the product in one hand in a relaxed, candid pose, looking slightly off-camera">Sproščena poza (Ena roka)</option>
+                <option value="actively interacting with the product, showing natural finger tension and realistic grip">Aktivna uporaba (Detajli prstov)</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <label>3. Oblačila (Sloj 04)</label>
+            <input type="text" id="outfit" placeholder="npr. oversized black hoodie with fabric texture" oninput="update()">
+        </div>
+
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ DVOJNI PROMPT (V140)</button>
+        <button style="margin-top:15px; background:var(--home);" class="btn-copy" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
 
     <div class="output-box" id="out"></div>
 </div>
 
 <script>
-    const DATA = {
-        business: {
-            outfits: ["Tailored navy blue suit", "White crisp button-down shirt", "Charcoal grey blazer with turtleneck", "Beige trench coat over suit", "Professional silk blouse and skirt", "Oversized wool coat", "Slim-fit waistcoat and tie", "Corporate smart casual knitwear", "Black pinstripe trousers", "Double-breasted formal jacket"],
-            footwear: ["Polished leather Oxfords", "Classic black stiletto pumps", "Italian leather loafers", "Minimalist professional chelsea boots", "Suede monk straps", "Professional flat ballerinas", "Pointed-toe formal shoes", "Dark leather brogues", "Clean dress boots", "Handcrafted derby shoes"],
-            scenes: ["High-end glass office boardroom", "Busy financial district sidewalk", "Modern skyscraper lobby", "Luxury airport executive lounge", "Private corporate jet interior", "Minimalist elevator interior", "High-rise office with city view", "Professional conference hall background", "Modern minimalist library", "Tech-hub coworking space"],
-            objects: ["Holding a premium matte black smartphone", "Holding a thin designer laptop", "Holding a leather documents folder", "Carrying a luxury leather briefcase", "Holding a porcelain cup of espresso", "Adjusting a high-end mechanical watch", "Checking a digital tablet", "Holding a financial newspaper", "Wearing minimalist Bluetooth earbuds", "Holding a sleek metal fountain pen"]
-        },
-        luxury: {
-            outfits: ["Black silk velvet tuxedo", "Elegant floor-length satin evening gown", "Cashmere overcoat with fur collar", "Designer silk wrap dress", "Tailored white linen summer suit", "Gold-embroidered cocktail dress", "Custom-made patterned silk robe", "Exotic leather jacket", "Expensive minimalist cashmere set", "Royal blue evening blazer"],
-            footwear: ["Patent leather formal shoes", "Crystal-encrusted high heels", "Velvet evening slippers", "Gold-accented designer loafers", "Premium ostrich leather boots", "Silk strapped sandals", "Crocodile skin dress shoes", "High-fashion minimalist boots", "Jeweled evening pumps", "Bespoke handcrafted footwear"],
-            scenes: ["Grand marble hotel staircase", "Night view from a luxury penthouse balcony", "Exclusive VIP casino lounge", "Private yacht deck at sunset", "Opera house red carpet", "Old money European estate garden", "Interior of a Rolls Royce", "Champagne cellar background", "Boutique luxury store interior", "Gala dinner hall with chandeliers"],
-            objects: ["Holding a crystal glass of aged whiskey", "Holding a thin champagne flute", "Wearing an oversized diamond ring", "Holding a limited-edition designer clutch", "Holding a vintage gold lighter", "Adjusting a diamond necklace", "Holding a premium cigar", "Holding an invitation to an exclusive event", "Wearing limited-edition sunglasses", "Holding a set of luxury car keys"]
-        },
-        fitness: {
-            outfits: ["Compression gym wear set", "Oversized heavy cotton hoodie", "Technical running jacket", "Seamless high-waisted leggings", "Athletic racerback tank top", "Windproof track suit", "Performance mesh shorts", "Yoga sports bra and tights", "Athletic puffer vest", "Functional CrossFit apparel"],
-            footwear: ["Advanced carbon-plate running shoes", "Flat-sole powerlifting shoes", "Minimalist barefoot trainers", "Rugged trail running boots", "Classic athletic sneakers", "Neoprene gym shoes", "High-performance cycling shoes", "Casual sporty slides", "Professional athletic cleats", "Breathable knit trainers"],
-            scenes: ["Modern minimalist gym with neon lights", "Outdoor running track at sunrise", "Industrial CrossFit box", "Home yoga studio with soft light", "Mist-covered forest trail", "Urban outdoor workout park", "Olympic swimming pool side", "Sun-lit pilates studio", "Empty stadium stairs", "Mountain peak after a climb"],
-            objects: ["Holding a frosted shaker bottle", "Drinking from a metal water bottle", "Holding a heavy kettlebell", "Adjusting a fitness smartwatch", "Wearing professional over-ear headphones", "Holding a jump rope", "Wiping sweat with a white towel", "Adjusting gym gloves", "Holding a yoga mat", "Checking a fitness app on phone"]
-        },
-        urban: {
-            outfits: ["Oversized graphic hoodie", "Distressed denim jacket", "Cargo trousers with straps", "Vintage oversized flannel shirt", "Puffer jacket in neon colors", "Acid-wash wide jeans", "Leather biker jacket", "Crop-top with utility vest", "Beanie and oversized sweater", "Streetwear tracksuit"],
-            footwear: ["Limited edition chunky sneakers", "Classic high-top canvas shoes", "Platform combat boots", "Designer streetwear slides", "Vividly colored trainers", "Retro basketball sneakers", "Suede desert boots", "Reflective techwear shoes", "Worn-in vintage sneakers", "Minimalist white leather low-tops"],
-            scenes: ["Subway station platform", "Graffiti-covered city alleyway", "Night street with cinematic neon bokeh", "Rooftop overlooking urban grid", "Skatepark background", "Industrial warehouse entrance", "Crowded outdoor street market", "City park with skyscrapers background", "Empty parking garage", "Modernist concrete building exterior"],
-            objects: ["Holding a spray paint can", "Holding a paper coffee cup", "Holding a skateboard under arm", "Using a vintage film camera", "Wearing a thick silver chain", "Holding a designer shopping bag", "Eating a slice of pizza", "Holding a portable speaker", "Checking a digital smartwatch", "Holding a transparent umbrella in rain"]
-        },
-        tech: {
-            outfits: ["Minimalist zip-up hoodie", "Unisex oversized tech-tee", "Smart casual knit polo", "Waterproof techwear parka", "Soft-shell utility jacket", "Merino wool sweater", "Stretch-fit chinos", "Modern turtleneck", "Puffer gilet", "Sustainable hemp-fiber clothing"],
-            footwear: ["Minimalist knit sneakers", "All-weather tech boots", "Ergonomic loafers", "Sustainable cork-sole shoes", "Sleek slip-on trainers", "Hybrid dress-sneakers", "Waterproof urban shoes", "Techwear strapped boots", "Breathable mesh slip-ons", "Clean grey suede shoes"],
-            scenes: ["Sleek modern coding setup", "Tech startup creative laboratory", "Biometric server room", "Minimalist glass coworking space", "Home office with RGB lighting", "VR gaming lounge", "Digital art studio", "Robotics workshop", "Futuristic clean-room", "Silicon Valley style outdoor campus"],
-            objects: ["Holding a foldable smartphone", "Adjusting a VR headset", "Holding a professional tablet with stylus", "Typing on a mechanical keyboard", "Checking a futuristic holographic interface", "Wearing noise-canceling headphones", "Holding a soldering iron", "Holding a clear glass of water", "Adjusting a smart ring", "Holding a tech-gadget prototype"]
-        },
-        nature: {
-            outfits: ["Heavy-duty Gore-Tex parka", "Flannel plaid shirt", "Quilted down puffer jacket", "Durable tactical trousers", "Woolen knit sweater", "Water-resistant windbreaker", "Fleece-lined utility coat", "Sleeveless camping vest", "Thermal base-layer set", "Explorer's safari jacket"],
-            footwear: ["Vibram-sole hiking boots", "Leather outdoor trekking shoes", "Waterproof gumboots", "Snow-terrain boots", "Lightweight trail shoes", "Canvas adventure boots", "Thermal outdoor slippers", "All-terrain sandals", "Classic leather work boots", "Professional climbing shoes"],
-            scenes: ["Dense pine forest in morning mist", "Rugged rocky mountain peak", "Waterfall background", "Isolated lakeside campsite", "Desert dunes at golden hour", "Snowy mountain cabin porch", "Green valley at sunset", "Cliffs overlooking the ocean", "Riverbank with smooth stones", "Tropical jungle clearing"],
-            objects: ["Carrying a large trekking backpack", "Holding a wooden walking stick", "Holding a metal camping mug", "Using a pair of binoculars", "Checking a compass", "Holding a vintage oil lantern", "Holding a professional drone controller", "Building a small campfire", "Holding a bunch of wildflowers", "Looking at a physical map"]
-        },
-        home: {
-            outfits: ["Oversized cashmere lounge set", "Silk pajamas", "Heavy knitted robe", "Soft cotton t-shirt and boxers", "Fleece morning gown", "Ribbed knit leggings and sweater", "Linen loungewear", "Bathrobe with towel on head", "Old vintage band t-shirt", "Comfortable hoodie and socks"],
-            footwear: ["Fluffy sheepskin slippers", "Knitted wool socks", "Barefoot", "Silk house shoes", "Minimalist felt slippers", "Suede home loafers", "Cotton slippers", "Open-toe spa slippers", "Memory foam house shoes", "Leather indoor mules"],
-            scenes: ["Cozy sun-filled bedroom", "Modern minimalist kitchen with steam", "Living room with fireplace", "Balcony with plants in morning sun", "Steamy bathroom mirror aesthetic", "Reading nook by the window", "Modern laundry room", "Home garden patio", "Dark cinematic hallway", "Bed with messy white sheets"],
-            objects: ["Holding a steaming ceramic mug", "Holding a glass of red wine", "Holding an open hardcover book", "Holding a remote control", "Eating breakfast from a bowl", "Cuddling a soft pillow", "Holding a smartphone while lying down", "Holding a toothbrush", "Adjusting a house plant", "Holding a cat or dog"]
-        },
-        medical: {
-            outfits: ["Professional navy blue scrubs", "Crisp white doctor's lab coat", "Surgical gown and mask", "Light blue nursing uniform", "Dark grey clinic tunic", "Sterile medical overalls", "Doctor's formal shirt and tie", "Casual therapist knitwear", "Emergency responder uniform", "Protective lab apron"],
-            footwear: ["Professional white medical clogs", "Comfortable athletic sneakers", "Flat non-slip clinic shoes", "Sanitized surgical footwear", "Durable emergency boots", "Lightweight breathable shoes", "Easy-clean rubber loafers", "Orthopedic professional shoes", "White leather sneakers", "Sterile overshoes"],
-            scenes: ["Modern hospital corridor", "Bright medical examination room", "High-tech surgery theater", "Dental clinic interior", "Physiotherapy studio", "Medical research laboratory", "Emergency room bay", "Pharmacy interior", "Doctor's private office", "Clean modern reception area"],
-            objects: ["Wearing a stethoscope around neck", "Holding a digital medical tablet", "Holding a patient's clipboard", "Holding a professional syringe", "Adjusting a microscope", "Wearing surgical gloves", "Holding a bottle of medicine", "Pointing at an X-ray film", "Holding a blood pressure monitor", "Holding a professional thermometer"]
-        },
-        auto: {
-            outfits: ["Leather racing jacket", "Slim-fit black denim and tee", "Modern mechanic's overalls", "Driver's suede bomber jacket", "Luxury leather gloves and coat", "Technical driving suit", "Classic aviator style outfit", "Branded car-enthusiast hoodie", "Casual smart driving attire", "Vintage driver's gear"],
-            footwear: ["Puma style thin-sole driving shoes", "Suede racing boots", "Leather Chelsea boots", "Clean white luxury sneakers", "Heavy duty garage boots", "Classic loafers for driving", "Technical racing footwear", "Vintage leather shoes", "High-grip athletic trainers", "Sporty low-profile shoes"],
-            scenes: ["Interior of a luxury supercar", "Professional car detailing garage", "Vintage gas station at night", "Modern showroom floor", "Driver's seat view at night", "Underground parking with car lights", "Scenic mountain hairpin road", "F1 style pit lane", "Classic car restoration workshop", "Desert highway road trip"],
-            objects: ["Holding a set of luxury car keys", "Holding a carbon fiber steering wheel", "Cleaning a car with a microfiber cloth", "Holding a can of premium oil", "Checking a tire pressure gauge", "Wearing driving sunglasses", "Holding a metal toolbox", "Adjusting the rearview mirror", "Refueling a classic car", "Leaning against a hood of a car"]
-        },
-        casual: {
-            outfits: ["Classic white tee and blue jeans", "Simple summer linen dress", "Casual grey sweatshirt", "Denim shorts and tank top", "Checkered flannel shirt", "Light cotton cardigan", "Basic black leggings and top", "Casual polo shirt", "Sun dress with floral print", "Everyday oversized sweater"],
-            footwear: ["Everyday white sneakers", "Casual leather sandals", "Comfortable flip-flops", "Canvas slip-on shoes", "Classic flat loafers", "Worn-in walking shoes", "Casual high-top sneakers", "Simple ballet flats", "Lightweight summer shoes", "Everyday suede boots"],
-            scenes: ["Sunny local park bench", "Outdoor sidewalk cafe", "Grocery store aisle", "Public library bookshelves", "Backyard garden with fence", "Neighborhood street sidewalk", "Local beach at daytime", "Busy shopping mall background", "Casual bus stop", "Cozy coffee shop corner"],
-            objects: ["Holding a brown paper grocery bag", "Holding a colorful ice cream cone", "Walking a dog on a leash", "Holding a smartphone and scrolling", "Holding a plastic water bottle", "Reading a paperback book", "Holding a bunch of keys", "Wearing a casual backpack", "Holding a small bouquet of flowers", "Eating a sandwich"]
-        }
-    };
-
-    function updateNiche() {
-        const niche = document.getElementById('niche').value;
-        const data = DATA[niche];
-        
-        const populate = (id, list) => {
-            const el = document.getElementById(id);
-            el.innerHTML = list.map(item => `<option value="${item}">${item}</option>`).join('');
-        };
-
-        populate('outfit', data.outfits);
-        populate('footwear', data.footwear);
-        populate('scene', data.scenes);
-        populate('object', data.objects);
-        update();
-    }
-
     function update() {
-        const ang = document.getElementById('angle').value;
-        const out = document.getElementById('outfit').value;
-        const foot = document.getElementById('footwear').value;
-        const sc = document.getElementById('scene').value;
-        const obj = document.getElementById('object').value;
+        const bgSelect = document.getElementById('background').value;
+        const customBg = document.getElementById('customScene').value;
+        const scene = customBg || bgSelect;
+        const act = document.getElementById('action').value;
+        const outfit = document.getElementById('outfit').value || "simple cotton t-shirt with visible weave";
 
-        const final = `MASTER STYLING PROMPT (V100):
+        const finalPrompt = `MASTER PRODUCTION PROMPT (V140 - DOUBLE LOCK):
 
-Sloji 1-4 (Vsebina): Hyper-realistic raw **${ang}**. 
-[CHARACTER LOCK]: Use the uploaded Anchor Image ONLY for facial DNA, bone structure, and identity. 
-[NEW ENVIRONMENT]: Scene is ${sc}. 
-[WARDROBE OVERRIDE]: Subject is now wearing ${out} and ${foot}. 
-[ACTION]: Subject is ${obj}.
+SLOJI 01-04 (Vsebina & Identiteta): Hyper-realistic raw waist-up portrait. 
+[IMAGE 0 LOCK]: Subject must exactly match the facial DNA, eye color, and dark brown hair from reference image 0. 
+[IMAGE 1 LOCK]: Subject is holding and presenting the EXACT product/artwork from reference image 1. Zero changes to colors, patterns, or tag details.
+[ACTION]: Subject is ${act}. 
+[WARDROBE]: Wearing a ${outfit}.
+[SCENE]: Located ${scene}.
 
-Sloj 5 (Kamera): Shot on 35mm lens, handheld shake, subtle motion blur, digital noise, chromatic aberration for raw analog realism.
+SLOJ 05 (Kamera): Shot on 28mm wide-angle lens, handheld shake, subtle motion blur, digital noise for raw analog realism.
 
-Sloji 6-8 (Tehnični): Lighting matched to ${sc}. Realistic light wrap and reflections on the subject. Atmosphere: dust particles, realistic depth of field. Colors: dirty cinematic grading, heavy film grain, vignette.
+SLOJ 06-08 (Tehnični): Lighting matched to ${scene}. Direct on-camera flash, harsh shadows. Atmosphere: visible dust particles and air motes caught in the flash beam. Dirty cinematic grading, heavy film grain, vignette.
 
-Sloji 9-10 (Realizem): Mandatory skin texture: visible pores, natural skin imperfections matching the reference DNA, zero digital retouching. Spontaneous moment.
+SLOJ 09 (Realizem): Mandatory skin texture: visible pores, natural imperfections (moles, redness) matching image 0 DNA, zero digital retouching, oily sheen.
 
-NEGATIVE PROMPT: perfect skin, airbrushed, studio lighting, clean background, 3D render, CGI, cartoon, doll-like, beauty filter, original clothing from reference, original scene from reference.`;
+SLOJ 10 (Vzdušje): Spontaneous, raw private moment, unposed production shot.
 
-        document.getElementById('out').innerText = final;
+NEGATIVE PROMPT: perfect skin, airbrushed, CGI, soft studio lighting, clean background, 3D render, cartoon, doll-like, beauty filter, different heritage.`;
+
+        document.getElementById('out').innerText = finalPrompt;
     }
-
-    function copy() {
-        navigator.clipboard.writeText(document.getElementById('out').innerText);
-        alert("STYLING PROMPT KOPIRAN!");
-    }
-
-    // Inicializacija
-    updateNiche();
+    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("PROMPT KOPIRAN!"); }
+    update();
 </script>
 </body>
 </html>
