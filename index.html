@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>AI Universa - Master Architect V73</title>
+    <title>AI Universa - Final God-Mode V74</title>
     <style>
         :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f1f5f9; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding: 20px; color: #1e293b; }
@@ -25,13 +25,13 @@
         .check-item { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
         .check-item input { margin-right: 10px; }
 
-        .output-panel { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.7; height: 950px; overflow-y: auto; white-space: pre-wrap; position: sticky; top: 20px; border: 1px solid #1e293b; }
+        .output-panel { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.7; height: 1000px; overflow-y: auto; white-space: pre-wrap; position: sticky; top: 20px; border: 1px solid #1e293b; }
         .btn-copy { background: var(--success); color: white; border: none; padding: 20px; width: 100%; border-radius: 15px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 25px; transition: 0.3s; box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
     </style>
 </head>
 <body>
 
-<h1>🎭 AI Universa - Master DNA Architect V73</h1>
+<h1>🎭 AI Universa - The Final God-Mode V74</h1>
 
 <div class="master-wrapper">
     <div class="panel">
@@ -41,7 +41,7 @@
             <button id="btn-kids" class="mode-btn" onclick="setMode('kids')">Otroci</button>
         </div>
 
-        <h2>1. Kasting in Poreklo</h2>
+        <h2>1. Biometrični Kasting</h2>
         <div class="grid-2">
             <div class="group">
                 <label>Starost (DNA Zaklep)</label>
@@ -50,26 +50,27 @@
             <div class="group">
                 <label>Poreklo (Ethnicity)</label>
                 <select id="origin" onchange="update()">
-                    <option value="Slavic heritage">Slovansko</option>
-                    <option value="Nordic heritage">Nordijsko</option>
-                    <option value="Mediterranean heritage">Mediteransko</option>
-                    <option value="Latin American">Latino</option>
-                    <option value="African heritage">Afriško</option>
-                    <option value="East Asian">Azijsko</option>
-                    <option value="Middle Eastern">Arabsko</option>
+                    <option value="Slavic heritage, pale cool-toned skin">Slovansko</option>
+                    <option value="Nordic heritage, fair porcelain skin">Nordijsko</option>
+                    <option value="Mediterranean heritage, olive skin">Mediteransko</option>
+                    <option value="Latin American heritage, bronze skin">Latino / Brazilsko</option>
+                    <option value="African heritage, deep ebony skin">Afriško</option>
+                    <option value="Middle Eastern heritage, warm amber skin">Arabsko</option>
+                    <option value="East Asian heritage, ivory skin">Azijsko</option>
                 </select>
             </div>
         </div>
 
-        <h2>2. Obrazna DNA (Unikatnost)</h2>
+        <h2>2. Unikatna Obrazna DNA</h2>
         <div class="grid-2">
             <div class="group">
                 <label>Oblika obraza</label>
                 <select id="faceShape" onchange="update()">
                     <option value="oval face with high cheekbones">Ovalen (Visoke ličnice)</option>
                     <option value="square face, sharp chiseled jawline">Kvadraten (Ostra čeljust)</option>
-                    <option value="heart-shaped face, soft jawline">Srčast obraz</option>
+                    <option value="heart-shaped face, soft feminine jaw">Srčast obraz</option>
                     <option value="round face, youthful fullness">Okrogel obraz</option>
+                    <option value="diamond face, sharp chin">Diamanten obraz</option>
                 </select>
             </div>
             <div class="group">
@@ -84,20 +85,21 @@
         </div>
         <div class="grid-2">
             <div class="group">
-                <label>Oči</label>
-                <select id="eyes" onchange="update()">
-                    <option value="deep chocolate brown eyes">Temno rjave</option>
-                    <option value="piercing blue eyes">Modre</option>
-                    <option value="vibrant emerald green eyes">Zelene</option>
-                    <option value="warm amber eyes">Jantarne</option>
-                </select>
-            </div>
-            <div class="group">
                 <label>Ustnice</label>
                 <select id="lips" onchange="update()">
                     <option value="natural full lips">Polne ustnice</option>
                     <option value="thin refined lips">Tanke ustnice</option>
                     <option value="prominent cupid's bow">Izrazit Kupidov lok</option>
+                    <option value="wide expressive mouth">Široka usta</option>
+                </select>
+            </div>
+            <div class="group">
+                <label>Oči</label>
+                <select id="eyes" onchange="update()">
+                    <option value="deep chocolate brown eyes">Temno rjave</option>
+                    <option value="piercing ice blue eyes">Modre</option>
+                    <option value="vibrant emerald green eyes">Zelene</option>
+                    <option value="warm amber eyes">Jantarne</option>
                 </select>
             </div>
         </div>
@@ -110,7 +112,7 @@
 
         <div id="extra-features"></div>
 
-        <h2>4. Garderoba (Tekstura)</h2>
+        <h2>4. Garderoba (Tekstilno sidro)</h2>
         <div class="grid-2">
             <div class="group"><label>Oblačila</label><select id="cloth" onchange="update()"></select></div>
             <div class="group">
@@ -121,6 +123,7 @@
                     <option value="black">Črna</option>
                     <option value="navy blue">Mornarsko modra</option>
                     <option value="taupe">Taupe / Bež</option>
+                    <option value="dusty rose">Umazano roza</option>
                 </select>
             </div>
         </div>
@@ -144,24 +147,24 @@
 <script>
     const OPTIONS = {
         age: {
-            man: ["18", "25", "35", "50", "75"],
-            woman: ["18", "22", "28", "35", "55", "75"],
-            kids: ["2", "8", "14"]
+            man: ["18", "22", "28", "35", "45", "55", "75"],
+            woman: ["18", "22", "28", "35", "45", "55", "75"],
+            kids: ["2", "5", "8", "12", "15"]
         },
         hColor: {
-            man: ["jet black", "natural dark brown", "sandy blonde", "salt and pepper", "silver white"],
-            woman: ["natural golden blonde", "ash blonde", "strawberry blonde", "espresso brown", "ginger red", "jet black"],
-            kids: ["golden blonde", "natural brown", "ginger red"]
+            man: ["jet black", "natural dark brown", "sandy blonde", "salt and pepper grey", "silver white", "chestnut brown"],
+            woman: ["natural golden blonde", "light ash blonde", "dirty blonde", "strawberry blonde", "espresso brown", "ginger red", "jet black", "silver fox grey"],
+            kids: ["golden blonde", "light brown", "natural brown", "vibrant ginger red"]
         },
         hStyle: {
-            man: ["short messy textured", "classic fade", "buzz cut", "man bun", "long waves"],
-            woman: ["long sleek straight", "long natural waves", "sleek bob cut", "high messy bun", "box braids"],
-            kids: ["soft wispy hair", "neat short cut", "cute pigtails", "soft curls"]
+            man: ["short messy textured top", "classic fade undercut", "neat side-part", "short buzz cut", "man bun", "shoulder length waves", "natural afro"],
+            woman: ["long sleek straight", "long natural waves", "layered lob with bangs", "sleek bob cut", "high messy bun", "box braids", "pixie cut"],
+            kids: ["wispy thin natural hair", "neat short taper", "cute braided pigtails", "soft curls", "messy toddler bowl cut"]
         },
         cloth: {
-            man: ["heavy cotton t-shirt", "rugged flannel shirt", "wool turtleneck", "fleece hoodie"],
-            woman: ["silk slip dress", "rib-knit wool sweater", "wool blazer", "linen shirt"],
-            kids: ["heavy cotton t-shirt", "denim overall", "fleece hoodie"]
+            man: ["heavy cotton t-shirt", "rugged flannel shirt", "wool turtleneck", "fleece hoodie", "pique polo shirt", "wool blazer"],
+            woman: ["silk slip dress", "rib-knit wool sweater", "linen button-down shirt", "oversized wool blazer", "leather biker jacket", "cashmere sweater"],
+            kids: ["heavy cotton t-shirt", "denim overall", "soft fleece hoodie", "quilted puffer vest", "linen tunic"]
         }
     };
 
@@ -178,10 +181,13 @@
         document.getElementById('cloth').innerHTML = OPTIONS.cloth[mode].map(x => `<option value="${x}">${x}</option>`).join('');
 
         const extra = document.getElementById('extra-features');
-        if(mode === 'man') extra.innerHTML = `<div class="group"><label>Brada</label><select id="extraSel" onchange="update()"><option value="heavy stubble">3-dnevna brada</option><option value="full beard">Polna brada</option><option value="clean shaven">Brez brade</option></select></div>`;
-        else if(mode === 'woman') extra.innerHTML = `<div class="group"><label>Ličila</label><select id="extraSel" onchange="update()"><option value="barely-there natural makeup">Minimalno</option><option value="no makeup, raw skin">Brez (Raw)</option><option value="smudged eyeliner">Vživeto</option></select></div>`;
-        else extra.innerHTML = "";
-
+        if(mode === 'man') {
+            extra.innerHTML = `<h2>3.1 Moški Dodatki</h2><div class="grid-2"><div class="group"><label>Brada</label><select id="extraSel" onchange="update()"><option value="heavy 3-day stubble">3-dnevna brada</option><option value="full thick beard">Polna brada</option><option value="clean shaven, follicle shadow">Brez brade</option><option value="neat goatee">Goatee</option></select></div><div class="group"><label>Urejanje</label><select id="extraSel2" onchange="update()"><option value="no jewelry">Brez</option><option value="minimalist watch">Ura</option><option value="silver stud earring">Uhan</option></select></div></div>`;
+        } else if(mode === 'woman') {
+            extra.innerHTML = `<h2>3.1 Ženski Dodatki</h2><div class="grid-2"><div class="group"><label>Ličila</label><select id="extraSel" onchange="update()"><option value="barely-there natural makeup">Minimalno</option><option value="no makeup, raw skin texture">Brez (Raw)</option><option value="smudged eyeliner aesthetic">Vživeto (Smudged)</option><option value="soft matte lipstick">Matirane ustnice</option></select></div><div class="group"><label>Nakit</label><select id="extraSel2" onchange="update()"><option value="no jewelry">Brez</option><option value="gold hoop earrings">Obroči</option><option value="delicate gold chain">Verižica</option></select></div></div>`;
+        } else {
+            extra.innerHTML = "";
+        }
         update();
     }
 
@@ -196,29 +202,31 @@
         const hS = document.getElementById('hStyle').value;
         const cl = document.getElementById('cloth').value;
         const cC = document.getElementById('cC').value;
-        const extra = document.getElementById('extraSel') ? document.getElementById('extraSel').value : "";
+        const extra1 = document.getElementById('extraSel') ? document.getElementById('extraSel').value : "";
+        const extra2 = document.getElementById('extraSel2') ? document.getElementById('extraSel2').value : "";
         const tr = Array.from(document.querySelectorAll('.tr:checked')).map(t => t.value).join(', ');
 
-        let skin = (parseInt(a) > 40) ? "aged weathered texture, visible pores, rhytids" : "healthy skin sheen, visible pores";
-        if(parseInt(a) < 10) skin = "soft juvenile skin, high subsurface scattering";
+        let skin = "detailed skin texture, visible pores, micro-imperfections";
+        if(parseInt(a) < 10) skin = "soft juvenile skin, high subsurface scattering, high skin bloom";
+        else if(parseInt(a) > 50) skin = "aged weathered texture, visible rhytids, solar lentigines";
 
         document.getElementById('out').innerText = `PROMPT:
-Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** anchor. Subject: a ${a}-year old ${mode} of ${o}. Facial DNA: ${fS}, ${n}, ${l}. Features: ${hC} hair, ${hS}, ${extra}${tr ? ', with ' + tr : ''}. Outfit: ${cC} ${cl}. Framing: 3/4 perspective. Neutral grey background.
+Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** anchor. Subject: a ${a}-year old ${mode} of ${o}. Facial DNA: ${fS}, ${n}, ${l}. Features: ${e}, ${hC} hair, ${hS}, ${extra1}${extra2 ? ', ' + extra2 : ''}${tr ? ', with ' + tr : ''}. Outfit: Wearing a ${cC} ${cl} with visible fabric weave. Framing: 3/4 perspective. Neutral grey studio background.
 
-Sloj 05 (Kamera): 85mm f/2.8 lens, handheld, ISO 400 grain profile.
+Sloj 05 (Kamera): 85mm f/2.8 prime lens for realistic proportions, handheld, ISO 400 grain.
 
-Sloj 06-08 (Technical): High-key studio fill light, flat even illumination. No shadows. Clean air, absolute clarity.
+Sloj 06-08 (Technical): High-key studio fill light, flat illumination, direct fill flash. No shadows. Clean air, absolute clarity.
 
 Sloj 09 (Realizem): Mandatory skin texture: ${skin}, realistic asymmetry, zero digital retouching. No plastic skin.
 
 Sloj 10 (Vzdušje): Spontaneous identity anchor.
 
-NEGATIVE PROMPT: smoke, haze, dramatic shadows, CGI, airbrushed, beauty filter.`;
+NEGATIVE PROMPT: smoke, haze, dramatic shadows, CGI, airbrushed, beauty filter, doll-like skin.`;
     }
 
     function copy() {
         navigator.clipboard.writeText(document.getElementById('out').innerText);
-        alert("MASTER PROMPT KOPIRAN!");
+        alert("GOD-MODE PROMPT KOPIRAN!");
     }
 
     setMode('man');
