@@ -2,28 +2,33 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>AI Universa - Otroški Modul (Mapa 03 - V70)</title>
+    <title>AI Universa - Otroški Modul (Mapa 03 - V71)</title>
     <style>
-        :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f8fafc; }
+        :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f8fafc; --phase2: #7c3aed; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
-        .wrapper { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .wrapper { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; }
         .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
         h2 { margin: 0 0 25px 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .group { margin-bottom: 15px; }
         label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #64748b; margin-bottom: 6px; }
         select { width: 100%; padding: 11px; border: 1.5px solid #e2e8f0; border-radius: 12px; background: #fff; font-size: 0.85rem; cursor: pointer; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .checkbox-area { background: #f1f5f9; padding: 15px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border: 1px solid #e2e8f0; }
-        .check-item { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; }
-        .output { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; }
+        .checkbox-area { background: #f1f5f9; padding: 15px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid #e2e8f0; }
+        .check-item { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+        .check-item input { width: 18px; height: 18px; margin-right: 10px; flex-shrink: 0; cursor: pointer; }
+        .output { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 20px; }
         .btn-copy { background: var(--success); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+        
+        /* GUMB ZA FAZO 2 */
+        .btn-phase2 { background: var(--phase2); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.2); }
+        .btn-phase2:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); }
     </style>
 </head>
 <body>
 
 <div class="wrapper">
     <div class="panel">
-        <h2>📁 Mapa 03: OTROCI (Absolute DNA Vault)</h2>
+        <h2>📁 Mapa 03: OTROCI (Absolute DNA Vault V71)</h2>
         
         <div class="grid">
             <div class="group">
@@ -151,7 +156,7 @@
             </div>
         </div>
 
-        <label>11. Detajli Realizma (Sloj 09 [cite: 116, 140])</label>
+        <label>11. Detajli Realizma (Sloj 09)</label>
         <div class="checkbox-area">
             <label class="check-item"><input type="checkbox" class="tr" value="visible dental braces" onchange="update()"> Zobni aparat</label>
             <label class="check-item"><input type="checkbox" class="tr" value="light freckles across nose" onchange="update()"> Pegice</label>
@@ -162,6 +167,9 @@
         </div>
 
         <button class="btn-copy" onclick="copy()">📋 KOPIRAJ OTROŠKI MASTER PROMPT</button>
+
+        <button class="btn-phase2" onclick="alert('Pripravljam produkcijski studio za Otroško Fazo 2...')">POJDI NA FAZO 2 ➜</button>
+
     </div>
 
     <div class="output" id="out"></div>
@@ -199,15 +207,15 @@
         const aStr = (ac !== 'no accessories') ? `, wearing a ${ac}` : "";
 
         const final = `PROMPT:
-Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** identity reference anchor [cite: 65-89]. Subject: a ${aV}-year old ${g} of ${o}. Facial DNA: ${f}, ${n} [cite: 181-190, 201-207]. Characteristics: ${ageDetail}, ${hC} hair in a ${hS}${details}${aStr} [cite: 191-199]. Outfit: Wearing a ${cC} ${cl} with visible fabric weave and texture detail . Framing: Three-quarter view (3/4 perspective), 45-degree angle. Scenery: Neutral flat minimalist studio grey background.
+Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** identity reference anchor. Subject: a ${aV}-year old ${g} of ${o}. Facial DNA: ${f}, ${n}. Characteristics: ${ageDetail}, ${hC} hair in a ${hS}${details}${aStr}. Outfit: Wearing a ${cC} ${cl} with visible fabric weave and texture detail . Framing: Three-quarter view (3/4 perspective), 45-degree angle. Scenery: Neutral flat minimalist studio grey background.
 
-Sloj 05 (Kamera): Shot on 85mm f/2.8 prime lens for realistic human proportions [cite: 93-96, 157, 417], handheld, ISO 400 grain profile.
+Sloj 05 (Kamera): Shot on 85mm f/2.8 prime lens for realistic human proportions, handheld, ISO 400 grain profile.
 
-Sloj 06-08 (Tehnični): High-key studio fill light, flat even illumination, direct fill flash. No dramatic shadows [cite: 98-102]. Clean air, absolute clarity, zero haze [cite: 104-108]. Natural cinematic grading [cite: 110-114].
+Sloj 06-08 (Tehnični): High-key studio fill light, flat even illumination, direct fill flash. No dramatic shadows. Clean air, absolute clarity, zero haze. Natural cinematic grading.
 
-Sloj 09 (Realizem): Mandatory skin texture: ${skinDNA}, visible pores, realistic asymmetry, zero digital retouching [cite: 116-121, 147]. No plastic, CGI, or doll-like skin.
+Sloj 09 (Realizem): Mandatory skin texture: ${skinDNA}, visible pores, realistic asymmetry, zero digital retouching. No plastic, CGI, or doll-like skin.
 
-Sloj 10 (Vzdušje): Spontaneous, unposed identity anchor [cite: 123-127].
+Sloj 10 (Vzdušje): Spontaneous, unposed identity anchor.
 
 NEGATIVE PROMPT: makeup, jewelry on children, smiling for camera, smoke, fog, haze, dramatic shadows, airbrushed, CGI, doll-like.`;
 

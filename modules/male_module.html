@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>AI Universa - Moški Modul (Mapa 01 - V67)</title>
     <style>
-        :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f8fafc; }
+        :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f8fafc; --phase2: #7c3aed; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
         .wrapper { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; }
         .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
@@ -15,8 +15,13 @@
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .checkbox-area { background: #f1f5f9; padding: 15px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border: 1px solid #e2e8f0; }
         .check-item { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; }
-        .output { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; }
+        .check-item input { width: 18px; height: 18px; margin-right: 10px; flex-shrink: 0; }
+        .output { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 20px; }
         .btn-copy { background: var(--success); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+        
+        /* GUMB ZA FAZO 2 */
+        .btn-phase2 { background: var(--phase2); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.2); }
+        .btn-phase2:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); }
     </style>
 </head>
 <body>
@@ -189,6 +194,9 @@
         </div>
 
         <button class="btn-copy" onclick="copy()">📋 KOPIRAJ MOŠKI MASTER PROMPT</button>
+
+        <button class="btn-phase2" onclick="alert('Pripravljam produkcijski studio za Fazo 2...')">POJDI NA FAZO 2 ➜</button>
+
     </div>
 
     <div class="output" id="out"></div>
@@ -210,7 +218,6 @@
         const cl = document.getElementById('cloth').value;
         const cC = document.getElementById('cC').value;
 
-        // AGE DNA LOGIC [cite: 132-144]
         let ageDetail = ""; let skinDNA = "";
         if(aV === "18") { ageDetail = "juvenile facial fat, high skin elasticity, no expression lines"; skinDNA = "soft radiant skin, high skin bloom, zero dynamic wrinkles"; }
         else if(aV === "22") { ageDetail = "developing mature bone structure, youthful radiant glow, defined jawline"; skinDNA = "healthy skin sheen, visible pores, natural subsurface scattering"; }
@@ -225,15 +232,15 @@
         const aStr = (ac !== 'no jewelry') ? `, wearing ${ac}` : "";
 
         const final = `PROMPT:
-Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** for character DNA anchor [cite: 65-89]. Subject: a ${aV}-year old man of ${o}. Facial DNA: ${f}, ${n}, ${l} [cite: 181-190, 201-207]. Characteristics: ${b}, ${e}, ${ageDetail}, ${hC} hair in a ${hS}${details}${aStr}, and a ${bd} [cite: 191-199]. Outfit: Wearing a ${cC} ${cl} with visible fabric weave and texture detail . Framing: Three-quarter view (3/4 perspective), 45-degree angle. Scenery: Neutral flat minimalist studio grey background.
+Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** for character DNA anchor. Subject: a ${aV}-year old man of ${o}. Facial DNA: ${f}, ${n}, ${l}. Characteristics: ${b}, ${e}, ${ageDetail}, ${hC} hair in a ${hS}${details}${aStr}, and a ${bd}. Outfit: Wearing a ${cC} ${cl} with visible fabric weave and texture detail. Framing: Three-quarter view (3/4 perspective), 45-degree angle. Scenery: Neutral flat minimalist studio grey background.
 
-Sloj 05 (Kamera): Shot on 85mm f/2.8 prime lens for realistic portrait compression [cite: 93-96, 157, 417], handheld, ISO 400 natural grain profile.
+Sloj 05 (Kamera): Shot on 85mm f/2.8 prime lens for realistic portrait compression, handheld, ISO 400 natural grain profile.
 
-Sloj 06-08 (Tehnični): High-key studio fill light, flat even illumination, direct fill flash. No dramatic shadows [cite: 98-102]. Clean air, absolute clarity, zero haze [cite: 104-108]. Natural cinematic grading [cite: 110-114].
+Sloj 06-08 (Tehnični): High-key studio fill light, flat even illumination, direct fill flash. No dramatic shadows. Clean air, absolute clarity, zero haze. Natural cinematic grading.
 
-Sloj 09 (Realizem): Mandatory skin texture: ${skinDNA}, visible pores, realistic asymmetry, zero retouching [cite: 116-121, 147]. No plastic, CGI, or doll-like skin.
+Sloj 09 (Realizem): Mandatory skin texture: ${skinDNA}, visible pores, realistic asymmetry, zero retouching. No plastic, CGI, or doll-like skin.
 
-Sloj 10 (Vzdušje): Spontaneous, unposed identity anchor [cite: 123-127].
+Sloj 10 (Vzdušje): Spontaneous, unposed identity anchor.
 
 NEGATIVE PROMPT: makeup, woman, girl, smoke, fog, haze, dramatic side lighting, profile view, full body, back view, airbrushed, CGI, doll-like.`;
 
