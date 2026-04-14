@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Universa - Moški Modul (Mapa 01 - V67)</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
+        .wrapper { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; }
+        .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        h2 { margin: 0 0 25px 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        .group { margin-bottom: 15px; }
+        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #64748b; margin-bottom: 6px; }
+        select { width: 100%; padding: 11px; border: 1.5px solid #e2e8f0; border-radius: 12px; background: #fff; font-size: 0.85rem; cursor: pointer; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .checkbox-area { background: #f1f5f9; padding: 15px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border: 1px solid #e2e8f0; }
+        .check-item { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; }
+        .output { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; }
+        .btn-copy { background: var(--success); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="panel">
+        <h2>📁 Mapa 01: MOŠKI (Absolute DNA Vault)</h2>
+        
+        <div class="grid">
+            <div class="group">
+                <label>1. Starost (DNA biometrija kože)</label>
+                <select id="age" onchange="update()">
+                    <option value="18">18 let (Mladostnik)</option>
+                    <option value="22">22 let (Young Adult)</option>
+                    <option value="28">28 let (Refined Adult)</option>
+                    <option value="35">35 let (Srednja leta)</option>
+                    <option value="45">45 let (Zrela doba)</option>
+                    <option value="55">55 let (Zrela odraslost)</option>
+                    <option value="75">75 let (Senior)</option>
+                </select>
+            </div>
+            <div class="group">
+                <label>2. Poreklo (Ethnicity)</label>
+                <select id="origin" onchange="update()">
+                    <option value="European (Slavic) heritage, cool-toned skin">Slovansko</option>
+                    <option value="European (Nordic) heritage, fair porcelain skin">Nordijsko</option>
+                    <option value="Mediterranean (Spanish/Italian) heritage, olive skin">Mediteransko</option>
+                    <option value="Latin American (Brazilian) heritage, bronze skin">Latino / Brazilsko</option>
+                    <option value="African heritage, deep ebony skin">Afriško</option>
+                    <option value="Middle Eastern heritage, warm amber skin">Arabsko</option>
+                    <option value="East Asian heritage, smooth ivory skin">Azijsko</option>
+                    <option value="South Asian (Indian) heritage, warm brown skin">Indijsko</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>3. Postava (Moška slovnica)</label>
+            <select id="body" onchange="update()">
+                <option value="slender, lean build">Vitek</option>
+                <option value="athletic, toned and fit physique">Atletski</option>
+                <option value="average, natural human build">Običajen</option>
+                <option value="heavy, robust large build">Močnejši</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <label>4. Unikatne poteze obraza (Obrazna DNA)</label>
+            <div class="grid">
+                <select id="nose" onchange="update()">
+                    <option value="straight masculine nose">Raven moški nos</option>
+                    <option value="strong aquiline nose">Izrazit orlovski nos</option>
+                    <option value="broad natural nose bridge">Širok koren nosu</option>
+                    <option value="refined narrow nose">Ozek, prefinjen nos</option>
+                </select>
+                <select id="lips" onchange="update()">
+                    <option value="natural masculine lips">Naravne ustnice</option>
+                    <option value="thin refined lips">Tanke ustnice</option>
+                    <option value="full expressive lips">Polne moške ustnice</option>
+                    <option value="wide firm mouth">Široka, odločna usta</option>
+                </select>
+            </div>
+            <div style="margin-top:10px;">
+                <select id="faceShape" onchange="update()">
+                    <option value="square face with a sharp chiseled jawline">Kvadraten obraz (Ostra čeljust)</option>
+                    <option value="oval face with defined cheekbones">Ovalen obraz (Vidne ličnice)</option>
+                    <option value="rectangular face, strong masculine structure">Pravokoten obraz</option>
+                    <option value="round face, soft youthful structure">Okrogel obraz</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="group">
+                <label>5. Barva Las (Naravna imena)</label>
+                <select id="hColor" onchange="update()">
+                    <option value="jet black">Črna</option>
+                    <option value="dark brown">Temno rjava</option>
+                    <option value="natural brown">Rjava</option>
+                    <option value="light brown">Svetlo rjava</option>
+                    <option value="dark blonde">Temno blond</option>
+                    <option value="natural blonde">Blond</option>
+                    <option value="salt and pepper">Sivkasta (Salt & Pepper)</option>
+                    <option value="silver-grey">Srebrno siva</option>
+                    <option value="white">Bela</option>
+                    <option value="natural ginger red">Rdeča / Bakrena</option>
+                </select>
+            </div>
+            <div class="group">
+                <label>6. Pričeska</label>
+                <select id="hStyle" onchange="update()">
+                    <option value="short messy textured top">Kratki razkuštrani</option>
+                    <option value="classic fade undercut">Fade Undercut</option>
+                    <option value="neat side-part comb over">Urejeni na stran</option>
+                    <option value="short buzz cut">Buzz cut</option>
+                    <option value="medium length man bun">Moška figa</option>
+                    <option value="shoulder length natural waves">Dolgi valoviti</option>
+                    <option value="natural afro coils">Afro</option>
+                    <option value="neat short dreadlocks">Dredi</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="group grid">
+            <div>
+                <label>7. Brada</label>
+                <select id="beard" onchange="update()">
+                    <option value="clean-shaven, visible follicle shadow">Brez brade</option>
+                    <option value="heavy 3-day stubble shadow">3-dnevna brada</option>
+                    <option value="neatly trimmed short beard">Urejena kratka brada</option>
+                    <option value="full thick natural beard">Polna košata brada</option>
+                    <option value="pointed goatee with mustache">Goatee (Kozja bradica)</option>
+                </select>
+            </div>
+            <div>
+                <label>8. Barva Oči</label>
+                <select id="eyes" onchange="update()">
+                    <option value="deep chocolate brown eyes">Temno rjave</option>
+                    <option value="light hazel brown eyes">Svetlo rjave (Hazel)</option>
+                    <option value="piercing blue eyes">Modre</option>
+                    <option value="vibrant emerald green eyes">Zelene</option>
+                    <option value="warm amber eyes">Jantarne</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>9. Garderoba (Tekstura & Sidro)</label>
+            <select id="cloth" onchange="update()">
+                <option value="premium heavy cotton crew-neck t-shirt">Bombažna majica (Heavy cotton)</option>
+                <option value="minimalist rib-knit wool turtleneck">Puli (Rib-knit wool)</option>
+                <option value="classic pique cotton polo shirt">Polo majica (Pique cotton)</option>
+                <option value="rugged heavy flannel button-down shirt">Flanelasta srajca (Flannel)</option>
+                <option value="oversized heavyweight fleece hoodie">Hoodie (Heavy fleece)</option>
+                <option value="structured wool-blend blazer">Suknjič (Wool blazer)</option>
+            </select>
+        </div>
+
+        <div class="grid">
+            <div class="group">
+                <label>10. Barva oblačil</label>
+                <select id="cC" onchange="update()">
+                    <option value="off-white">Bela (Off-white)</option>
+                    <option value="charcoal grey">Temno siva</option>
+                    <option value="black">Črna</option>
+                    <option value="navy blue">Mornarsko modra</option>
+                    <option value="forest green">Gozdno zelena</option>
+                    <option value="camel brown">Camel rjava</option>
+                </select>
+            </div>
+            <div class="group">
+                <label>11. Dodatki</label>
+                <select id="acc" onchange="update()">
+                    <option value="no jewelry">Brez dodatkov</option>
+                    <option value="silver stud earring">Srebrni uhan</option>
+                    <option value="minimalist watch">Ročna ura</option>
+                    <option value="rugged neck tattoo">Tatu na vratu</option>
+                    <option value="elaborate sleeve tattoo">Tatu na roki (Sleeve)</option>
+                </select>
+            </div>
+        </div>
+
+        <label>12. Realistični Detajli (Sloj 09)</label>
+        <div class="checkbox-area">
+            <label class="check-item"><input type="checkbox" class="tr" value="heavy freckles" onchange="update()"> Pegice</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="wearing minimalist optical glasses" onchange="update()"> Očala</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="visible dental braces" onchange="update()"> Zobni aparat</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="natural skin redness" onchange="update()"> Rdečica</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="tiny realistic skin mole" onchange="update()"> Znamenje</label>
+        </div>
+
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ MOŠKI MASTER PROMPT</button>
+    </div>
+
+    <div class="output" id="out"></div>
+</div>
+
+<script>
+    function update() {
+        const aV = document.getElementById('age').value;
+        const o = document.getElementById('origin').value;
+        const b = document.getElementById('body').value;
+        const n = document.getElementById('nose').value;
+        const l = document.getElementById('lips').value;
+        const f = document.getElementById('faceShape').value;
+        const hC = document.getElementById('hColor').value;
+        const hS = document.getElementById('hStyle').value;
+        const bd = document.getElementById('beard').value;
+        const e = document.getElementById('eyes').value;
+        const ac = document.getElementById('acc').value;
+        const cl = document.getElementById('cloth').value;
+        const cC = document.getElementById('cC').value;
+
+        // AGE DNA LOGIC [cite: 132-144]
+        let ageDetail = ""; let skinDNA = "";
+        if(aV === "18") { ageDetail = "juvenile facial fat, high skin elasticity, no expression lines"; skinDNA = "soft radiant skin, high skin bloom, zero dynamic wrinkles"; }
+        else if(aV === "22") { ageDetail = "developing mature bone structure, youthful radiant glow, defined jawline"; skinDNA = "healthy skin sheen, visible pores, natural subsurface scattering"; }
+        else if(aV === "28") { ageDetail = "refined facial definition, professional polish, subtle nasolabial depth"; skinDNA = "detailed skin texture, minor imperfections, no retouching"; }
+        else if(aV === "35") { ageDetail = "early maturity, subtle dynamic eye-lines, mature skin texture"; skinDNA = "fine lines starting to appear, realistic pores, uneven tone"; }
+        else if(aV === "45") { ageDetail = "established facial character, visible nasolabial folds, slight loss of elasticity"; skinDNA = "uneven skin tone, pronounced pores, character lines"; }
+        else if(aV === "55") { ageDetail = "defined rhytids, prominent bone structure, mature presence"; skinDNA = "solar lentigines (age spots), bags under eyes, weathered texture"; }
+        else if(aV === "75") { ageDetail = "deep authentic wrinkles, aged weathered structure, arcus senilis ring in eyes"; skinDNA = "thinned epidermal layer, authentic deep rhytids, solar lentigines"; }
+
+        const traits = Array.from(document.querySelectorAll('.tr:checked')).map(t => t.value).join(', ');
+        const details = traits ? `, with ${traits}` : "";
+        const aStr = (ac !== 'no jewelry') ? `, wearing ${ac}` : "";
+
+        const final = `PROMPT:
+Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** for character DNA anchor [cite: 65-89]. Subject: a ${aV}-year old man of ${o}. Facial DNA: ${f}, ${n}, ${l} [cite: 181-190, 201-207]. Characteristics: ${b}, ${e}, ${ageDetail}, ${hC} hair in a ${hS}${details}${aStr}, and a ${bd} [cite: 191-199]. Outfit: Wearing a ${cC} ${cl} with visible fabric weave and texture detail . Framing: Three-quarter view (3/4 perspective), 45-degree angle. Scenery: Neutral flat minimalist studio grey background.
+
+Sloj 05 (Kamera): Shot on 85mm f/2.8 prime lens for realistic portrait compression [cite: 93-96, 157, 417], handheld, ISO 400 natural grain profile.
+
+Sloj 06-08 (Tehnični): High-key studio fill light, flat even illumination, direct fill flash. No dramatic shadows [cite: 98-102]. Clean air, absolute clarity, zero haze [cite: 104-108]. Natural cinematic grading [cite: 110-114].
+
+Sloj 09 (Realizem): Mandatory skin texture: ${skinDNA}, visible pores, realistic asymmetry, zero retouching [cite: 116-121, 147]. No plastic, CGI, or doll-like skin.
+
+Sloj 10 (Vzdušje): Spontaneous, unposed identity anchor [cite: 123-127].
+
+NEGATIVE PROMPT: makeup, woman, girl, smoke, fog, haze, dramatic side lighting, profile view, full body, back view, airbrushed, CGI, doll-like.`;
+
+        document.getElementById('out').innerText = final;
+    }
+
+    function copy() {
+        navigator.clipboard.writeText(document.getElementById('out').innerText);
+        alert("MOŠKI DNA MASTER PROMPT KOPIRAN!");
+    }
+    update();
+</script>
+</body>
+</html>

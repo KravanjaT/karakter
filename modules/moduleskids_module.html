@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Universa - Otroški Modul (Mapa 03 - V70)</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
+        .wrapper { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        h2 { margin: 0 0 25px 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        .group { margin-bottom: 15px; }
+        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #64748b; margin-bottom: 6px; }
+        select { width: 100%; padding: 11px; border: 1.5px solid #e2e8f0; border-radius: 12px; background: #fff; font-size: 0.85rem; cursor: pointer; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .checkbox-area { background: #f1f5f9; padding: 15px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border: 1px solid #e2e8f0; }
+        .check-item { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; }
+        .output { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; }
+        .btn-copy { background: var(--success); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="panel">
+        <h2>📁 Mapa 03: OTROCI (Absolute DNA Vault)</h2>
+        
+        <div class="grid">
+            <div class="group">
+                <label>1. Izberi Spol</label>
+                <select id="gender" onchange="update()">
+                    <option value="boy child">Deček</option>
+                    <option value="girl child">Deklica</option>
+                </select>
+            </div>
+            <div class="group">
+                <label>2. Starost (Razvojna biometrija)</label>
+                <select id="age" onchange="update()">
+                    <option value="2">2 leti (Malček)</option>
+                    <option value="5">5 let (Predšolski)</option>
+                    <option value="8">8 let (Šolski otrok)</option>
+                    <option value="12">12 let (Prednajstnik)</option>
+                    <option value="15">15 let (Najstnik)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>3. Poreklo (Ethnicity DNA)</label>
+            <select id="origin" onchange="update()">
+                <option value="Slavic heritage, pale skin">Slovansko</option>
+                <option value="Nordic heritage, fair porcelain skin">Nordijsko</option>
+                <option value="Mediterranean heritage, olive skin">Mediteransko</option>
+                <option value="Latin American heritage, bronze skin">Latino</option>
+                <option value="African heritage, deep ebony skin">Afriško</option>
+                <option value="Middle Eastern, warm amber skin">Arabsko</option>
+                <option value="East Asian, smooth ivory skin">Azijsko</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <label>4. Unikatne poteze obraza (Obrazna DNA)</label>
+            <div class="grid">
+                <select id="nose" onchange="update()">
+                    <option value="small button nose">Majhen "gumbek" nos</option>
+                    <option value="straight cute nose">Raven prikupen nos</option>
+                    <option value="slightly upturned nose">Rahlo privzdignjen nos</option>
+                    <option value="wide natural nose bridge">Širši koren nosu</option>
+                </select>
+                <select id="faceShape" onchange="update()">
+                    <option value="round face, youthful fullness">Okrogel obraz (Polnost)</option>
+                    <option value="oval face, soft features">Ovalen obraz</option>
+                    <option value="heart-shaped face">Srčast obraz</option>
+                    <option value="square face, defined structure">Kvadraten (Najstniki)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="group">
+                <label>5. Barva Las (Naravne)</label>
+                <select id="hColor" onchange="update()">
+                    <option value="natural golden blonde">Zlato blond</option>
+                    <option value="ash blonde">Pepelnato blond</option>
+                    <option value="honey blonde">Medena blond</option>
+                    <option value="natural brown">Rjava</option>
+                    <option value="dark espresso brown">Temno rjava</option>
+                    <option value="natural copper red">Rdeča / Bakrena</option>
+                    <option value="jet black">Črna</option>
+                </select>
+            </div>
+            <div class="group">
+                <label>6. Barva Oči</label>
+                <select id="eyes" onchange="update()">
+                    <option value="deep chocolate brown">Temno rjave</option>
+                    <option value="soft blue">Nežno modre</option>
+                    <option value="piercing crystalline blue">Svetlo modre</option>
+                    <option value="bright emerald green">Zelene</option>
+                    <option value="warm amber">Jantarne</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>7. Pričeska (Expanded Styles)</label>
+            <select id="hStyle" onchange="update()">
+                <option value="wispy thin natural hair">Mehki, tanki naravni lasje</option>
+                <option value="neat short taper cut">Kratki urejeni (Dečki)</option>
+                <option value="messy textured top">Razkuštrani (Dečki)</option>
+                <option value="cute braided pigtails">Dve kitki (Deklice)</option>
+                <option value="high messy bun">Figa (Deklice)</option>
+                <option value="soft loose curls">Naravni kodrčki</option>
+                <option value="messy toddler bowl cut">Razkuštrani paž</option>
+                <option value="long sleek straight hair">Dolgi ravni lasje</option>
+                <option value="natural afro texture">Afro tekstura</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <label>8. Garderoba (Textile Expansion)</label>
+            <select id="cloth" onchange="update()">
+                <option value="premium heavy cotton crew-neck t-shirt">Bombažna majica (Heavy cotton)</option>
+                <option value="soft rib-knit cotton sweater">Rebrast pulover (Wool/Cotton)</option>
+                <option value="heavy fleece oversized hoodie">Hoodie (Fleece)</option>
+                <option value="classic denim overall">Jeans pajac (Denim)</option>
+                <option value="simple linen button-down shirt">Lanena srajčka (Linen)</option>
+                <option value="quilted padded puffer vest">Prešit brezrokavnik (Puffer)</option>
+            </select>
+        </div>
+
+        <div class="grid">
+            <div class="group">
+                <label>9. Barva Oblačil</label>
+                <select id="cC" onchange="update()">
+                    <option value="off-white">Bela</option>
+                    <option value="soft heather grey">Siva</option>
+                    <option value="navy blue">Mornarsko modra</option>
+                    <option value="dusty rose">Umazano roza</option>
+                    <option value="sage green">Žajbelj zelena</option>
+                    <option value="mustard yellow">Gorčično rumena</option>
+                </select>
+            </div>
+            <div class="group">
+                <label>10. Dodatki</label>
+                <select id="acc" onchange="update()">
+                    <option value="no accessories">Brez dodatkov</option>
+                    <option value="small colorful hair clip">Sponka za lase</option>
+                    <option value="minimalist plastic watch">Otroška ura</option>
+                    <option value="small beanie hat">Kapa (Beanie)</option>
+                </select>
+            </div>
+        </div>
+
+        <label>11. Detajli Realizma (Sloj 09 [cite: 116, 140])</label>
+        <div class="checkbox-area">
+            <label class="check-item"><input type="checkbox" class="tr" value="visible dental braces" onchange="update()"> Zobni aparat</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="light freckles across nose" onchange="update()"> Pegice</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="natural skin redness on cheeks" onchange="update()"> Rdečica (Cheeks)</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="wearing round optical glasses" onchange="update()"> Očala</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="tiny realistic skin mole" onchange="update()"> Znamenje</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="wispy baby hair strands" onchange="update()"> "Baby hair" lasje</label>
+        </div>
+
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ OTROŠKI MASTER PROMPT</button>
+    </div>
+
+    <div class="output" id="out"></div>
+</div>
+
+<script>
+    function update() {
+        const g = document.getElementById('gender').value;
+        const aV = document.getElementById('age').value;
+        const o = document.getElementById('origin').value;
+        const n = document.getElementById('nose').value;
+        const f = document.getElementById('faceShape').value;
+        const hC = document.getElementById('hColor').value;
+        const hS = document.getElementById('hStyle').value;
+        const cl = document.getElementById('cloth').value;
+        const cC = document.getElementById('cC').value;
+        const ac = document.getElementById('acc').value;
+
+        // AGE DNA FOR KIDS 
+        let ageDetail = ""; let skinDNA = "";
+        const ageNum = parseInt(aV);
+        if(ageNum <= 5) { 
+            ageDetail = "soft toddler facial fat, large expressive eyes, high skin bloom, translucent skin"; 
+            skinDNA = "flawless juvenile skin, high subsurface scattering, soft radiant sheen"; 
+        } else if(ageNum <= 10) { 
+            ageDetail = "transitioning child facial features, unposed youthful energy, realistic proportions"; 
+            skinDNA = "natural child skin texture, visible fine pores, realistic asymmetry"; 
+        } else { 
+            ageDetail = "developing bone structure, early adolescent definition, emerging jawline"; 
+            skinDNA = "realistic teen skin texture, minor imperfections, subtle natural skin sheen"; 
+        }
+
+        const traits = Array.from(document.querySelectorAll('.tr:checked')).map(t => t.value).join(', ');
+        const details = traits ? `, with ${traits}` : "";
+        const aStr = (ac !== 'no accessories') ? `, wearing a ${ac}` : "";
+
+        const final = `PROMPT:
+Sloj 01-04 (Vsebina): Ultra-photorealistic raw **waist up medium shot** identity reference anchor [cite: 65-89]. Subject: a ${aV}-year old ${g} of ${o}. Facial DNA: ${f}, ${n} [cite: 181-190, 201-207]. Characteristics: ${ageDetail}, ${hC} hair in a ${hS}${details}${aStr} [cite: 191-199]. Outfit: Wearing a ${cC} ${cl} with visible fabric weave and texture detail . Framing: Three-quarter view (3/4 perspective), 45-degree angle. Scenery: Neutral flat minimalist studio grey background.
+
+Sloj 05 (Kamera): Shot on 85mm f/2.8 prime lens for realistic human proportions [cite: 93-96, 157, 417], handheld, ISO 400 grain profile.
+
+Sloj 06-08 (Tehnični): High-key studio fill light, flat even illumination, direct fill flash. No dramatic shadows [cite: 98-102]. Clean air, absolute clarity, zero haze [cite: 104-108]. Natural cinematic grading [cite: 110-114].
+
+Sloj 09 (Realizem): Mandatory skin texture: ${skinDNA}, visible pores, realistic asymmetry, zero digital retouching [cite: 116-121, 147]. No plastic, CGI, or doll-like skin.
+
+Sloj 10 (Vzdušje): Spontaneous, unposed identity anchor [cite: 123-127].
+
+NEGATIVE PROMPT: makeup, jewelry on children, smiling for camera, smoke, fog, haze, dramatic shadows, airbrushed, CGI, doll-like.`;
+
+        document.getElementById('out').innerText = final;
+    }
+
+    function copy() {
+        navigator.clipboard.writeText(document.getElementById('out').innerText);
+        alert("OTROŠKI MASTER PROMPT KOPIRAN!");
+    }
+    update();
+</script>
+</body>
+</html>
