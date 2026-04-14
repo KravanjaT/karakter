@@ -183,21 +183,22 @@
         const sc = document.getElementById('scene').value;
         const obj = document.getElementById('object').value;
 
-        const final = `MASTER STYLING PROMPT (V100):
+        const final = `MASTER STYLING PROMPT (V160 - IDENTITY BLUEPRINT LOCK):
 
-Sloji 1-4 (Vsebina): Hyper-realistic raw **${ang}**. 
-[CHARACTER LOCK]: Use the uploaded Anchor Image ONLY for facial DNA, bone structure, and identity. 
+Sloji 1-4 (Vsebina & Identiteta): 
+Hyper-realistic raw **${ang}**. 
+[IMAGE 0 BLUEPRINT LOCK]: Use Reference Image 0 as the absolute, immutable source for facial DNA and bone structure. Identity is fixed and isolated from style. Zero deviation in facial features, forehead height, or eyebrow shape regardless of wardrobe change.
 [NEW ENVIRONMENT]: Scene is ${sc}. 
-[WARDROBE OVERRIDE]: Subject is now wearing ${out} and ${foot}. 
+[WARDROBE OVERRIDE]: Subject is now wearing ${out} and ${foot}. Focus on high fabric detail and realistic textures.
 [ACTION]: Subject is ${obj}.
 
 Sloj 5 (Kamera): Shot on 35mm lens, handheld shake, subtle motion blur, digital noise, chromatic aberration for raw analog realism.
 
 Sloji 6-8 (Tehnični): Lighting matched to ${sc}. Realistic light wrap and reflections on the subject. Atmosphere: dust particles, realistic depth of field. Colors: dirty cinematic grading, heavy film grain, vignette.
 
-Sloji 9-10 (Realizem): Mandatory skin texture: visible pores, natural skin imperfections matching the reference DNA, zero digital retouching. Spontaneous moment.
+Sloji 9-10 (Realizem): Mandatory skin texture: visible pores, natural skin imperfections matching the reference DNA precisely. Strictly match ONLY the existing skin marks and pore distribution from Ref 0. PROHIBIT any new moles or freckles. Zero digital retouching.
 
-NEGATIVE PROMPT: perfect skin, airbrushed, studio lighting, clean background, 3D render, CGI, cartoon, doll-like, beauty filter, original clothing from reference, original scene from reference.`;
+NEGATIVE PROMPT: different heritage, changed bone structure, different face, different hair, extra volume, symmetrical face, airbrushed, studio lighting, clean background, 3D render, CGI, cartoon, doll-like, beauty filter, extra moles, freckles, original clothing from reference.`;
 
         document.getElementById('out').innerText = final;
     }
