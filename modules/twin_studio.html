@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Asset Studio V5.0</title>
+    <title>IDENTITY OS - Master Cleanse Studio V5.5</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --primary: #0f172a; --accent: #22d3ee; --bg: #020617; --home: #64748b; }
@@ -15,46 +15,51 @@
         .group { margin-bottom: 20px; }
         label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; letter-spacing: 1px; }
         textarea, select, input { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; }
-        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
+        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1000px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
         .btn-copy { background: var(--accent); color: #000; border: none; padding: 20px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; margin-top: 20px; }
     </style>
 </head>
 <body>
 <div class="wrapper">
     <div class="panel">
-        <h1>👤 Surgical Identity Lock</h1>
+        <h1>👤 Master Cleanse Studio</h1>
         <div class="instruction">
-            <strong>RECONSTRUCTION ERROR FIX:</strong><br>
-            Ker kapa in očala skrivajo tvoj obraz, moraš AI-ju ročno definirati skrite dele. To bo preprečilo spreminjanje tvoje identitete.
+            <strong>CLEAN STATE PROTOCOL:</strong><br>
+            Uporabi to za popolno odstranitev vseh rekvizitov (očal, kap, športnih rekvizitov). AI bo rekonstruiral karakterja v nevtralni studijski bazi.
         </div>
 
         <div class="group">
-            <label>1. Detajli Oči (Skrito pod očali)</label>
-            <input type="text" id="eyes" placeholder="npr. light hazel eyes, sharp gaze, natural eyelashes..." oninput="update()">
+            <label>1. Fiksni opisi DNA (Da AI ne ugiba)</label>
+            <input type="text" id="eyeDNA" placeholder="Barva oči (npr. hazel eyes, sharp detail)..." oninput="update()">
+            <input type="text" id="hairDNA" style="margin-top:10px;" placeholder="Pričeska (npr. brown wavy hair, visible forehead)..." oninput="update()">
         </div>
 
         <div class="group">
-            <label>2. Detajli Las (Skrito pod kapo)</label>
-            <input type="text" id="hair" placeholder="npr. dark brown wavy hair, messy half-up bun..." oninput="update()">
+            <label>2. Protokol Čiščenja (Kaj gre stran?)</label>
+            <select id="cleanse" onchange="update()">
+                <option value="FULL CLEANSE: Strictly remove all headwear, eyewear, and handheld objects. Reconstruct hidden anatomy with 100% precision.">Popolno čiščenje (Brez očal, kape in rekvizitov)</option>
+                <option value="OBJECT REMOVAL: Remove ball and medal only, keep face identity as is.">Samo odstranitev rekvizitov (Žoga, medalja)</option>
+            </select>
         </div>
 
         <div class="group">
-            <label>3. Protokol Čiščenja</label>
-            <select id="cleaning" onchange="update()">
-                <option value="SURGICAL REMOVAL: Strictly remove cap and glasses. Reconstruct forehead and eye area with 100% precision.">Odstrani Kapo & Očala (Surgical)</option>
-                <option value="OBJECT REMOVAL: Keep the face as is, but remove the sports ball and medal from hands.">Odstrani samo Žogo & Medaljo</option>
+            <label>3. Nevtralna Oblačila</label>
+            <select id="clothing" onchange="update()">
+                <option value="wearing a premium minimalist heavyweight black cotton t-shirt">Črna Master majica</option>
+                <option value="wearing a simple clean white ribbed tank top">Bela Master majica (Tank top)</option>
+                <option value="wearing a neutral grey cashmere sweater">Siv Master pulover</option>
             </select>
         </div>
 
         <div class="group">
             <label>4. Studijsko Ozadje</label>
             <select id="studio" onchange="update()">
-                <option value="standing against a professional grey cyclorama wall">Professional Studio Grey</option>
-                <option value="in a minimalist luxury apartment with soft window light">Natural Daylight Studio</option>
+                <option value="standing against a professional seamless grey studio cyclorama wall">Grey Cyclorama Studio</option>
+                <option value="against a clean white studio backdrop with soft professional shadows">White Fashion Studio</option>
             </select>
         </div>
 
-        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ SURGICAL MASTER PROMPT</button>
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ CLEAN MASTER PROMPT</button>
         <button style="margin-top:15px; background:var(--home); color:white;" class="btn-copy" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
     <div class="output-box" id="out"></div>
@@ -62,33 +67,34 @@
 
 <script>
     function update() {
-        const eyes = document.getElementById('eyes').value || "natural eyes matching Ref 0";
-        const hair = document.getElementById('hair').value || "original hair texture";
-        const clean = document.getElementById('cleaning').value;
+        const eye = document.getElementById('eyeDNA').value || "natural eyes matching Ref 0";
+        const hair = document.getElementById('hairDNA').value || "natural hair texture";
+        const cleanse = document.getElementById('cleanse').value;
+        const clothes = document.getElementById('clothing').value;
         const studio = document.getElementById('studio').value;
 
-        const final = `MASTER SURGICAL RECONSTRUCTOR (V5.0 - IDENTITY FIX):
+        const final = `MASTER ASSET CLEANSE (V5.5 - FULL RECONSTRUCTION):
 
 SLOJI 01-04 (Vsebina & DNA):
-[IMAGE 0 LOCK]: Use Ref 0 as the master template for identity. 
-[IDENTITY RECONSTRUCTION]: ${clean} 
-[EYE DNA]: Reconstruct the eye area to show ${eyes}. Zero distortion.
-[HAIR DNA]: Reconstruct the head area to show ${hair}. No headwear allowed.
-[SCENE]: Located ${studio}.
+[IMAGE 0 LOCK]: Use Ref 0 as the master template for identity and basic pose.
+[CLEANSE PROTOCOL]: ${cleanse}
+[DNA RECONSTRUCTION]: Strictly reconstruct the face to show ${eye} and ${hair}. No eyewear or headwear allowed.
+[WARDROBE]: ${clothes}. No sports logos or branding.
+[ENVIRONMENT]: Located ${studio}.
 
-SLOJ 05 (KAMERA): Shot on 35mm prime lens, tripod-mounted, subtle digital noise.
+SLOJ 05 (KAMERA): Shot on 35mm prime lens, tripod-mounted stability, minor digital noise for raw realism.
 
-SLOJI 06-08 (TEHNIČNI): Professional studio lighting. Direct on-camera flash with soft-box fill. Harsh realistic shadows. Clean studio atmosphere.
+SLOJI 06-08 (TEHNIČNI): Professional studio lighting. Direct on-camera flash combined with soft-box fill. Harsh realistic shadows. Atmosphere: visible dust particles.
 
-SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen. Strictly prohibit any new moles. Maintain the exact bone structure and jawline from Ref 0. No plastic skin, no CGI.
+SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen matching Ref 0. STRICTLY PROHIBIT new moles. Match ONLY existing skin marks. No plastic skin, no CGI, zero retouching.
 
 SLOJ 10 (VZDUŠJE): Professional reference asset shot. Spontaneous, raw production anchor.
 
-NEGATIVE PROMPT: cap, hat, headwear, glasses, sunglasses, frames, ball, medal, ribbon, sports jersey, logo, branding, blurry eyes, deformed eyes, airbrushed, CGI, beauty filter, different face.`;
+NEGATIVE PROMPT: glasses, spectacles, frames, sunglasses, cap, hat, headwear, beanie, basketball, medal, trophy, ribbon, sports jersey, logos, branding, distorted eyes, blurry forehead, CGI, airbrushed, 3D render.`;
 
         document.getElementById('out').innerText = final;
     }
-    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("SURGICAL PROMPT KOPIRAN!"); }
+    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("CLEAN PROMPT KOPIRAN!"); }
     update();
 </script>
 </body>
