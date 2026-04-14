@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>AI Universa - Absolute Perfection V90</title>
     <style>
-        :root { --primary: #0f172a; --accent: #7c3aed; --bg: #f8fafc; }
+        :root { --primary: #0f172a; --accent: #7c3aed; --bg: #f8fafc; --phase3: #ec4899; --home: #64748b; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
         .wrapper { max-width: 1700px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; }
         .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; height: fit-content; }
@@ -23,6 +23,13 @@
         .btn-copy { background: var(--accent); color: white; border: none; padding: 20px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 10px; transition: 0.3s; box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2); text-transform: uppercase; }
         .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3); }
         
+        /* NOVI GUMBI */
+        .btn-phase3 { background: var(--phase3); color: white; border: none; padding: 20px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; transition: 0.3s; box-shadow: 0 10px 20px rgba(236, 72, 153, 0.2); text-transform: uppercase; }
+        .btn-phase3:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(236, 72, 153, 0.3); }
+
+        .btn-home { background: var(--home); color: white; border: none; padding: 18px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; transition: 0.3s; text-transform: uppercase; }
+        .btn-home:hover { background: #475569; transform: translateY(-2px); }
+
         .perfection-badge { background: #f0f7ff; color: #2563eb; padding: 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; border: 1px solid #dbeafe; margin-bottom: 20px; text-align: center; }
     </style>
 </head>
@@ -89,6 +96,9 @@
         </div>
 
         <button class="btn-copy" onclick="copy()">📋 KOPIRAJ PERFEKTNI PROMPT</button>
+        
+        <button class="btn-phase3" onclick="window.location.href='styling_module.html'">👗 POJDI NA FAZO 3 (STILING)</button>
+        <button class="btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ NA NADZORNO PLOŠČO</button>
     </div>
 
     <div class="output-box" id="out"></div>

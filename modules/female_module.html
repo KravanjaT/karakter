@@ -25,6 +25,10 @@
         /* GUMB ZA FAZO 2 */
         .btn-phase2 { background: var(--phase2); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.2); }
         .btn-phase2:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); }
+
+        /* GUMB ZA NAZAJ DOMOV */
+        .btn-home { background: #64748b; color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn-home:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(100, 116, 139, 0.3); background: #475569; }
     </style>
 </head>
 <body>
@@ -199,7 +203,7 @@
         <label>12. Realistični Detajli (Sloj 09)</label>
         <div class="checkbox-area">
             <label class="check-item"><input type="checkbox" class="tr" value="heavy freckles" onchange="update()"> Pegice</label>
-            <label class="check-item"><input type="checkbox" class="tr" value="minimalist optical glasses" onchange="update()"> Očala</label>
+            <label class="check-item"><input type="checkbox" class="tr" value="wearing minimalist optical glasses" onchange="update()"> Očala</label>
             <label class="check-item"><input type="checkbox" class="tr" value="visible dental braces" onchange="update()"> Zobni aparat</label>
             <label class="check-item"><input type="checkbox" class="tr" value="natural skin redness" onchange="update()"> Rdečica</label>
             <label class="check-item"><input type="checkbox" class="tr" value="tiny realistic skin mole" onchange="update()"> Znamenje</label>
@@ -208,6 +212,7 @@
         <button class="btn-copy" onclick="copy()">📋 KOPIRAJ ŽENSKI MASTER PROMPT</button>
 
         <button class="btn-phase2" onclick="window.location.href='production_module.html'">POJDI NA FAZO 2 ➜</button>
+        <button class="btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ DOMOV</button>
 
     </div>
 
