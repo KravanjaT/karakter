@@ -4,38 +4,37 @@
     <meta charset="UTF-8">
     <title>AI Universa - Moški Modul (Mapa 01 - V67)</title>
     <style>
-        :root { --primary: #0f172a; --accent: #2563eb; --success: #10b981; --bg: #f8fafc; --phase2: #7c3aed; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
-        .wrapper { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; }
-        .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
-        h2 { margin: 0 0 25px 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
+        :root { --bg: #020617; --panel: rgba(15,23,42,0.85); --accent: #3b82f6; --text: #f8fafc; --dim: #64748b; --border: rgba(255,255,255,0.08); --green: #10b981; --phase2: #7c3aed; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 30px; color: var(--text); margin: 0; min-height: 100vh; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 0; }
+        .wrapper { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; position: relative; z-index: 10; }
+        .panel { background: var(--panel); backdrop-filter: blur(20px); padding: 35px; border-radius: 28px; border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        h2 { margin: 0 0 20px 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--dim); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
         .group { margin-bottom: 15px; }
-        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #64748b; margin-bottom: 6px; }
-        select { width: 100%; padding: 11px; border: 1.5px solid #e2e8f0; border-radius: 12px; background: #fff; font-size: 0.85rem; cursor: pointer; }
+        label { display: block; font-weight: 800; font-size: 0.62rem; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; letter-spacing: 1px; }
+        select { width: 100%; padding: 12px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(0,0,0,0.4); color: var(--text); font-size: 0.88rem; cursor: pointer; font-family: 'Inter', sans-serif; appearance: none; }
+        select:focus { outline: none; border-color: var(--accent); }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
-        /* PORAVNAVA KVADRATKOV (Enako kot pri ženskah) */
-        .checkbox-area { background: #f1f5f9; padding: 15px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid #e2e8f0; }
-        .check-item { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
-        .check-item input { width: 18px; height: 18px; margin-right: 10px; flex-shrink: 0; cursor: pointer; }
-        
-        .output { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 20px; }
-        .btn-copy { background: var(--success); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 700; margin-top: 20px; transition: 0.2s; }
-        
-        /* GUMB ZA FAZO 2 (Stil ženskega modula) */
-        .btn-phase2 { background: var(--phase2); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.2); }
-        .btn-phase2:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); }
+        .checkbox-area { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid var(--border); }
+        .check-item { display: flex; align-items: center; font-size: 0.78rem; font-weight: 600; cursor: pointer; color: #cbd5e1; }
+        .check-item input { width: 16px; height: 16px; margin-right: 10px; flex-shrink: 0; cursor: pointer; accent-color: var(--accent); }
+        .output { background: #000; color: #10b981; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1050px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 20px; }
+        .btn-copy { background: var(--green); color: #000; border: none; padding: 18px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1rem; font-weight: 900; margin-top: 20px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(16,185,129,0.25); }
+        .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16,185,129,0.35); }
+        .btn-phase2 { background: var(--phase2); color: white; border: none; padding: 18px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1rem; font-weight: 900; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 14px rgba(124,58,237,0.25); }
+        .btn-phase2:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(124,58,237,0.4); }
+        .btn-home { background: rgba(100,116,139,0.1); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 12px; transition: 0.3s; letter-spacing: 1px; }
+        .btn-home:hover { background: rgba(100,116,139,0.25); color: #f1f5f9; }
+        .page-title { margin: 0 0 25px 0; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 15px; }
 
-        /* GUMB ZA NAZAJ DOMOV */
-        .btn-home { background: #64748b; color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .btn-home:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(100, 116, 139, 0.3); background: #475569; }
     </style>
 </head>
 <body>
 
 <div class="wrapper">
     <div class="panel">
-        <h2>📁 Mapa 01: MOŠKI (Absolute DNA Vault)</h2>
+        <div class="page-title">📁 Mapa 01: MOŠKI (Absolute DNA Vault)</div>
         
         <div class="grid">
             <div class="group">
