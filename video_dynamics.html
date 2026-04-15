@@ -2,128 +2,175 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDENTITY OS - Suite V2.1 PRO</title>
+    <title>IDENTITY OS - Video Dynamics V1.0</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
-
-        :root {
-            --bg: #020617;
-            --panel: rgba(15, 23, 42, 0.7);
-            --accent-dna: #3b82f6;     
-            --accent-lab: #22d3ee;    
-            --accent-finish: #a855f7;  
-            --accent-style: #f43f5e;   
-            --accent-video: #f59e0b;   /* Orange for Video */
-            --text-main: #f8fafc;
-            --text-dim: #64748b;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            background-image: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
-            color: var(--text-main);
-            margin: 0; display: flex; justify-content: center; min-height: 100vh; padding: 40px 0;
-        }
-
-        .container { width: 100%; max-width: 1200px; padding: 0 40px; }
-        header { text-align: center; margin-bottom: 60px; }
-        h1 { font-size: 5rem; font-weight: 900; margin: 0; letter-spacing: -4px; text-transform: uppercase; background: linear-gradient(to bottom, #fff 50%, #475569); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 0.9; }
-        .tagline { color: var(--text-dim); font-size: 0.85rem; letter-spacing: 6px; text-transform: uppercase; margin-top: 15px; font-weight: 700; }
-
-        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); margin: 40px 0 20px 0; display: flex; align-items: center; gap: 15px; }
-        .section-label::after { content: ""; flex-grow: 1; height: 1px; background: var(--border); }
-
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-
-        .card {
-            background: var(--panel);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 40px 30px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex; flex-direction: column; align-items: center; text-align: center;
-        }
-
-        .card:hover { transform: translateY(-10px); background: rgba(30, 41, 59, 0.5); }
-        .icon { font-size: 2.8rem; margin-bottom: 20px; transition: transform 0.5s ease; }
-        .card:hover .icon { transform: scale(1.1) rotate(5deg); }
-        h3 { margin: 0; font-size: 1.2rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
-        p { font-size: 0.75rem; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.5; }
-        .phase-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; margin-top: 20px; padding: 5px 12px; background: rgba(0,0,0,0.4); border-radius: 100px; border: 1px solid var(--border); text-transform: uppercase; }
-
-        /* Hover Accents */
-        .lab-card:hover { border-color: var(--accent-lab); }
-        .lab-card:hover .phase-tag { color: var(--accent-lab); border-color: var(--accent-lab); }
-        .finish-card:hover { border-color: var(--accent-finish); }
-        .finish-card:hover .phase-tag { color: var(--accent-finish); border-color: var(--accent-finish); }
-        .styling-card:hover { border-color: var(--accent-style); }
-        .styling-card:hover .phase-tag { color: var(--accent-style); border-color: var(--accent-style); }
-        .video-card:hover { border-color: var(--accent-video); }
-        .video-card:hover .phase-tag { color: var(--accent-video); border-color: var(--accent-video); }
-
-        footer { margin-top: 80px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 2px; opacity: 0.6; }
+        :root { --bg: #020617; --accent: #f59e0b; --panel: #0f172a; --text: #f8fafc; --green: #10b981; --border: rgba(255,255,255,0.08); }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 40px; color: var(--text); margin: 0; min-height: 100vh; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 0; }
+        .wrapper { max-width: 1750px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; position: relative; z-index: 10; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 32px; border: 1px solid rgba(245,158,11,0.2); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .header { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+        .badge { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 8px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        h1 { margin: 15px 0 5px 0; font-size: 1.8rem; font-weight: 900; }
+        .status { font-size: 0.65rem; color: var(--accent); font-weight: 900; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+        h2 { font-size: 0.75rem; text-transform: uppercase; color: #64748b; margin: 25px 0 10px 0; letter-spacing: 1px; border-left: 3px solid var(--accent); padding-left: 10px; }
+        select { width: 100%; padding: 13px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(0,0,0,0.4); color: var(--text); font-size: 0.9rem; margin-bottom: 15px; cursor: pointer; font-family: 'Inter', sans-serif; appearance: none; }
+        select:focus { outline: none; border-color: var(--accent); }
+        .platform-selector { display: flex; gap: 10px; margin-bottom: 25px; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 18px; }
+        .plat-btn { flex: 1; padding: 12px; text-align: center; border-radius: 12px; cursor: pointer; transition: 0.3s; font-weight: 800; text-transform: uppercase; font-size: 0.72rem; border: 1px solid rgba(255,255,255,0.05); color: #94a3b8; }
+        .plat-btn.active { background: var(--accent); color: #000; }
+        .output-box { background: #000; color: var(--green); padding: 35px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 90vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.8; border: 1px solid #1e293b; position: sticky; top: 40px; }
+        .btn-copy { background: var(--accent); color: #000; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; margin-top: 5px; transition: 0.3s; box-shadow: 0 4px 15px rgba(245,158,11,0.25); }
+        .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,158,11,0.4); }
+        .btn-home { background: rgba(100,116,139,0.1); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 12px; transition: 0.3s; }
+        .btn-home:hover { background: rgba(100,116,139,0.25); color: #f1f5f9; }
     </style>
 </head>
 <body>
+<div class="wrapper">
+    <div class="panel">
+        <div class="header">
+            <span class="badge">V1.0 • Motion Lab</span>
+            <h1>🎬 Video Dynamics</h1>
+            <div class="status">● TEMPORAL IDENTITY LOCK ACTIVE</div>
+        </div>
 
-<div class="container">
-    <header>
-        <h1>IDENTITY OS</h1>
-        <div class="tagline">Character Production Pipeline</div>
-    </header>
+        <h2>1. VIDEO PLATFORM</h2>
+        <div class="platform-selector">
+            <div class="plat-btn active" id="plat-kling" onclick="setPlatform('kling')">Kling 2.0</div>
+            <div class="plat-btn" id="plat-runway" onclick="setPlatform('runway')">Runway Gen-4</div>
+            <div class="plat-btn" id="plat-veo" onclick="setPlatform('veo')">Veo 3</div>
+        </div>
 
-    <div class="section-label">01 // The Laboratory (DNA Retouching)</div>
-    <div class="grid grid-2">
-        <a href="twin_studio.html" class="card lab-card">
-            <div class="icon">🧬</div>
-            <h3>Master Asset Studio</h3>
-            <p>Izolacija obraza in skeletni zaklep brez znamenj.</p>
-            <span class="phase-tag">Faza 1 // RAW DNA Lock</span>
-        </a>
+        <h2>2. SHOT TYPE</h2>
+        <select id="shot" onchange="updatePrompt()">
+            <option value="close-up portrait, head and shoulders visible">Close-up Portrait (Head & Shoulders)</option>
+            <option value="medium shot, waist up, full gesture visibility">Medium Shot (Waist Up)</option>
+            <option value="full body shot, head to toe">Full Body Shot</option>
+            <option value="extreme close-up, face only, skin texture detail">Extreme Close-up (Face Detail)</option>
+            <option value="over-the-shoulder shot, slight back angle">Over The Shoulder (OTS)</option>
+        </select>
 
-        <a href="finishing_studio.html" class="card finish-card">
-            <div class="icon">✨</div>
-            <h3>Finishing Studio</h3>
-            <p>Lepotna retuša, frizura in nakit.</p>
-            <span class="phase-tag">Faza 2 // Digital Beauty</span>
-        </a>
+        <h2>3. MOVEMENT TYPE</h2>
+        <select id="movement" onchange="updatePrompt()">
+            <option value="subtle breathing motion, micro-expressions, realistic idle">Subtle Idle (Breathing + Micro-expressions)</option>
+            <option value="slow natural head turn left to right, steady gaze">Head Turn (Left to Right)</option>
+            <option value="natural blink sequence, eye contact with camera">Natural Blink + Eye Contact</option>
+            <option value="slow walk forward, confident stride, cinematic">Walking Forward (Confident Stride)</option>
+            <option value="turning around from behind, revealing face to camera">Turn Around (Back to Face Reveal)</option>
+            <option value="reaching forward and picking up object, realistic hand physics">Hand Interaction (Pick Up Object)</option>
+            <option value="laughing naturally, authentic smile, head tilts slightly">Natural Laugh (Authentic)</option>
+            <option value="looking down at phone, then slowly up to camera">Phone to Camera Look Up</option>
+        </select>
+
+        <h2>4. ENVIRONMENT</h2>
+        <select id="scene" onchange="updatePrompt()">
+            <option value="neutral grey studio cyclorama, clean professional">Neutral Studio (Grey)</option>
+            <option value="blurred urban street, bokeh city lights background">Urban Street (Bokeh)</option>
+            <option value="minimalist white interior, soft natural window light">Minimalist Interior (White)</option>
+            <option value="outdoor golden hour, warm sunlight, slight wind">Golden Hour Outdoor</option>
+            <option value="dark cinematic environment, rim lighting, dramatic atmosphere">Cinematic Dark (Rim Light)</option>
+            <option value="cafe interior, warm ambient light, soft background">Cafe Interior</option>
+            <option value="luxury penthouse interior, floor-to-ceiling windows, city view">Luxury Penthouse</option>
+        </select>
+
+        <h2>5. CAMERA MOTION</h2>
+        <select id="camera" onchange="updatePrompt()">
+            <option value="static locked-off camera, zero movement, documentary style">Static Lock-off</option>
+            <option value="slow push-in dolly move toward subject, cinematic">Slow Push-In (Dolly)</option>
+            <option value="slow pull-back revealing environment around subject">Pull-Back (Reveal)</option>
+            <option value="subtle handheld shake, raw documentary feel">Handheld Shake</option>
+            <option value="slow orbit around subject, 360-degree reveal">Orbit (360 degrees)</option>
+        </select>
+
+        <h2>6. DURATION & FORMAT</h2>
+        <select id="duration" onchange="updatePrompt()">
+            <option value="5-second clip, 9:16 vertical format for Reels and TikTok">5 sec — 9:16 Vertical (Reels/TikTok)</option>
+            <option value="8-second clip, 9:16 vertical format">8 sec — 9:16 Vertical</option>
+            <option value="5-second clip, 1:1 square format for feed">5 sec — 1:1 Square (Feed)</option>
+            <option value="10-second clip, 16:9 horizontal cinematic format">10 sec — 16:9 Cinematic</option>
+        </select>
+
+        <button class="btn-copy" onclick="copy()">🎬 COPY VIDEO PROMPT</button>
+        <button class="btn-home" onclick="window.location.href='index.html'">🏠 BACK TO DASHBOARD</button>
     </div>
 
-    <div class="section-label">02 // Final Production (Styling & Video)</div>
-    <div class="grid">
-        <a href="styling_studio.html" class="card styling-card">
-            <div class="icon">🎭</div>
-            <h3>Styling Studio</h3>
-            <p>Wardrobe & Niche produkcija na Ref 0.</p>
-            <span class="phase-tag">Faza 3 // Styling</span>
-        </a>
-
-        <a href="video_dynamics.html" class="card video-card">
-            <div class="icon">🎬</div>
-            <h3>Video Dynamics</h3>
-            <p>Temporalni prenos identitete v Veo video.</p>
-            <span class="phase-tag">Faza 4 // Motion Lab</span>
-        </a>
-
-        <a href="delivery_module.html" class="card">
-            <div class="icon">📦</div>
-            <h3>Marketplace</h3>
-            <p>Integracija in končna dostava.</p>
-            <span class="phase-tag">Faza 5 // Delivery</span>
-        </a>
-    </div>
-
-    <footer>
-        &copy; 2026 AI UNIVERSA SYSTEMS • IMMUTABLE IDENTITY ENGINE • REŽISERSKI PROTOKOL
-    </footer>
+    <div class="output-box" id="out">// Video Dynamics ready...</div>
 </div>
 
+<script>
+    let platform = 'kling';
+
+    const PLATFORM_NOTES = {
+        kling:  "PLATFORM: Kling 2.0 (Image-to-Video). Upload Ref 0 as start frame. Set creativity to LOW (0.2-0.3) for maximum identity preservation.",
+        runway: "PLATFORM: Runway Gen-4 (Image-to-Video). Upload Ref 0 as reference image. Use Reference Only mode. Motion Brush: lock face region to 0% movement.",
+        veo:    "PLATFORM: Veo 3 (Google DeepMind). Text + Image input. Enable Character Consistency mode if available. Upload Ref 0 as character anchor."
+    };
+
+    function setPlatform(p) {
+        platform = p;
+        ['kling','runway','veo'].forEach(id => {
+            document.getElementById('plat-' + id).classList.toggle('active', id === p);
+        });
+        updatePrompt();
+    }
+
+    function updatePrompt() {
+        const shot     = document.getElementById('shot').value;
+        const movement = document.getElementById('movement').value;
+        const scene    = document.getElementById('scene').value;
+        const camera   = document.getElementById('camera').value;
+        const duration = document.getElementById('duration').value;
+
+        const final = `VIDEO DYNAMICS PROMPT (V1.0 — TEMPORAL IDENTITY LOCK):
+
+${PLATFORM_NOTES[platform]}
+
+IDENTITY LOCK (DO NOT ALTER):
+[HARD FACE LOCK]: Reference Image 0 is the ONLY permitted face. 1:1 match of facial bone structure, jawline, nose shape, eye color, and skin texture from Ref 0. Zero reinterpretation.
+[TEMPORAL CONSISTENCY]: Identity must remain 100% identical across all frames. No drift, no morphing, no beautification between frames.
+[SKIN LOCK]: Do NOT smooth, slim, or enhance the face during motion. Preserve all natural skin asymmetry from Ref 0.
+
+SHOT & FRAMING:
+[SHOT TYPE]: ${shot}.
+[DURATION & FORMAT]: ${duration}.
+
+MOTION DIRECTION:
+[MOVEMENT]: ${movement}. Motion must feel natural and human — no robotic or artificial movement artifacts.
+[CAMERA]: ${camera}.
+
+ENVIRONMENT:
+[SCENE]: ${scene}. Lighting must wrap realistically around the subject from Ref 0 without altering their identity.
+
+TECHNICAL:
+Photorealistic output. Natural film grain. Realistic motion blur on movement edges. No CGI artifacts, no flickering skin, no temporal face distortion between frames.
+
+NEGATIVE PROMPT: face morph, identity drift, changing face between frames, flickering skin, plastic skin, airbrushed, CGI look, unnatural movement, robotic motion, beautified face, slimmed nose, altered jawline, different person.`;
+
+        document.getElementById('out').innerText = final;
+    }
+
+    function copy() {
+        navigator.clipboard.writeText(document.getElementById('out').innerText);
+        btnFeedback(document.querySelector(".btn-copy"));
+    }
+
+    function btnFeedback(btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✅ COPIED!';
+        btn.style.background = '#10b981';
+        btn.style.color = '#000';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.style.background = '';
+            btn.style.color = '';
+            btn.disabled = false;
+        }, 1500);
+    }
+
+    updatePrompt();
+</script>
 </body>
 </html>

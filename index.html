@@ -16,6 +16,7 @@
             --accent-style: #f43f5e;   /* Rose */
             --accent-geo: #7c3aed;     /* Violet */
             --accent-delivery: #eab308; /* Gold */
+            --accent-video: #f59e0b;    /* Amber */
             --text-main: #f8fafc;
             --text-dim: #64748b;
             --border: rgba(255, 255, 255, 0.08);
@@ -201,6 +202,9 @@
         .delivery-card:hover { border-color: var(--accent-delivery); }
         .delivery-card:hover .phase-tag { color: var(--accent-delivery); border-color: var(--accent-delivery); }
 
+        .video-card:hover { border-color: var(--accent-video); }
+        .video-card:hover .phase-tag { color: var(--accent-video); border-color: var(--accent-video); }
+
         footer {
             margin-top: 80px;
             text-align: center;
@@ -276,27 +280,35 @@
         </a>
     </div>
 
-    <div class="section-label">03 // Final Production (Styling & Delivery)</div>
-    <div class="grid">
+    <div class="section-label">03 // Final Production (Styling, Video & Delivery)</div>
+    <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
         <a href="production_module.html" class="card geo-card">
             <div class="icon">🎬</div>
-            <h3>3D Geometrija</h3>
-            <p>Konsistenca kotov in perspektive</p>
-            <span class="phase-tag">Faza 2 // Geometry</span>
+            <h3>3D Geometry</h3>
+            <p>Angle & perspective consistency</p>
+            <span class="phase-tag">Phase 2 // Geometry</span>
         </a>
 
         <a href="styling_module.html" class="card prod-card">
             <div class="icon">🎭</div>
             <h3>Styling Studio</h3>
-            <p>Wardrobe & Niche produkcija</p>
-            <span class="phase-tag">Faza 3 // Production</span>
+            <p>Wardrobe & Niche production</p>
+            <span class="phase-tag">Phase 3 // Production</span>
+        </a>
+    </div>
+    <div class="grid grid-2" style="margin-top: 25px;">
+        <a href="video_dynamics.html" class="card video-card">
+            <div class="icon">🎥</div>
+            <h3>Video Dynamics</h3>
+            <p>Temporal identity lock for Kling, Runway & Veo</p>
+            <span class="phase-tag">Phase 4 // Motion Lab</span>
         </a>
 
         <a href="delivery_module.html" class="card delivery-card">
             <div class="icon">📦</div>
             <h3>Marketplace</h3>
-            <p>Integracija in končna dostava</p>
-            <span class="phase-tag">Faza 4 // Delivery</span>
+            <p>Integration & final delivery</p>
+            <span class="phase-tag">Phase 5 // Delivery</span>
         </a>
     </div>
 
