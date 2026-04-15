@@ -18,6 +18,7 @@
             --accent-delivery: #eab308; /* Gold */
             --accent-video: #f59e0b;    /* Amber */
             --accent-director: #7c3aed; /* Violet Director */
+            --accent-seedance: #c5a059; /* Gold Seedance */
             --text-main: #f8fafc;
             --text-dim: #64748b;
             --border: rgba(255, 255, 255, 0.08);
@@ -212,6 +213,9 @@
         .director-card:hover .phase-tag { color: var(--accent-director); border-color: var(--accent-director); }
         .video-card:hover .phase-tag { color: var(--accent-video); border-color: var(--accent-video); }
 
+        .seedance-card:hover { border-color: var(--accent-seedance); box-shadow: 0 30px 60px -15px rgba(197,160,89,0.25); }
+        .seedance-card:hover .phase-tag { color: var(--accent-seedance); border-color: var(--accent-seedance); }
+
         footer {
             margin-top: 80px;
             text-align: center;
@@ -333,6 +337,22 @@
             <p>New character vision — full 10-layer DNA chain generated</p>
             <span class="phase-tag">Master // DNA Chain</span>
         </a>
+    </div>
+
+    <div class="section-label" style="margin-top: 40px;">05 // Seedance 2.0 (Scene Protocol)</div>
+    <div class="grid grid-2">
+        <a href="seedance_orchestrator.html" class="card seedance-card" style="background: rgba(197,160,89,0.06); border-color: rgba(197,160,89,0.25);">
+            <div class="icon">📽️</div>
+            <h3>Seedance Orchestrator</h3>
+            <p>10-layer realism protocol for Seedance 2.0 scene generation</p>
+            <span class="phase-tag">Scene // Realism Protocol</span>
+        </a>
+        <div class="card" style="border-color: rgba(255,255,255,0.04); opacity: 0.35; cursor: default;">
+            <div class="icon">🌐</div>
+            <h3>Scene Builder</h3>
+            <p>Advanced environment & location generator — coming soon</p>
+            <span class="phase-tag">Future // Scene Engine</span>
+        </div>
     </div>
 
     <footer>

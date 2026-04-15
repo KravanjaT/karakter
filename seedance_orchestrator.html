@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>AI UNIVERSA - Seedance 2.0 Orchestrator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
+        :root { --bg: #020617; --accent: #ffffff; --panel: #0f172a; --text: #f8fafc; --gold: #c5a059; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 40px; color: var(--text); margin: 0; min-height: 100vh; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 0; }
+        .wrapper { max-width: 1700px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; position: relative; z-index: 10; }
+        .panel { background: var(--panel); padding: 45px; border-radius: 28px; border: 1px solid rgba(197,160,89,0.3); position: sticky; top: 40px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        h1 { margin: 0 0 5px 0; font-size: 1.5rem; font-weight: 900; color: var(--gold); text-transform: uppercase; letter-spacing: 4px; }
+        .subtitle { font-size: 0.7rem; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px; }
+        textarea { width: 100%; height: 120px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; color: #fff; font-size: 1rem; margin-bottom: 25px; resize: none; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        textarea:focus { outline: none; border-color: var(--gold); }
+        .btn-core { background: var(--gold); color: #000; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 4px 15px rgba(197,160,89,0.25); }
+        .btn-core:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(197,160,89,0.4); }
+        .output-box { background: #000; color: #c5a059; padding: 40px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 90vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.8; border: 1px solid #1e293b; }
+        .btn-home { background: rgba(100,116,139,0.1); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 15px; transition: 0.3s; letter-spacing: 1px; }
+        .btn-home:hover { background: rgba(100,116,139,0.25); color: #f1f5f9; }
+        .layer-label { font-size: 0.65rem; font-weight: 900; color: var(--gold); margin-bottom: 8px; display: block; text-transform: uppercase; }
+        #toast { visibility: hidden; min-width: 250px; background-color: var(--gold); color: #000; text-align: center; padding: 16px; position: fixed; z-index: 1000; left: 50%; transform: translateX(-50%); top: 30px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1.5s; }
+        @keyframes fadein { from {top: 0; opacity: 0;} to {top: 30px; opacity: 1;} }
+        @keyframes fadeout { from {top: 30px; opacity: 1;} to {top: 0; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+<div id="toast">Protocol Copied! 📽️</div>
+
+<div class="wrapper">
+    <div class="panel">
+        <h1>AI UNIVERSA</h1>
+        <div class="subtitle">Seedance 2.0 • 10-Layer Protocol </div>
+        
+        <p style="font-size: 0.8rem; line-height: 1.6; color: #999; margin-bottom: 25px;">
+            Enter your scene vision (Ref 0 is locked). The generator will break down the prompt into 10 layers following the official realism protocol.
+        </p>
+        
+        <span class="layer-label">Directorial Vision</span>
+        <textarea id="vision" placeholder="E.g.: Character sitting in rainy Milan, drinking coffee, neon reflections on wet pavement..."></textarea>
+        
+        <button class="btn-core" onclick="generateProtokol()">🚀 ORCHESTRATE PRODUCTION</button>
+        <button class="btn-home" onclick="window.location.href='index.html'">🏠 BACK TO DASHBOARD</button>
+    </div>
+
+    <div id="out" class="output-box">// Awaiting scene direction and casting...</div>
+</div>
+
+<script>
+    function generateProtokol() {
+        const v = document.getElementById('vision').value;
+        if (!v) return;
+
+        let res = `AI UNIVERSA — REALISM PROTOCOL V2.0 \n`;
+        res += `SEEDANCE 2.0 TEMPORAL SYNC OPTIMIZED\n`;
+        res += `===========================================================\n\n`;
+
+        res += `LAYER 01: GENERAL DIRECTIVE & AESTHETICS \n`;
+        res += `Hyper-realistic, raw, candid, paparazzi-style leaked archive. Documentary aesthetic, unedited 4k footage.\n\n`;
+
+        res += `LAYER 02: SUBJEKT & DEJANJA \n`;
+        res += `Ref 0 is the absolute anchor. Fully recognizable natural proportions. ${v}. Subject is mid-action, unbothered, completely ignoring the camera.\n\n`;
+
+        res += `LAYER 03: SCENA & PRIPOVED \n`;
+        res += `Location: ${v}. Space feels lived-in, not decorated. Private, not staged. Narrative: accidental private moment.\n\n`;
+
+        res += `LAYER 04: GARDEROBA & DODATKI \n`;
+        res += `Visible textures: worn leather, silk, cashmere. Everything looks used and lived-in.\n\n`;
+
+        res += `LAYER 05: KAMERA & OPTIKA \n`;
+        res += `Seedance Motion Physics: 28mm/35mm prime lens. Handheld organic jitter, lens breathing, motion blur on edges, digital sensor noise, chromatic aberration.\n\n`;
+
+        res += `LAYER 06: OSVETLITEV \n`;
+        res += `Harsh on-camera flash as primary source. Strong specular highlights on skin/fabric. Background falls to darkness. Neon signs/practical lights creating lens flare.\n\n`;
+
+        res += `LAYER 07: ATMOSFERA & TEKSTURE \n`;
+        res += `Visible dust motes caught in moving flash beam. Condensation on glass. Lived-in chaos: fingerprints, smudges, rain droplets.\n\n`;
+
+        res += `LAYER 08: BARVNO OCENJEVANJE \n`;
+        res += `Dirty cinematic grading. Crushed blacks, muted highlights. Cold blue shadows vs. tungsten-orange flash highlights. Heavy film grain.\n\n`;
+
+        res += `LAYER 09: REALIZEM & PREPOVEDI \n`;
+        res += `MANDATORY: Natural skin with visible pores and fine lines. Slightly oily skin with natural sheen. Bags under eyes. 0% temporal smoothing during motion.\n`;
+        res += `[NEGATIVE]: perfect skin, plastic, airbrushed, CGI, doll-like, studio lighting, professional pose.\n\n`;
+
+        res += `LAYER 10: VZDUŠJE \n`;
+        res += `Spontaneous, decadent, tired, raw, intimate. A private moment never meant to be public.\n`;
+        res += `===========================================================`;
+
+        document.getElementById('out').innerText = res;
+        navigator.clipboard.writeText(res);
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
+    }
+</script>
+</body>
+</html>
