@@ -6,26 +6,17 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
 
-        :root { 
-            --bg: #020617; 
-            --accent: #22d3ee; 
-            --strip: #06b6d4; 
-            --match: #a855f7; 
-            --refine: #10b981; 
-            --home: #64748b; 
-            --text: #f8fafc;
-        }
+        :root { --bg: #020617; --accent: #22d3ee; --strip: #06b6d4; --match: #a855f7; --refine: #10b981; --home: #64748b; }
 
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
-            color: var(--text);
+            color: #f8fafc;
             padding: 40px;
             margin: 0;
             min-height: 100vh;
         }
 
-        /* DIGITAL FILM NOISE */
         body::before {
             content: "";
             position: fixed;
@@ -51,160 +42,154 @@
             backdrop-filter: blur(24px);
             padding: 40px;
             border-radius: 32px;
-            border: 1px solid rgba(34, 211, 238, 0.2);
+            border: 1px solid rgba(34, 211, 238, 0.3);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-weight: 900;
-            margin: 0 0 5px 0;
-            font-size: 1.6rem;
-            filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3));
+            margin: 0 0 8px 0;
+            font-size: 1.4rem;
         }
 
         .subtitle {
-            font-size: 0.75rem;
-            color: var(--home);
-            margin-bottom: 30px;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 25px;
             font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        /* VRSTA DNA PREKLOPNIK */
         .type-selector {
             display: flex;
-            gap: 12px;
-            margin-bottom: 35px;
+            gap: 10px;
+            margin-bottom: 30px;
             background: rgba(0,0,0,0.4);
-            padding: 10px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 8px;
+            border-radius: 18px;
         }
 
         .type-btn {
             flex: 1;
-            padding: 14px;
+            padding: 12px;
             text-align: center;
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            font-weight: 900;
+            transition: 0.3s;
+            font-weight: 800;
             text-transform: uppercase;
             font-size: 0.75rem;
-            letter-spacing: 1px;
-            color: var(--home);
+            border: 1px solid transparent;
+            color: #94a3b8;
         }
 
         .type-btn.active {
             background: var(--accent);
             color: #000;
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
         }
 
         .step {
             background: rgba(0,0,0,0.3);
-            border-radius: 24px;
-            padding: 30px;
-            margin-bottom: 25px;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.03);
-            transition: 0.3s;
         }
 
         .step-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 14px;
+            margin-bottom: 12px;
         }
 
         .step-badge {
             font-size: 0.65rem;
             font-weight: 900;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .badge-strip { background: var(--strip); color: #000; }
         .badge-match { background: var(--match); color: #fff; }
 
-        .step-title {
-            font-size: 1.1rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .step-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .tag {
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 5px 12px;
-            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
+            color: #cbd5e1;
         }
 
-        .tag.keep { border-color: rgba(16,185,129,0.4); color: #6ee7b7; }
+        .tag.keep { border-color: rgba(16,185,129,0.3); color: #6ee7b7; }
 
         .btn {
             width: 100%;
             border: none;
-            padding: 20px;
-            border-radius: 16px;
+            padding: 18px;
+            border-radius: 14px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: 0.4s;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
-        .btn-strip { background: var(--strip); color: #000; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25); }
-        .btn-match { background: var(--match); color: #fff; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25); }
-        .btn-strip:hover, .btn-match:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        .btn-strip { background: var(--strip); color: #000; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2); }
+        .btn-match { background: var(--match); color: #fff; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2); }
+        .btn-strip:hover, .btn-match:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
         .btn-home {
             background: rgba(100, 116, 139, 0.1);
-            color: var(--home);
+            color: #94a3b8;
             border: 1px solid rgba(100,116,139,0.2);
-            margin-top: 15px;
+            margin-top: 25px;
+            padding: 15px;
+            font-size: 0.85rem;
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 800;
+            text-transform: uppercase;
         }
-        .btn-home:hover { background: rgba(100, 116, 139, 0.25); color: #fff; }
 
         .output-box {
             background: #000;
             color: #cbd5e1;
-            padding: 40px;
-            border-radius: 32px;
+            padding: 35px;
+            border-radius: 24px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            height: 88vh;
+            font-size: 0.82rem;
+            height: 90vh;
             overflow-y: auto;
             white-space: pre-wrap;
             line-height: 1.8;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 211, 238, 0.1);
             position: sticky;
             top: 40px;
         }
 
-        /* HIGHLIGHT COLORS FOR TERMINAL OUTPUT */
-        .h-cyan { color: var(--strip); font-weight: 800; }
-        .h-purple { color: var(--match); font-weight: 800; }
-        .h-green { color: var(--refine); }
-        .h-red { color: #f87171; }
-        .h-label { color: #fff; font-weight: 800; text-decoration: underline; }
+        .highlight-strip { color: #06b6d4; font-weight: 800; }
+        .highlight-match { color: #a855f7; font-weight: 800; }
+        .highlight-lock  { color: #10b981; font-weight: 800; }
+        .highlight-neg   { color: #f87171; }
     </style>
 </head>
 <body>
@@ -212,43 +197,39 @@
 <div class="wrapper">
     <div class="panel">
         <h1>🧬 Identity Translation</h1>
-        <div class="subtitle">Digital Twin Studio // V10.4 PRO</div>
+        <div class="subtitle">DIGITAL TWIN STUDIO // V10.4 PRO</div>
 
         <div class="type-selector">
-            <div id="btn-face" class="type-btn active" onclick="setType('face')">Face DNA (Portrait)</div>
-            <div id="btn-body" class="type-btn" onclick="setType('body')">Skeletal DNA (Full Body)</div>
+            <div id="btn-face" class="type-btn active" onclick="setType('face')">Face DNA (Headshot)</div>
+            <div id="btn-body" class="type-btn" onclick="setType('body')">Anatomical DNA (Full Body)</div>
         </div>
 
         <div class="step">
             <div class="step-header">
                 <span class="step-badge badge-strip">Korak 1</span>
-                <span class="step-title" id="step1-title">Strip — Identity Extraction</span>
+                <span style="font-weight:900; text-transform:uppercase;">Identity Extraction</span>
             </div>
-            <div class="step-tags" id="step1-tags">
-                <span class="tag keep">✓ Pure Identity</span>
-                <span class="tag keep">✓ Neutral Environment</span>
-                <span class="tag keep">✓ Anti-Blemish</span>
+            <div class="step-tags">
+                <span class="tag">✕ Motnje</span><span class="tag">✕ Očala</span><span class="tag keep">✓ Facial DNA</span><span class="tag keep">✓ Vivid Skin Tone</span>
             </div>
             <button class="btn btn-strip" id="btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT</button>
         </div>
 
-        <div class="step" style="border-left: 4px solid var(--match);">
+        <div class="step">
             <div class="step-header">
                 <span class="step-badge badge-match">Korak 2</span>
-                <span class="step-title" id="step2-title">AI Match — Master Polish</span>
+                <span style="font-weight:900; text-transform:uppercase;">AI Match & Polish</span>
             </div>
-            <div class="step-tags" id="step2-tags">
-                <span class="tag keep">✓ 100% Skin DNA Lock</span>
-                <span class="tag keep">✓ Hyper-Realism</span>
-                <span class="tag keep">✓ Zero Halucination</span>
+            <div class="step-tags">
+                <span class="tag keep">✓ DNA Locked</span><span class="tag keep">✓ Pigment Locked</span><span class="tag">✓ Cinematic Color</span>
             </div>
-            <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ MASTER MATCH PROMPT</button>
+            <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ AI MATCH PROMPT</button>
         </div>
 
         <button class="btn btn-home" onclick="window.location.href='index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
 
-    <div class="output-box" id="out">// DNA Studio pripravljen za obdelavo...</div>
+    <div class="output-box" id="out"><span style="color:#1e293b;">// Master Asset Studio pripravljen...</span></div>
 </div>
 
 <script>
@@ -259,43 +240,87 @@
             strip: {
                 label: "STEP 1 — FACE IDENTITY STRIP (V10.4)",
                 text: `STEP 1 — IDENTITY STRIP (V10.4):
-[IMMUTABLE SKIN DNA]: Do NOT add moles, freckles, or skin spots. 
-[INPUT]: Real-life headshot (Ref 0).
-[TASK]: Precise deconstruction of facial identity. Place in grey studio.
-[REMOVAL]: Remove ALL glasses, sunglasses, hats. 
-[DNA LOCK]: 1:1 match of bone structure and jawline.
-[OUTPUT]: Clean diagnostic headshot.`
+
+Sloji 01-04 (Vsebina & Izolacija):
+[INPUT]: Real-life raw photograph (Ref 0).
+[TASK]: Precise deconstruction of facial identity.
+[IMMUTABLE SKIN DNA]: Do NOT add moles, freckles, or skin spots. Preserve ONLY original pigment distribution.
+[COLOR FIDELITY]: Maintain 100% natural skin tones and accurate color saturation. No grayscale, no desaturation.
+
+Sloj 05 (Kamera): 
+28mm/35mm lens, handheld shake, motion blur, digital noise, chromatic aberration.
+
+Sloji 06-08 (Tehnični):
+On-camera flash, harsh shadows. 85mm prime equivalent perspective for clarity.
+[REMOVAL]: Remove ALL glasses, eyewear, hats. Replace clothing with simple white tee.
+
+Sloji 09-10 (Realizem):
+Visible pores, natural imperfections, no retouching. [DNA LOCK]: Absolute match on bone structure from Ref 0.
+
+NEGATIVE PROMPT: black and white, grayscale, desaturated, glasses, eyewear, freckles, moles, skin spots, added blemishes, smiling, airbrushed.`
             },
             match: {
                 label: "STEP 2 — AI MATCH / MASTER POLISH (V10.4)",
                 text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V10.4):
-[IMMUTABLE SKIN MAP]: Do NOT generate new moles, freckles, or pigment spots. 
-[SKIN PROTOCOL]: Focus 100% on pore structure. 0% on adding new pigmentation.
-[INPUT]: Base image (Ref 0).
-[TASK]: Inject hyper-realistic AI detail into existing facial DNA.
-[DNA LOCK]: Absolute 1:1 match of facial geometry and asymmetry.
-[AI-NATIVE UPGRADE]: 8K skin luster, luminous eyes, individual hair strands.
-NEGATIVE PROMPT: freckles, moles, skin spots, added blemishes, glasses, changed bone structure.`
+
+Sloj 01-04 (Identiteta & DNA Sidro — NE SPREMINJAJ OBRAZA):
+[INPUT]: Cleaned base image from Step 1 (Ref 0).
+[IMMUTABLE SKIN MAP — ABSOLUTE]: Do NOT generate or add new moles, freckles, pigment spots, or skin marks. 
+[SKIN PROTOCOL]: 100% focus on subsurface light interaction and 8K pore structure.
+[COLOR]: Rich cinematic color grading, vibrant natural skin tones.
+
+[DNA LOCK — ABSOLUTE]:
+- Match facial geometry and bone structure from Ref 0 exactly.
+- Keep eye shape and brow height identical.
+
+Sloj 05 (Kamera):
+35mm prime lens feel. Heavy film grain, chromatic aberration, digital sensor noise.
+
+Sloji 06-08 (Tehnični):
+On-camera flash style lighting. Cinematic sensor response.
+[AI-NATIVE PRO UPGRADE]: 8K skin luster, healthy living sheen, luminous eyes.
+
+Sloji 09-10 (Realizem):
+Zero digital retouching. Visible pores. Natural facial asymmetry. 
+NEGATIVE PROMPT: grayscale, desaturated, freckles, moles, skin spots, pigment marks, added blemishes, glasses, changed bone structure, plastic skin, CGI, 3D render.`
             }
         },
         body: {
             strip: {
-                label: "STEP 1B — BODY ANATOMICAL LOCK (V10.4)",
+                label: "STEP 1B — FULL BODY ANATOMICAL LOCK (V10.4)",
                 text: `STEP 1B — FULL BODY ANATOMICAL LOCK (V10.4):
-[SKIN PRESERVATION]: No new moles or freckles on body or face.
-[INPUT]: Full-body photo (Ref 0).
-[TASK]: Extract anatomical DNA. 1:1 height and shoulder width.
-[REMOVAL]: Replace clothes with plain white tee and dark trousers. Remove glasses.
-[OUTPUT]: Clean full-body base.`
+
+Sloji 01-04 (Anatomija & Proporci):
+[INPUT]: Full-body raw photograph (Ref 0).
+[SKIN PRESERVATION]: No new moles or freckles on body or face. 100% color accuracy.
+[ANATOMY LOCK]: Maintain 1:1 height, shoulder width, and skeletal silhouette from Ref 0.
+
+Sloj 05 (Kamera):
+35mm lens, handheld shake, motion blur, digital noise, chromatic aberration.
+
+Sloji 06-10 (Tehnični & Realizem):
+On-camera flash, harsh shadows. [REMOVAL]: Replace clothes with white tee and dark trousers. Remove glasses.
+0% added skin blemishes. Lived-in, non-posed stance.
+
+NEGATIVE PROMPT: black and white, grayscale, glasses, eyewear, freckles, moles, skin spots, changed height, beauty filter.`
             },
             match: {
                 label: "STEP 2B — SKELETAL DNA MATCH (V10.4)",
                 text: `STEP 2B — SKELETAL DNA MATCH / CONSTITUTION LOCK (V10.4):
-[IMMUTABLE PIGMENT LOCK]: Do NOT add new moles or spots to arms, neck, or face.
-[INPUT]: Blueprint from Step 1B (Ref 0).
-[TASK]: Seal the skeletal constitution into AI format. 
-[SKELETAL LOCK]: Absolute lock on height and shoulder silhouette.
-NEGATIVE PROMPT: freckles, moles, skin spots, muscle change, plastic skin.`
+
+Sloj 01-04 (Identiteta & Poliranje):
+[INPUT]: Cleaned anatomical blueprint from Step 1B (Ref 0).
+[IMMUTABLE PIGMENT LOCK]: Do NOT add new moles, freckles, or spots.
+[COLOR]: Cinematic grading, heavy film grain, vignette. Vibrant authentic colors.
+
+Sloj 05 (Kamera):
+35mm lens. Handheld shake, digital noise.
+
+Sloji 06-10 (Realizem):
+[SKELETAL LOCK]: Absolute lock on proportions from Ref 0.
+[SKIN]: 8K pore detail, subsurface scattering for living skin. Zero retouching.
+
+NEGATIVE PROMPT: grayscale, desaturated, freckles, moles, skin spots, pigment marks, body weight change, plastic skin, different person.`
             }
         }
     };
@@ -306,26 +331,26 @@ NEGATIVE PROMPT: freckles, moles, skin spots, muscle change, plastic skin.`
         document.getElementById('btn-body').className = 'type-btn' + (type === 'body' ? ' active' : '');
         
         if(type === 'body') {
-            document.getElementById('step1-title').innerText = "Anatomski Blueprint";
-            document.getElementById('step2-title').innerText = "Skeletni Master Zaklep";
+            document.getElementById('out').innerHTML = '<span style="color:#10b981;">// Anatomski Studio pripravljen... (Color Mode: ON)</span>';
         } else {
-            document.getElementById('step1-title').innerText = "Identity Extraction";
-            document.getElementById('step2-title').innerText = "AI Match — Master Polish";
+            document.getElementById('out').innerHTML = '<span style="color:#10b981;">// Face DNA Studio pripravljen... (Color Mode: ON)</span>';
         }
-        document.getElementById('out').innerHTML = '// Način zamenjan. DNA Laboratorij pripravljen.';
     }
 
     function showAndCopy(step) {
         const p = DATA[currentType][step];
-        const highlightClass = step === 'strip' ? 'h-cyan' : 'h-purple';
+        const colorClass = step === 'strip' ? 'highlight-strip' : 'highlight-match';
 
         let rendered = p.text
-            .replace(/(STEP \d+[B]* —[^\n]+)/g, `<span class="${highlightClass}">$1</span>`)
-            .replace(/(\[IMMUTABLE[^\]]*\]|\[SKIN PROTOCOL[^\]]*\]|\[DNA LOCK[^\]]*\]|\[SKELETAL LOCK[^\]]*\])/g, '<span class="h-green">$1</span>')
-            .replace(/(\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[REMOVAL\]|\[AI-NATIVE[^\]]*\])/g, '<span class="h-label">$1</span>')
-            .replace(/(NEGATIVE PROMPT:[\s\S]*)/g, '<span class="h-red">$1</span>');
+            .replace(/(STEP \d+[B]* —[^\n]+)/g, `<span class="${colorClass}">$1</span>`)
+            .replace(/(Sloj[i]* \d+[^\n]*:)/g, '<span style="color:#f8fafc; font-weight:800; border-bottom:1px solid #1e293b;">$1</span>')
+            .replace(/(\[IMMUTABLE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[SKELETAL LOCK[^\]]*\]|\[ANATOMY LOCK[^\]]*\]|\[SKIN PROTOCOL[^\]]*\]|\[SKIN PRESERVATION[^\]]*\]|\[IMMUTABLE PIGMENT LOCK[^\]]*\]|\[COLOR FIDELITY\])/g, '<span class="highlight-lock">$1</span>')
+            .replace(/(\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[REMOVAL\]|\[AI-NATIVE[^\]]*\]|\[COLOR\])/g, '<span style="color:var(--accent); font-weight:800;">$1</span>')
+            .replace(/(NEGATIVE PROMPT:[\s\S]*)/g, '<span class="highlight-neg">$1</span>');
 
-        document.getElementById('out').innerHTML = rendered;
+        document.getElementById('out').innerHTML =
+            `<div style="font-size:0.65rem; letter-spacing:2px; color:#475569; margin-bottom:20px; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">${p.label}</div>` + rendered;
+
         navigator.clipboard.writeText(p.text);
         alert("PROMPT KOPIRAN! 🚀");
     }
