@@ -187,7 +187,14 @@
             margin-top: 25px;
             padding: 15px;
             font-size: 0.85rem;
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
+        .btn-home:hover { background: rgba(100, 116, 139, 0.35); color: #f1f5f9; }
 
         .arrow {
             text-align: center;
@@ -266,7 +273,7 @@
             <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ AI MATCH PROMPT</button>
         </div>
 
-        <button class="btn btn-home" onclick="window.location.href='index.html'">🏠 NAZAJ NA DASHBOARD</button>
+        <button class="btn btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
 
     <div class="output-box" id="out"><span style="color:#1e293b;">// Master Asset Studio pripravljen...</span></div>
@@ -394,7 +401,7 @@ NEGATIVE PROMPT: glasses, eyewear, freckles, moles, skin spots, body weight chan
             document.getElementById('step1-tags').innerHTML = '<span class="tag keep">✓ Bela majica / Hlače</span><span class="tag remove">✕ Očala</span><span class="tag keep">✓ Skeletal DNA</span>';
             
             document.getElementById('step2-title').innerText = "Match — Skeletni Zaklep";
-            document.getElementById('step2-desc').innerText = "Zapečatenje celotne konstitucije. Ustvariš bazo v klasičnih oblačilih brez dodajanja znamenj.";
+            document.getElementById('step2-desc').innerText = "Zapečatenje celotne konstitucije. Ustvariš bazo, ki drži tvoj skelet na mestu brez dodajanja znamenj.";
             document.getElementById('step2-tags').innerHTML = '<span class="tag add">+ Fabric Texture</span><span class="tag add">+ Skin Fidelity</span><span class="tag keep">✓ Pigment Locked</span>';
             
             document.getElementById('btn-strip').innerText = "✂️ KOPIRAJ BODY STRIP PROMPT";
