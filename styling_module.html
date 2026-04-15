@@ -132,10 +132,25 @@ NEGATIVE PROMPT: added moles, added freckles, changed face, face enhancement, sk
 
     function copy() {
         navigator.clipboard.writeText(document.getElementById('out').innerText);
-        alert("PRODUCTION PROMPT KOPIRAN! 🚀");
+        btnFeedback(document.querySelector(".btn-copy"));
     }
 
     setShotType('face');
+
+function btnFeedback(btn) {
+    const orig = btn.innerHTML;
+    const origBg = btn.style.background || '';
+    btn.innerHTML = '✅ KOPIRANO!';
+    btn.style.background = '#10b981';
+    btn.style.color = '#000';
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = origBg;
+        btn.style.color = '';
+        btn.disabled = false;
+    }, 1500);
+}
 </script>
 </body>
 </html>

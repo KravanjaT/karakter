@@ -231,9 +231,24 @@ NEGATIVE PROMPT: makeup, jewelry on children, smiling for camera, smoke, fog, ha
 
     function copy() {
         navigator.clipboard.writeText(document.getElementById('out').innerText);
-        alert("OTROŠKI MASTER PROMPT KOPIRAN!");
+        btnFeedback(document.querySelector(".btn-copy"));
     }
     update();
+
+function btnFeedback(btn) {
+    const orig = btn.innerHTML;
+    const origBg = btn.style.background || '';
+    btn.innerHTML = '✅ KOPIRANO!';
+    btn.style.background = '#10b981';
+    btn.style.color = '#000';
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = origBg;
+        btn.style.color = '';
+        btn.disabled = false;
+    }, 1500);
+}
 </script>
 </body>
 </html>

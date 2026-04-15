@@ -212,7 +212,7 @@
             <div class="step-tags">
                 <span class="tag">✕ Motnje</span><span class="tag">✕ Očala</span><span class="tag keep">✓ Facial DNA</span><span class="tag keep">✓ Vivid Skin</span>
             </div>
-            <button class="btn btn-strip" id="btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT</button>
+            <button class="btn btn-strip" id="btn-strip" onclick="showAndCopy('strip', this)">✂️ KOPIRAJ STRIP PROMPT</button>
         </div>
 
         <div class="arrow" style="text-align: center; font-size: 1.5rem; color: #334155; margin: -5px 0;">↓</div>
@@ -225,7 +225,7 @@
             <div class="step-tags">
                 <span class="tag keep">✓ DNA Locked</span><span class="tag keep">✓ Pigment Locked</span><span class="tag">✓ 8K Detail</span>
             </div>
-            <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ MASTER MATCH PROMPT</button>
+            <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match', this)">🔒 KOPIRAJ MASTER MATCH PROMPT</button>
         </div>
 
         <button class="btn btn-home" onclick="window.location.href='index.html'">🏠 NAZAJ NA DASHBOARD</button>
@@ -330,7 +330,7 @@ NEGATIVE PROMPT: added moles, added freckles, skin spots, pigment marks, muscle 
         document.getElementById('out').innerHTML = '<span style="color:#10b981;">// DNA Laboratorij pripravljen za extraction.</span>';
     }
 
-    function showAndCopy(step) {
+    function showAndCopy(step, btn) {
         const p = DATA[currentType][step];
         const colorClass = step === 'strip' ? 'highlight-strip' : 'highlight-match';
 
@@ -343,8 +343,23 @@ NEGATIVE PROMPT: added moles, added freckles, skin spots, pigment marks, muscle 
 
         document.getElementById('out').innerHTML = rendered;
         navigator.clipboard.writeText(p.text);
-        alert("PROMPT KOPIRAN! 🚀");
+        btnFeedback(document.querySelector(".btn-copy"));
     }
+
+function btnFeedback(btn) {
+    const orig = btn.innerHTML;
+    const origBg = btn.style.background || '';
+    btn.innerHTML = '✅ KOPIRANO!';
+    btn.style.background = '#10b981';
+    btn.style.color = '#000';
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = origBg;
+        btn.style.color = '';
+        btn.disabled = false;
+    }, 1500);
+}
 </script>
 </body>
 </html>
