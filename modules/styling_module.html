@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - V140 IMMUTABLE</title>
+    <title>IDENTITY OS - V150 PURE TRANSFER</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --bg: #020617; --accent: #f43f5e; --panel: #0f172a; --text: #f8fafc; --green: #10b981; }
@@ -18,26 +18,10 @@
         h2 { font-size: 0.75rem; text-transform: uppercase; color: #64748b; margin: 25px 0 10px 0; letter-spacing: 1px; }
         select { width: 100%; padding: 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: #1e293b; color: #fff; font-size: 0.95rem; margin-bottom: 15px; }
         .output-box { background: #000; color: var(--green); padding: 35px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 90vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.8; border: 1px solid #1e293b; position: sticky; top: 40px; }
-        
-        /* Gumbi */
         .btn-copy { background: var(--accent); color: white; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; }
-        .btn-home {
-            background: rgba(100, 116, 139, 0.1);
-            color: #94a3b8;
-            border: 1px solid rgba(100, 116, 139, 0.2);
-            padding: 15px;
-            width: 100%;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            transition: 0.3s;
-            margin-top: 15px;
-        }
+        .btn-home { background: rgba(100, 116, 139, 0.1); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 15px; }
         .btn-home:hover { background: rgba(100, 116, 139, 0.25); color: #f1f5f9; }
-
-        .lock-status { font-size: 0.65rem; color: var(--green); font-weight: 900; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+        .lock-status { font-size: 0.65rem; color: #3b82f6; font-weight: 900; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
@@ -45,29 +29,28 @@
 <div class="wrapper">
     <div class="panel">
         <div class="header">
-            <span class="badge">V140 • Immutable Identity Engine</span>
-            <h1>🧬 Zaklep Konstitucije</h1>
-            <div class="lock-status">● SKELETAL SYSTEM LOCKED (Ref 0)</div>
+            <span class="badge">V150 • Pure Identity Transfer</span>
+            <h1>🎭 Produkcijski Stajling</h1>
+            <div class="lock-status">● IDENTITY BYPASS ENABLED (Use Pre-Processed Asset)</div>
         </div>
 
-        <h2>1. KONSTITUCIJA (Kaj zaklepamo?)</h2>
+        <h2>1. KAJ PRENAŠAMO?</h2>
         <div class="shot-selector">
-            <div id="type-face" class="shot-type active" onclick="setShotType('face')">Cranial DNA (Obraz)</div>
-            <div id="type-full" class="shot-type" onclick="setShotType('full')">Skeletal DNA (Telo)</div>
+            <div id="type-face" class="shot-type active" onclick="setShotType('face')">Head Asset</div>
+            <div id="type-full" class="shot-type" onclick="setShotType('full')">Body Asset</div>
         </div>
 
-        <h2>2. NIŠA IN PRODUKCIJA</h2>
+        <h2>2. TRŽNA NIŠA</h2>
         <select id="niche" onchange="updateUI()"></select>
 
         <h2>3. DINAMIČNI ELEMENTI</h2>
-        <div class="group"><label>Oblačila (Outfit)</label><select id="outfit" onchange="updatePrompt()"></select></div>
-        <div id="footwear-group" class="group"><label>Obutev (Footwear)</label><select id="footwear" onchange="updatePrompt()"></select></div>
-        <div class="group"><label>Scena (Scenery)</label><select id="scene" onchange="updatePrompt()"></select></div>
-        <div class="group"><label>Akcija (Interaction)</label><select id="object" onchange="updatePrompt()"></select></div>
+        <div class="group"><label>Oblačila</label><select id="outfit" onchange="updatePrompt()"></select></div>
+        <div id="footwear-group" class="group"><label>Obutev</label><select id="footwear" onchange="updatePrompt()"></select></div>
+        <div class="group"><label>Okolje</label><select id="scene" onchange="updatePrompt()"></select></div>
+        <div class="group"><label>Akcija</label><select id="object" onchange="updatePrompt()"></select></div>
 
-        <button class="btn-copy" onclick="copy()">🚀 KOPIRAJ FINALNI PROMPT</button>
-        
-        <button class="btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
+        <button class="btn-copy" onclick="copy()">🚀 KOPIRAJ PRODUCTION PROMPT</button>
+        <button class="btn-home" onclick="window.location.href='index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
 
     <div class="output-box" id="out"></div>
@@ -77,18 +60,18 @@
     let currentShotType = 'face';
     const DATA = {
         face: {
-            business: { outfits: ["Structured wool blazer lapel", "Premium silk collar", "Minimalist mock-neck", "Cashmere overcoat collar", "Designer glasses"], scenes: ["Blurred financial district rain", "Subtle elevator mirror", "Corporate boardroom bokeh", "Executive lounge lighting", "Sunset office window"], objects: ["Adjusting a metal watch", "Holding a steaming ceramic cup", "Touching the temple of glasses", "Fixing a cufflink", "Slightly touching the chin"] },
-            luxury: { outfits: ["Heavy silk robe collar", "Velvet dinner jacket lapel", "High-neck satin blouse", "Cashmere scarf", "Jeweled evening collar"], scenes: ["Grand fireplace warm glow", "Penthouse balcony night view", "Private jet cabin", "Exclusive members club", "Opera house box shadows"], objects: ["Swirling whiskey on ice", "Holding a champagne flute", "Touching a diamond earring", "Checking a gold pocket watch", "Adjusting a silk pocket square"] },
-            fitness: { outfits: ["Damped cotton hoodie", "Athletic zip-up neck", "Technical compression neck", "Performance headband", "Weather-worn track jacket"], scenes: ["Industrial gym neon light", "Morning forest mist", "CrossFit box shadows", "Urban park sunrise", "Post-training steam"], objects: ["Drinking from a metal bottle", "Wiping face with towel", "Adjusting wireless earbuds", "Checking fitness smartwatch", "Leaning on a workout bar"] },
-            urban: { outfits: ["Heavy graphic hoodie", "Raw denim jacket", "Beanie & oversized knit", "Urban utility vest", "Leather biker jacket"], scenes: ["Subway station platform", "Neon-lit city alley", "Concrete rooftop view", "Night street bokeh", "Industrial garage"], objects: ["Holding a paper coffee cup", "Adjusting a snapback cap", "Using a vintage film camera", "Scrolling on a phone", "Touching a silver chain"] },
-            home: { outfits: ["Cashmere lounge collar", "Silk pajama neck", "Towel-wrapped hair", "Vintage oversized tee", "Soft knit cardigan"], scenes: ["Sun-filled messy bedroom", "Kitchen morning steam", "Cozy reading corner", "Bathroom mirror candid", "Living room fireplace"], objects: ["Holding a steaming mug", "Touching messy morning hair", "Brushing teeth", "Holding an open book", "Yawning naturally"] }
+            business: { outfits: ["Structured wool blazer", "Silk shirt collar", "Minimalist turtleneck"], scenes: ["Blurred financial district", "Modern elevator", "Rooftop glass office"], objects: ["Adjusting a metal watch", "Holding a steaming ceramic cup", "Checking a phone"] },
+            luxury: { outfits: ["Heavy silk robe", "Velvet dinner jacket", "Cashmere scarf"], scenes: ["Private jet interior", "Exclusive members club", "Penthouse balcony"], objects: ["Swirling whiskey", "Holding a champagne flute", "Adjusting an earring"] },
+            fitness: { outfits: ["Gym hoodie", "Technical compression top", "Performance headband"], scenes: ["Industrial gym", "Urban running path", "Misty forest light"], objects: ["Drinking water", "Checking a smartwatch", "Adjusting earbuds"] },
+            urban: { outfits: ["Graphic hoodie", "Raw denim jacket", "Urban utility vest"], scenes: ["Neon alleyway", "Subway platform", "Concrete rooftop"], objects: ["Holding coffee cup", "Scrolling on phone", "Using film camera"] },
+            home: { outfits: ["Cashmere sweater", "Silk pajama top", "Messy morning robe"], scenes: ["Sun-filled bedroom", "Kitchen with steam", "Cozy reading nook"], objects: ["Holding a mug", "Reading a book", "Touching hair"] }
         },
         full: {
-            business: { outfits: ["Full pinstripe tailored suit", "Wool overcoat over suit", "Bespoke charcoal waistcoat set", "Corporate chinos & blazer", "Trench coat & trousers"], footwear: ["Polished leather Oxfords", "Suede Chelsea boots", "Italian leather loafers", "Minimalist white dress sneakers", "Handcrafted brogues"], scenes: ["Walking in rainy financial district", "Modernist office lobby", "Stepping out of executive sedan", "Rooftop terrace overlooking city", "High-end conference hallway"], objects: ["Walking with a leather briefcase", "Holding a thin laptop sleeve", "Looking at a phone while walking", "Adjusting coat while moving", "Leaning on a glass railing"] },
-            luxury: { outfits: ["Full bespoke linen suit", "Elegant silk evening gown", "Cashmere long coat & trousers", "Custom velvet tuxedo set", "Designer wrap dress"], footwear: ["Designer leather mules", "Gold-buckle loafers", "Bespoke evening boots", "Velvet slippers", "Minimalist high-fashion boots"], scenes: ["Private yacht deck at sunset", "Luxury hotel balcony view", "Grand marble staircase", "Exclusive VIP entrance", "Private estate courtyard"], objects: ["Tossing luxury car keys", "Holding a champagne flute", "Carrying a designer clutch", "Opening a heavy car door", "Walking confidently towards camera"] },
-            fitness: { outfits: ["Full athletic compression set", "Oversized training hoodie set", "Technical windbreaker outfit", "Seamless athletic wear", "Industrial CrossFit gear"], footwear: ["Lifting shoes", "Carbon running trainers", "Muddy trail boots", "Classic gym sneakers", "Boxing boots"], scenes: ["Empty stadium stairs", "Industrial CrossFit box floor", "Misty mountain path", "Urban workout park", "Post-workout locker room"], objects: ["Carrying a heavy kettlebell", "Adjusting a fitness watch", "Holding a rolled yoga mat", "Drinking from a shaker", "Stretching against a wall"] },
-            urban: { outfits: ["Techwear cargo set", "Distressed denim outfit", "Oversized graphic tracksuit", "Puffer jacket & wide jeans", "Streetwear utility vest set"], footwear: ["Limited high-top sneakers", "Platform combat boots", "Retro chunky trainers", "Canvas skater shoes", "Designer urban slides"], scenes: ["Subway platform with motion blur", "Neon-lit alleyway graffiti", "Skatepark concrete bowls", "Busy street market walk", "Underground parking garage"], objects: ["Carrying a skateboard", "Holding a brown paper bag", "Using a vintage camera", "Wearing a backpack", "Walking with an umbrella"] },
-            home: { outfits: ["Full cashmere lounge set", "Silk pajamas full set", "Heavy knit morning robe", "Ribbed knit loungewear", "Linen house set"], footwear: ["Sheepskin slippers", "Knitted wool socks", "Barefoot on wood floor", "Suede home loafers", "Memory foam house mules"], scenes: ["Modern minimalist kitchen", "Living room with soft fire", "Green garden patio", "Morning sun-filled bedroom", "Cozy window nook"], objects: ["Carrying a breakfast tray", "Watering a house plant", "Holding a small pet", "Fixing a pillow", "Opening a balcony door"] }
+            business: { outfits: ["Full pinstripe tailored suit", "Wool overcoat over suit", "Corporate chinos & blazer"], footwear: ["Polished Oxfords", "Suede Chelsea boots", "Leather loafers"], scenes: ["Modernist office lobby", "Rainy financial district", "Rooftop terrace"], objects: ["Walking with a briefcase", "Holding a laptop sleeve", "Leaning on a glass wall"] },
+            luxury: { outfits: ["Full bespoke summer suit", "Elegant evening gown", "Cashmere long coat"], footwear: ["Designer mules", "Gold-buckle loafers", "Bespoke evening boots"], scenes: ["Private yacht deck", "Luxury hotel balcony", "Marble staircase"], objects: ["Tossing car keys", "Holding a designer clutch", "Opening a heavy car door"] },
+            fitness: { outfits: ["Full compression set", "Oversized training hoodie", "Technical windbreaker"], footwear: ["Lifting shoes", "Carbon trainers", "Muddy trail boots"], scenes: ["Empty stadium stairs", "Industrial CrossFit box", "Mountain path"], objects: ["Carrying a kettlebell", "Holding a yoga mat", "Stretching against a wall"] },
+            urban: { outfits: ["Techwear cargo set", "Distressed denim outfit", "Graphic tracksuit"], footwear: ["Limited high-tops", "Platform combat boots", "Retro trainers"], scenes: ["Subway platform", "Skatepark", "Busy street market"], objects: ["Carrying a skateboard", "Wearing a backpack", "Walking with an umbrella"] },
+            home: { outfits: ["Full cashmere lounge set", "Silk pajamas set", "Heavy knit robe"], footwear: ["Sheepskin slippers", "Knitted socks", "Barefoot on wood"], scenes: ["Minimalist kitchen", "Living room with fire", "Morning bedroom"], objects: ["Carrying breakfast tray", "Watering house plant", "Opening a window"] }
         }
     };
 
@@ -97,7 +80,6 @@
         document.getElementById('type-face').classList.toggle('active', type === 'face');
         document.getElementById('type-full').classList.toggle('active', type === 'full');
         document.getElementById('footwear-group').style.display = type === 'full' ? 'block' : 'none';
-        
         const nicheSelect = document.getElementById('niche');
         nicheSelect.innerHTML = Object.keys(DATA[type]).map(n => `<option value="${n}">${n.toUpperCase()}</option>`).join('');
         updateUI();
@@ -122,35 +104,35 @@
         const obj = document.getElementById('object').value;
         const foot = currentShotType === 'full' ? ` and ${document.getElementById('footwear').value}` : '';
         
-        const lockText = currentShotType === 'face' 
-            ? "[CRANIAL DNA LOCK]: Absolute 1:1 match of bone structure, jawline, nose bridge, and orbital area from Ref 0. IMMUTABLE identity."
-            : "[SKELETAL CONSTITUTION LOCK]: Absolute 1:1 match of skeletal proportions, height, shoulder width, and full-body silhouette from Ref 0. IDENTITY IS FIXED.";
+        const transferRef = currentShotType === 'face' 
+            ? "[HEAD DNA TRANSFER]: Use Reference Image 0 as a PRE-PROCESSED, FINAL asset. 0% alteration to facial features, skin markers, or bone structure."
+            : "[ANATOMICAL TRANSFER]: Use Reference Image 0 as the absolute skeletal template. 1:1 match of height, shoulder width, and overall silhouette.";
 
-        const final = `MASTER PRODUCTION PROMPT (V140 - IMMUTABLE IDENTITY):
+        const final = `MASTER PRODUCTION PROMPT (V150 - PURE TRANSFER MODE):
 
-Sloji 1-3 (Fiksno Sidro - NE SPREMINJAJ):
-[IMMUTABLE SOURCE]: Use Reference Image 0 (Ref 0) as the absolute, non-negotiable template for the person.
-${lockText}
-[ZERO-DEVIATION PROTOCOL]: The subject's constitution and features must remain 100% identical to Ref 0, regardless of the environment or clothing.
+Sloji 1-3 (Identiteta - NEDOTAKLJIVO):
+[IMMUTABLE ASSET]: Reference Image 0 is the FINAL processed identity. Do NOT re-process or enhance.
+${transferRef}
+[PIXEL INTEGRITY]: Preserve 1:1 original identity from Ref 0. Identity is isolated from the style change.
 
-Sloji 4-7 (Produkcija & Scena):
-[ENVIRONMENT]: ${sc}. Global lighting must adapt to this scene but respect the subject's anatomy.
-[WARDROBE]: Wearing ${out}${foot}. Focus on realistic fabric physics and lived-in textures.
-[ACTION]: Subject is ${obj}. Ensure precise hand-to-object physics.
+Sloji 4-7 (Produkcija & Wardrobe):
+[WARDROBE OVERLAY]: Subject is now wearing ${out}${foot}. Material physics must be realistic.
+[ENVIRONMENT]: ${sc}. Global lighting must wrap around the subject from Ref 0 without altering their DNA.
+[ACTION/INTERACTION]: Subject is ${obj}. 
 
-Sloji 8-10 (Optika & Realizem):
-Shot on 35mm f/2.8 prime lens. Candid handheld realism. 
-Mandatory: match skin texture, pores, and natural facial asymmetry from Ref 0.
-Subsurface scattering for living skin look.
+Sloji 8-10 (Kamera & Optika):
+Shot on 35mm f/2.8 lens. Subtle cinematic noise. 
+Strictly match skin tone and existing texture from Ref 0. 
+Zero digital retouching on the person.
 
-NEGATIVE PROMPT: different face, changed bone structure, skeletal deviation, different eye color, airbrushed, plastic skin, CGI, 3D render, beauty filter, symmetrical, professional model pose, added moles, different person.`;
+NEGATIVE PROMPT: added moles, added freckles, changed face, face enhancement, skin smoothing, beauty filter, different person, hybrid identity, airbrushed skin, CGI appearance.`;
 
         document.getElementById('out').innerText = final;
     }
 
     function copy() {
         navigator.clipboard.writeText(document.getElementById('out').innerText);
-        alert("IMMUTABLE PROMPT KOPIRAN! 🧬");
+        alert("PRODUCTION PROMPT KOPIRAN! 🚀");
     }
 
     setShotType('face');
