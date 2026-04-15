@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>IDENTITY OS - Character DNA Orchestrator V4.5 PRO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
+        :root { --bg: #020617; --accent: #3b82f6; --panel: #0f172a; --text: #f8fafc; --green: #10b981; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 40px; color: var(--text); margin: 0; min-height: 100vh; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 0; }
+        .wrapper { max-width: 1750px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; position: relative; z-index: 10; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 32px; border: 1px solid rgba(59, 130, 246, 0.4); position: sticky; top: 40px; }
+        h1 { margin: 0 0 10px 0; font-size: 1.8rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; }
+        p.desc { color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px; line-height: 1.5; }
+        textarea { width: 100%; height: 150px; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; color: #fff; font-size: 1rem; margin-bottom: 20px; resize: none; box-sizing: border-box; }
+        .orchestrate-btn { background: var(--accent); color: #fff; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
+        .orchestrate-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
+        .output-box { background: #000; color: #93c5fd; padding: 40px; border-radius: 28px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 90vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; }
+        .btn-home { background: rgba(100,116,139,0.1); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 15px; transition: 0.3s; }
+        .btn-home:hover { background: rgba(100,116,139,0.25); color: #f1f5f9; }
+        #toast { visibility: hidden; min-width: 250px; background-color: var(--green); color: #000; text-align: center; border-radius: 12px; padding: 16px; position: fixed; z-index: 1000; left: 50%; transform: translateX(-50%); top: 30px; font-weight: 900; text-transform: uppercase; }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1s; }
+        @keyframes fadein { from {top: 0; opacity: 0;} to {top: 30px; opacity: 1;} }
+        @keyframes fadeout { from {top: 30px; opacity: 1;} to {top: 30px; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+<div id="toast">DNA Production Package Copied! 🧬</div>
+
+<div class="wrapper">
+    <div class="panel">
+        <h1>🧬 DNA Orchestrator</h1>
+        <p class="desc">Enter your new character vision. The system will automatically deconstruct the identity and prepare the full 10-layer production chain from extraction to final polish.</p>
+        
+        <textarea id="vision" placeholder="E.g.: Female, late 20s, sharp bone structure, blonde hair in messy bun, pale skin with visible veins, piercing gaze..."></textarea>
+        
+        <button class="orchestrate-btn" onclick="generateFullDNA()">🚀 ORCHESTRATE IDENTITY</button>
+        <button class="btn-home" onclick="window.location.href='index.html'">🏠 DASHBOARD</button>
+    </div>
+
+    <div id="out" class="output-box">// Awaiting casting instructions for new character...</div>
+</div>
+
+<script>
+    function generateFullDNA() {
+        const v = document.getElementById('vision').value;
+        if (!v) return;
+
+        let res = `CHARACTER DNA MASTER SCRIPT - IDENTITY OS V4.5\n`;
+        res += `CORE IDENTITY VISION: ${v.toUpperCase()}\n`;
+        res += `===========================================================\n\n`;
+
+        res += `STEP 1: IDENTITY STRIP (DNA EXTRACTION PROMPT)\n`;
+        res += `[PROMPT]: STEP 1 — IDENTITY STRIP (V10.5 FINAL PRO):\n`;
+        res += `[TASK]: Direct deconstruction of identity: ${v}.\n`;
+        res += `[DNA LOCK]: Absolute 1:1 match of skeletal structure, jawline, and orbital area.\n`;
+        res += `[IMMUTABLE SKIN]: Do NOT add moles, freckles, or spots. 0% added pigmentation.\n`;
+        res += `[OUTPUT]: Front-facing waist-up diagnostic headshot in grey studio cyclorama.\n`;
+        res += `[LAYER 5]: 28mm/35mm prime lens, digital sensor noise, organic shake.\n`;
+        res += `[LAYER 9-10]: Mandatory skin texture, visible pores, natural imperfections.\n`;
+        res += `-----------------------------------------------------------\n\n`;
+
+        res += `STEP 2: MASTER MATCH (TECHNICAL DNA POLISH PROMPT)\n`;
+        res += `[PROMPT]: STEP 2 — AI DNA MATCH & MASTER POLISH (V10.5):\n`;
+        res += `[INPUT]: Cleaned vivid diagnostic base (Ref 0).\n`;
+        res += `[TASK]: Polish and seal identity for: ${v}.\n\n`;
+        res += `[LAYER 1-4: CONTENT]:\n`;
+        res += `- hyper-realistic, raw, candid photograph.\n`;
+        res += `- natural proportions, lived-in scene.\n\n`;
+        res += `[LAYER 5: CAMERA]:\n`;
+        res += `- 35mm prime lens, chromatic aberration, digital noise.\n\n`;
+        res += `[LAYER 6-8: TECHNICAL]:\n`;
+        res += `- On-camera flash, harsh shadows, dirty cinematic grading.\n`;
+        res += `- heavy film grain, vignette, atmospheric dust.\n\n`;
+        res += `[LAYER 9-10: REALISM]:\n`;
+        res += `- Mandatory skin texture, visible pores, no retouching.\n`;
+        res += `- intimate, private moment, zero-drift identity seal.\n\n`;
+        res += `[NEGATIVE PROMPT]: perfect skin, plastic skin, airbrushed, studio lighting, CGI, beauty filter, added moles, added freckles.\n`;
+        res += `===========================================================\n`;
+
+        document.getElementById('out').innerText = res;
+        navigator.clipboard.writeText(res);
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1500);
+    }
+</script>
+</body>
+</html>
