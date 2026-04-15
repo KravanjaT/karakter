@@ -17,6 +17,7 @@
             --accent-geo: #7c3aed;     /* Violet */
             --accent-delivery: #eab308; /* Gold */
             --accent-video: #f59e0b;    /* Amber */
+            --accent-director: #7c3aed; /* Violet Director */
             --text-main: #f8fafc;
             --text-dim: #64748b;
             --border: rgba(255, 255, 255, 0.08);
@@ -205,6 +206,10 @@
         .video-card:hover { border-color: var(--accent-video); }
         .video-card:hover .phase-tag { color: var(--accent-video); border-color: var(--accent-video); }
 
+        .director-card:hover { border-color: var(--accent-director); box-shadow: 0 30px 60px -15px rgba(124,58,237,0.3); }
+        .director-card:hover .phase-tag { color: var(--accent-director); border-color: var(--accent-director); }
+        .video-card:hover .phase-tag { color: var(--accent-video); border-color: var(--accent-video); }
+
         footer {
             margin-top: 80px;
             text-align: center;
@@ -310,6 +315,22 @@
             <p>Integration & final delivery</p>
             <span class="phase-tag">Phase 5 // Delivery</span>
         </a>
+    </div>
+
+    <div class="section-label" style="margin-top: 40px;">04 // AI Director (Unified Chain)</div>
+    <div class="grid grid-2">
+        <a href="ai_director.html" class="card director-card" style="background: rgba(124,58,237,0.06); border-color: rgba(124,58,237,0.25);">
+            <div class="icon">🎬</div>
+            <h3>AI Director</h3>
+            <p>Write your vision — full chain auto-generated in one shot</p>
+            <span class="phase-tag">Master // Unified Chain</span>
+        </a>
+        <div class="card" style="border-color: rgba(255,255,255,0.04); opacity: 0.4; cursor: default;">
+            <div class="icon">⚡</div>
+            <h3>Auto Pipeline</h3>
+            <p>Automated batch production — coming soon</p>
+            <span class="phase-tag">Future // Batch Mode</span>
+        </div>
     </div>
 
     <footer>
