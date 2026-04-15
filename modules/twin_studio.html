@@ -6,7 +6,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
 
-        :root { --bg: #020617; --accent: #22d3ee; --strip: #06b6d4; --match: #a855f7; --home: #64748b; }
+        :root { --bg: #020617; --accent: #22d3ee; --strip: #06b6d4; --match: #a855f7; --refine: #f59e0b; --home: #64748b; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -152,6 +152,14 @@
         }
         .btn-match:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(168, 85, 247, 0.35); }
 
+        .btn-refine {
+            background: var(--refine);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+        }
+        .btn-refine:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35); }
+        .badge-refine { background: var(--refine); color: #000; }
+
         .btn-home {
             background: rgba(100, 116, 139, 0.2);
             color: #94a3b8;
@@ -185,6 +193,7 @@
 
         .highlight-strip { color: #06b6d4; font-weight: 800; }
         .highlight-match { color: #a855f7; font-weight: 800; }
+        .highlight-refine { color: #f59e0b; font-weight: 800; }
         .highlight-lock  { color: #10b981; }
         .highlight-neg   { color: #f87171; }
     </style>
@@ -206,12 +215,12 @@
             </div>
             <div class="step-tags">
                 <span class="tag remove">✕ Ozadje</span>
-                <span class="tag remove">✕ Očala / Kape</span>
-                <span class="tag remove">✕ Nakit</span>
+                <span class="tag remove">✕ Oblačila</span>
+                <span class="tag remove">✕ Dodatki</span>
                 <span class="tag remove">✕ Sence</span>
                 <span class="tag keep">✓ Obraz 100%</span>
-                <span class="tag keep">✓ Lasje</span>
-                <span class="tag keep">✓ Kožni ton</span>
+                <span class="tag keep">✓ Mimika zaklenjena</span>
+                <span class="tag keep">✓ Lasje / Kožni ton</span>
             </div>
             <button class="btn btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT</button>
         </div>
@@ -250,42 +259,51 @@
 
 Sloj 01-04 (Vsebina):
 [INPUT]: Real-life raw photograph (Ref 0).
-[TASK]: Extract the subject. Remove all non-essential elements.
+[TASK]: Place subject into clean neutral studio. Remove all non-essential elements.
 
 [REMOVAL — MANDATORY]:
-- Background → replace with solid neutral grey (#808080)
+- Background → replace with solid neutral grey cyclorama (#808080)
 - All accessories → glasses, sunglasses, hats, caps, scarves, jewelry, bags
-- Environmental shadows → neutralize to flat even light
-- Complex clothing → simplify to plain neutral crew-neck (white or grey)
+- Environmental shadows and colored wall light → neutralize completely
+- Clothing → replace with plain off-white heavy cotton crew-neck t-shirt
+
+[EXPRESSION & MIMICRY LOCK — CRITICAL]:
+- Facial expression: IDENTICAL to Ref 0 — do not relax, do not smile, do not alter
+- Mouth position: locked — same lip tension and closure as original
+- Eye direction: locked — same gaze direction and intensity as original
+- Eyebrow position: locked — same furrow and height as original
+- Head angle and tilt: IDENTICAL to Ref 0, zero deviation
 
 [PRESERVE — DO NOT TOUCH]:
 - Facial bone structure (100% locked — zero changes)
 - Eye shape, iris color, pupil position
 - Nose bridge width and tip
 - Lip shape and thickness
-- Hairline position and natural hair texture
+- Hairline position, hair parting, and natural hair texture
 - Skin tone, undertone, natural skin marks (moles, freckles — permanent only)
+- Stubble pattern and density
 
 Sloj 05 (Kamera):
-Shot on 85mm prime lens, tripod-mounted, eye-level neutral angle.
-No tilt, no wide-angle distortion.
+Shot on 85mm prime lens, tripod-mounted, strict eye-level neutral angle.
+No tilt, no wide-angle distortion. Waist-up medium shot.
 
 Sloj 06-08 (Svetloba):
-Butterfly lighting setup. Flat, even, shadowless fill.
-No dramatic shadows. No colored gels. Pure neutral white light.
-Background: clean solid grey cyclorama.
+Butterfly lighting setup. Flat, even, shadowless fill light from front.
+No dramatic shadows. No colored gels. Pure neutral white studio light.
+Background: clean solid grey cyclorama, no vignette, no gradient.
 
 Sloj 09 (Realizem):
 Natural skin texture preserved from Ref 0.
 No retouching. No smoothing. No added imperfections.
-Match exact skin marks from original.
+Match exact permanent skin marks from original.
+Visible pores, natural skin sheen.
 
 Sloj 10 (Output):
-Front-facing or slight 3/4 view. Neutral expression.
+Strict front-facing view. Neutral serious expression — identical to Ref 0.
 Waist-up medium shot. Clean air, absolute clarity.
-This is the RAW BASE for Step 2 processing.
+This is the RAW BASE for Step 2 (AI Match) processing.
 
-NEGATIVE PROMPT: sunglasses, hat, cap, jewelry, earrings, necklace, rings, watch, complex background, dramatic shadows, colored shadows, heavy makeup, beauty filter, skin smoothing, airbrushed.`
+NEGATIVE PROMPT: smiling, open mouth, relaxed expression, changed eyebrows, different gaze, tilted head, sunglasses, hat, cap, jewelry, complex background, beige wall, colored background, dramatic shadows, sports clothing, jacket, beauty filter, skin smoothing, airbrushed.`
         },
         match: {
             label: "STEP 2 — AI MATCH PROMPT",
@@ -347,14 +365,15 @@ NEGATIVE PROMPT: changed bone structure, different eye color, different hair, ai
         let rendered = p.text
             .replace(/(STEP \d+ —[^\n]+)/g, `<span class="${colorClass}">$1</span>`)
             .replace(/(Sloj \d+[^\n]*:)/g, '<span style="color:#f8fafc; font-weight:800;">$1</span>')
-            .replace(/(\[REMOVAL[^\]]*\]|\[PRESERVE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[AI-NATIVE[^\]]*\]|\[INPUT\]|\[TASK\]|\[OUTPUT\])/g, '<span class="highlight-lock">$1</span>')
+            .replace(/(\[REMOVAL[^\]]*\]|\[PRESERVE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[AI-NATIVE[^\]]*\]|\[EXPRESSION[^\]]*\]|\[INPUT\]|\[TASK\]|\[OUTPUT\])/g, '<span class="highlight-lock">$1</span>')
             .replace(/(NEGATIVE PROMPT:[\s\S]*)/g, '<span class="highlight-neg">$1</span>');
 
         document.getElementById('out').innerHTML =
             `<div style="font-size:0.65rem; letter-spacing:2px; color:#475569; margin-bottom:20px; text-transform:uppercase;">${p.label}</div>` + rendered;
 
         navigator.clipboard.writeText(p.text);
-        alert(type === 'strip' ? "STRIP PROMPT KOPIRAN! ✂️" : "AI MATCH PROMPT KOPIRAN! 🔒");
+        const alerts = { strip: "STRIP PROMPT KOPIRAN! ✂️", match: "AI MATCH PROMPT KOPIRAN! 🔒" };
+        alert(alerts[type]);
     }
 </script>
 </body>
