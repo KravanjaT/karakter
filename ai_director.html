@@ -2,26 +2,19 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Unified Director V3.5</title>
+    <title>IDENTITY OS - AI Director V3.7 PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
-        :root { --bg: #020617; --accent: #7c3aed; --panel: #0f172a; --text: #f8fafc; --green: #10b981; --blue: #3b82f6; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 40px; color: var(--text); margin: 0; min-height: 100vh; }
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 0; }
-        .wrapper { position: relative; z-index: 10; }
+        :root { --bg: #020617; --accent: #7c3aed; --panel: #0f172a; --text: #f8fafc; --green: #10b981; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 40px; color: var(--text); margin: 0; }
         .wrapper { max-width: 1750px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
-        .panel { background: var(--panel); padding: 40px; border-radius: 32px; border: 1px solid rgba(124, 58, 237, 0.4); position: sticky; top: 40px; height: fit-content; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 32px; border: 1px solid rgba(124, 58, 237, 0.4); position: sticky; top: 40px; }
         h1 { margin: 0 0 10px 0; font-size: 1.8rem; font-weight: 900; color: var(--accent); text-transform: uppercase; }
         p.desc { color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px; line-height: 1.5; }
         textarea { width: 100%; height: 120px; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 20px; color: #fff; font-size: 1rem; margin-bottom: 20px; resize: none; box-sizing: border-box; }
         .director-btn { background: var(--accent); color: #fff; border: none; padding: 20px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; }
         .output-box { background: #000; color: #a78bfa; padding: 40px; border-radius: 28px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; height: 90vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; }
-        .btn-home { background: rgba(100, 116, 139, 0.1); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 15px; transition: 0.3s; }
-        .btn-home:hover { background: rgba(100, 116, 139, 0.25); color: #f1f5f9; }
-        
-        .layer-tag { color: var(--green); font-weight: 800; }
-        .dna-tag { color: var(--blue); font-weight: 800; }
-
+        .btn-home { background: rgba(100, 116, 139, 0.1); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 15px; }
         #toast { visibility: hidden; min-width: 250px; background-color: var(--green); color: #000; text-align: center; border-radius: 12px; padding: 16px; position: fixed; z-index: 1000; left: 50%; transform: translateX(-50%); top: 30px; font-weight: 900; text-transform: uppercase; }
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1s; }
         @keyframes fadein { from {top: 0; opacity: 0;} to {top: 30px; opacity: 1;} }
@@ -30,28 +23,28 @@
 </head>
 <body>
 
-<div id="toast">Production package copied! 🎬</div>
+<div id="toast">10-Layer Script Copied! 🎬</div>
 
 <div class="wrapper">
     <div class="panel">
-        <h1>🎬 Unified Director</h1>
-        <p class="desc">Enter your director's vision. The system will automatically chain DNA lock, styling and video dynamics into one unified package.</p>
+        <h1>🎬 AI Unified Director</h1>
+        <p class="desc">Vnesi vizijo. Sistem bo generiral popolnoma dekonstruiran 10-slojni produkcijski paket v tehnični angleščini.</p>
         
-        <textarea id="vision" placeholder="E.g.: Character in Milan, sunny, wearing a luxury white coat, holding a coffee cup, subtle smile..."></textarea>
+        <textarea id="vision" placeholder="Npr.: Karakter v Milanu, nosi usnjeno jakno, sončno..."></textarea>
         
-        <button class="director-btn" onclick="generateUnifiedPackage()">🚀 GENERATE FULL CHAIN</button>
+        <button class="director-btn" onclick="generate10LayerPackage()">🚀 GENERIRAJ 10-SLOJNI PAKET</button>
         <button class="btn-home" onclick="window.location.href='index.html'">🏠 DASHBOARD</button>
     </div>
 
-    <div id="out" class="output-box">// Awaiting director instructions for full chain...</div>
+    <div id="out" class="output-box">// Čakam na režiserska navodila...</div>
 </div>
 
 <script>
-    function generateUnifiedPackage() {
+    function generate10LayerPackage() {
         const v = document.getElementById('vision').value;
         if (!v) return;
 
-        let res = `MASTER PRODUCTION PACKAGE - IDENTITY OS V3.5\n`;
+        let res = `MASTER PRODUCTION PACKAGE - IDENTITY OS V3.7 (10-LAYER DEEP SYNC)\n`;
         res += `CORE ANCHOR: Reference Image 0 (Master DNA)\n`;
         res += `VISION: ${v.toUpperCase()}\n`;
         res += `===========================================================\n\n`;
@@ -61,17 +54,28 @@
         res += `Precise deconstruction of Ref 0. Place in grey cyclorama. 1:1 DNA Lock. 0% added moles/freckles. Vivid color mode.\n`;
         res += `-----------------------------------------------------------\n\n`;
 
-        res += `PHASE 2: PRODUCTION STILLS (Styling & Scene)\n`;
-        res += `[PROMPT]: Master Asset wearing ${v}. [10-LAYER SYSTEM]: On-camera flash, 35mm lens, handheld shake, heavy film grain, visible pores [cite: 2026-04-13].\n`;
+        res += `PHASE 2: PRODUCTION STILLS (The 10-Layer Execution)\n`;
+        res += `[PROMPT]: High-fidelity photograph of subject from Ref 0. ${v}.\n\n`;
+        res += `[LAYER 1-4: CONTENT & AESTHETICS]:\n`;
+        res += `- Style: hyper-realistic, raw, candid photograph [cite: 2026-04-13].\n`;
+        res += `- Subject: natural proportions, spontaneous action [cite: 2026-04-13].\n`;
+        res += `- Scene: lived-in, non-posed environment [cite: 2026-04-13].\n\n`;
+        res += `[LAYER 5: CAMERA OPTICS]:\n`;
+        res += `- Lens: 28mm/35mm prime, organic handheld shake, motion blur, digital noise, chromatic aberration [cite: 2026-04-13].\n\n`;
+        res += `[LAYER 6-8: TECHNICAL & ATMOSPHERE]:\n`;
+        res += `- Light: On-camera flash, harsh cinematic shadows [cite: 2026-04-13].\n`;
+        res += `- Atmosphere: dust particles, smoke, condensation [cite: 2026-04-13].\n`;
+        res += `- Color: dirty cinematic grading, heavy film grain, vignette [cite: 2026-04-13].\n\n`;
+        res += `[LAYER 9-10: RAW REALISM]:\n`;
+        res += `- Texture: Mandatory skin texture: visible pores, natural imperfections, no retouching [cite: 2026-04-13].\n`;
+        res += `- Vibe: spontaneous, intimate, private moment [cite: 2026-04-13].\n\n`;
+        res += `[NEGATIVE PROMPT]: perfect skin, plastic skin, airbrushed, studio lighting, clean background, symmetrical, 3D render, CGI, cartoon, doll-like, professional model pose, beauty filter [cite: 2026-04-13].\n`;
         res += `-----------------------------------------------------------\n\n`;
 
-        res += `PHASE 3: MOTION DYNAMICS (VEO Engine)\n`;
-        res += `[VEO PROMPT]: ${v}. [TEMPORAL ANCHOR]: Use Ref 0. [MOTION]: Natural breathing, eye engagement. [PHYSICS]: 1:1 material interaction with objects.\n`;
-        res += `-----------------------------------------------------------\n\n`;
-
-        res += `PHASE 4: TECHNICAL REALISM OVERLAY\n`;
-        res += `[LAYERS]: 28mm/35mm lens, motion blur, chromatic aberration, sensor noise, harsh shadows.\n`;
-        res += `[IMMUTABLE]: No identity drift. No skin smoothing. Full texture persistence.\n`;
+        res += `PHASE 3: VIDEO MOTION (VEO Engine)\n`;
+        res += `[VEO PROMPT]: Cinematic video. Character from Ref 0. Action: ${v}.\n`;
+        res += `[TEMPORAL ANCHOR]: Use Ref 0 as absolute identity. Persistent skin DNA.\n`;
+        res += `[LAYERS]: Apply all 10 production layers as temporal filters [cite: 2026-04-13].\n`;
         res += `===========================================================\n`;
 
         document.getElementById('out').innerText = res;
