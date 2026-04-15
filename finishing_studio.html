@@ -136,18 +136,18 @@
 
         const final = `MASTER FINISHING PROMPT (V1.1 - IDENTITY LOCK):
 
-Sloji 1-3 (Identiteta & DNA - NE SPREMINJAJ):
+Layers 1-3 (Identity & DNA - DO NOT ALTER):
 [IMMUTABLE BASE]: Use Reference Image 0 as the absolute template. 
 [IDENTITY LOCK]: Maintain 1:1 facial bone structure, jawline, and natural asymmetry from Ref 0.
 [SKIN DNA PRESERVATION]: Strictly preserve all original permanent skin markers (moles, beauty marks) from Ref 0. 
 [ANTI-PIGMENTATION]: Do NOT generate new moles, freckles, or skin spots. 0% added pigmentation.
 
-Sloji 4-7 (Digitalna Retuša):
+Layers 4-7 (Digital Retouching):
 [HAIR MODIFICATION]: Hair color is ${color}. Hair style is ${style}. Ensure perfect integration with original hairline. High-fidelity strand detail.
 [JEWELRY ADDITION]: Add ${jewelry}. Realistic metal physics, light reflections, and accurate placement.
 [ACCESSORIES]: Add ${acc}. Match fit to Ref 0 facial geometry.
 
-Sloji 8-10 (Optika & Realizem):
+Layers 8-10 (Optics & Realism):
 Shot on 85mm macro lens. Razor-sharp focus on additions. 
 [SKIN TEXTURE]: Visible pores and micro-hairs ONLY. Zero digital retouching.
 Professional studio softbox lighting.
@@ -167,14 +167,13 @@ NEGATIVE PROMPT: added moles, added freckles, new skin spots, changed face, chan
 
 function btnFeedback(btn) {
     const orig = btn.innerHTML;
-    const origBg = btn.style.background || '';
-    btn.innerHTML = '✅ KOPIRANO!';
+    btn.innerHTML = '✅ COPIED!';
     btn.style.background = '#10b981';
     btn.style.color = '#000';
     btn.disabled = true;
     setTimeout(() => {
         btn.innerHTML = orig;
-        btn.style.background = origBg;
+        btn.style.background = '';
         btn.style.color = '';
         btn.disabled = false;
     }, 1500);

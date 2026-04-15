@@ -110,17 +110,17 @@
 
         const final = `MASTER PRODUCTION PROMPT (V150 - PURE TRANSFER MODE):
 
-Sloji 1-3 (Identiteta - NEDOTAKLJIVO):
+Layers 1-3 (Identity - IMMUTABLE):
 [IMMUTABLE ASSET]: Reference Image 0 is the FINAL processed identity. Do NOT re-process or enhance.
 ${transferRef}
 [PIXEL INTEGRITY]: Preserve 1:1 original identity from Ref 0. Identity is isolated from the style change.
 
-Sloji 4-7 (Produkcija & Wardrobe):
+Layers 4-7 (Production & Wardrobe):
 [WARDROBE OVERLAY]: Subject is now wearing ${out}${foot}. Material physics must be realistic.
 [ENVIRONMENT]: ${sc}. Global lighting must wrap around the subject from Ref 0 without altering their DNA.
 [ACTION/INTERACTION]: Subject is ${obj}. 
 
-Sloji 8-10 (Kamera & Optika):
+Layers 8-10 (Camera & Optics):
 Shot on 35mm f/2.8 lens. Subtle cinematic noise. 
 Strictly match skin tone and existing texture from Ref 0. 
 Zero digital retouching on the person.
@@ -139,14 +139,13 @@ NEGATIVE PROMPT: added moles, added freckles, changed face, face enhancement, sk
 
 function btnFeedback(btn) {
     const orig = btn.innerHTML;
-    const origBg = btn.style.background || '';
-    btn.innerHTML = '✅ KOPIRANO!';
+    btn.innerHTML = '✅ COPIED!';
     btn.style.background = '#10b981';
     btn.style.color = '#000';
     btn.disabled = true;
     setTimeout(() => {
         btn.innerHTML = orig;
-        btn.style.background = origBg;
+        btn.style.background = '';
         btn.style.color = '';
         btn.disabled = false;
     }, 1500);

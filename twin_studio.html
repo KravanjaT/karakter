@@ -243,7 +243,7 @@
                 label: "STEP 1 — FACE IDENTITY STRIP (V10.5 FINAL PRO)",
                 text: `STEP 1 — IDENTITY STRIP (V10.5 FINAL PRO):
 
-Sloji 01-04 (Vsebina & DNA Identiteta):
+Layers 01-04 (Content & DNA Identity):
 [INPUT]: Real-life raw photograph (Ref 0).
 [TASK]: Precise deconstruction of facial identity. Place subject into neutral studio grey cyclorama.
 [DNA LOCK]: 1:1 match of bone structure, jawline, and orbital area from Ref 0.
@@ -251,16 +251,16 @@ Sloji 01-04 (Vsebina & DNA Identiteta):
 [REMOVAL]: Remove ALL glasses, jewelry, and hats. Clothing: white cotton tee.
 [VIVID COLOR]: Maintain 100% natural skin tones. No grayscale, no desaturation.
 
-Sloj 05 (Kamera & Optika): 
+Layer 05 (Camera & Optics): 
 35mm/85mm prime lens hybrid perspective. Handheld shake, digital noise, subtle chromatic aberration.
 
-Sloji 06-08 (Tehnični & Svetloba):
+Layers 06-08 (Technical & Lighting):
 On-camera flash, harsh cinematic shadows. Heavy film grain, vignette, sensor noise. 
 
-Sloji 09-10 (Realizem & Tekstura):
+Layers 09-10 (Realism & Texture):
 Visible pores, natural imperfections, no retouching. Lived-in, spontaneous, private moment look.
 
-Sloj 10 (Output):
+Layer 10 (Output):
 Clean, vivid color front-facing diagnostic headshot.
 
 NEGATIVE PROMPT: black and white, grayscale, desaturated, added moles, added freckles, skin spots, pigment marks, glasses, eyewear, smiling, open mouth, beauty filter, airbrushed.`
@@ -269,19 +269,19 @@ NEGATIVE PROMPT: black and white, grayscale, desaturated, added moles, added fre
                 label: "STEP 2 — AI MATCH / MASTER POLISH (V10.5)",
                 text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V10.5):
 
-Sloj 01-04 (Identiteta & DNA Sidro — NE SPREMINJAJ OBRAZA):
+Layer 01-04 (Identity & DNA Anchor — DO NOT ALTER FACE):
 [INPUT]: Cleaned vivid base image from Step 1 (Ref 0).
 [IMMUTABLE SKIN MAP — ABSOLUTE]: Do NOT generate or add new moles, freckles, pigment spots, or skin marks. 
 [SKIN PROTOCOL]: Focus 100% on subsurface light interaction and pore structure. 0% focus on adding pigmentation. 
 [IDENTITY LOCK]: Absolute 1:1 match of facial geometry, orbital bone structure, and asymmetry from Ref 0.
 
-Sloj 05 (Kamera):
+Layer 05 (Camera):
 85mm portrait lens, f/4.0. Cinematic sensor noise ISO 100.
 
-Sloji 06-08 (Tehnični):
+Layers 06-08 (Technical):
 Professional studio softbox lighting. [AI-NATIVE UPGRADE]: 8K skin luster, healthy living sheen, complex catchlights.
 
-Sloji 09-10 (Realizem):
+Layers 09-10 (Realism):
 Zero digital retouching. Preserve 1:1 original skin surface from Ref 0. 
 
 NEGATIVE PROMPT: black and white, grayscale, added moles, added freckles, skin spots, pigment marks, changed face, plastic skin, CGI, 3D render, beauty filter, airbrushed.`
@@ -292,15 +292,15 @@ NEGATIVE PROMPT: black and white, grayscale, added moles, added freckles, skin s
                 label: "STEP 1B — FULL BODY ANATOMICAL STRIP (V10.5)",
                 text: `STEP 1B — FULL BODY ANATOMICAL LOCK (V10.5):
 
-Sloji 01-04 (Anatomija & Proporci):
+Layers 01-04 (Anatomy & Proportions):
 [INPUT]: Full-body photo (Ref 0).
 [TASK]: Extract full anatomical DNA. Place in white studio.
 [IMMUTABLE SKIN]: No new moles or freckles on body or face. 100% color accuracy.
 [ANATOMY LOCK]: 1:1 match of height, shoulder width, and skeletal silhouette from Ref 0.
 [REMOVAL]: Replace clothes with plain white tee and dark trousers. Remove glasses.
 
-Sloj 05 (Kamera): 35mm prime lens, 5 meters distance. Zero wide-angle distortion.
-Sloji 06-10 (Tehnični): Flat studio lighting. 0% added skin blemishes. Lived-in stance.
+Layer 05 (Camera): 35mm prime lens, 5 meters distance. Zero wide-angle distortion.
+Layers 06-10 (Technical): Flat studio lighting. 0% added skin blemishes. Lived-in stance.
 
 NEGATIVE PROMPT: black and white, grayscale, desaturated, added moles, added freckles, skin spots, glasses, beauty filter.`
             },
@@ -308,12 +308,12 @@ NEGATIVE PROMPT: black and white, grayscale, desaturated, added moles, added fre
                 label: "STEP 2B — SKELETAL DNA MATCH (V10.5)",
                 text: `STEP 2B — SKELETAL DNA MATCH / CONSTITUTION LOCK (V10.5):
 
-Sloj 01-04 (Skeletna Identiteta & Poliranje):
+Layer 01-04 (Skeletal Identity & Polish):
 [INPUT]: Blueprint from Step 1B (Ref 0).
 [SKELETAL LOCK]: Absolute lock on height, shoulder width, and silhouette from Ref 0.
 [IMMUTABLE PIGMENT LOCK]: Do NOT add new moles, freckles, or spots.
 
-Sloj 05-10 (Realizem):
+Layers 05-10 (Realism):
 35mm cinematic professional studio setup. 
 [SKIN]: 8K pore detail, subsurface scattering for living skin. Zero retouching.
 [CLOTHING]: Realistic heavy cotton texture.
@@ -348,14 +348,13 @@ NEGATIVE PROMPT: added moles, added freckles, skin spots, pigment marks, muscle 
 
 function btnFeedback(btn) {
     const orig = btn.innerHTML;
-    const origBg = btn.style.background || '';
-    btn.innerHTML = '✅ KOPIRANO!';
+    btn.innerHTML = '✅ COPIED!';
     btn.style.background = '#10b981';
     btn.style.color = '#000';
     btn.disabled = true;
     setTimeout(() => {
         btn.innerHTML = orig;
-        btn.style.background = origBg;
+        btn.style.background = '';
         btn.style.color = '';
         btn.disabled = false;
     }, 1500);

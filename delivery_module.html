@@ -158,30 +158,24 @@
         let outfitPart = out.includes("ORIGINAL") ? "AS SEEN IN REFERENCE IMAGE 0" : out;
         let footwearPart = foot.includes("ORIGINAL") ? "AS SEEN IN REFERENCE IMAGE 0" : foot;
 
-        const finalPrompt = `MASTER PRODUCTION PROMPT (V141 - HARD FACE LOCK):
+        const finalPrompt = `MASTER PRODUCTION PROMPT (V140 - DOUBLE LOCK): [cite: 59, 183]
 
-SLOJI 01-03 (IDENTITETA — ABSOLUTNO NEDOTAKLJIVO):
-[HARD FACE LOCK]: Reference Image 0 is the ONLY permitted face. Do NOT reinterpret, enhance, or alter any facial feature.
-[BONE STRUCTURE LOCK]: 1:1 match of jawline width, nose shape, nose bridge width, cheekbone structure, and orbital depth from Ref 0. Zero deviation.
-[NOSE LOCK]: Preserve EXACT nose shape from Ref 0 — do NOT narrow, refine, or slim the nose. Copy it pixel-for-pixel.
-[EYE LOCK]: Preserve exact eye color, eye shape, and under-eye shadows from Ref 0.
-[SKIN LOCK]: Do NOT smooth, slim, or beautify the face. Preserve all natural skin texture and asymmetry from Ref 0.
-[IMAGE 1 LOCK]: Subject is holding the EXACT product/artwork from reference image 1. Zero changes to colors, text, or patterns.
-
-SLOJ 04 (PRODUKCIJA):
+LAYERS 01-04 (Content & Identity): Ultra-photorealistic raw waist-up portrait. [cite: 67, 73]
+[IMAGE 0 LOCK]: Subject must exactly match the facial DNA, eye color, and hair from reference image 0. [cite: 190, 228]
+[IMAGE 1 LOCK]: Subject is holding the EXACT product/artwork from reference image 1. Zero changes to colors or patterns.
 [ACTION]: Subject is ${act}. 
-[WARDROBE]: Wearing ${outfitPart} and ${footwearPart}.
-[SCENE]: Located ${scenePart}.
+[WARDROBE]: Wearing ${outfitPart} and ${footwearPart}. [cite: 88, 234]
+[SCENE]: Located ${scenePart}. [cite: 82, 231]
 
-SLOJ 05 (KAMERA): Shot on 28mm wide-angle lens, handheld shake, motion blur, digital noise for raw analog realism.
+LAYER 05 (CAMERA): Shot on 28mm wide-angle lens, handheld shake, motion blur, digital noise for raw analog realism. [cite: 95, 237, 157]
 
-SLOJ 06-08 (TEHNIČNI): Lighting matched to ${scenePart}. Direct on-camera flash, harsh shadows. Atmosphere: visible dust particles. Dirty cinematic grading, heavy film grain, vignette.
+LAYERS 06-08 (TECHNICAL): Lighting matched to ${scenePart}. Direct on-camera flash, harsh shadows. [cite: 102, 240] Atmosphere: visible dust particles caught in the flash beam. [cite: 108, 243] Dirty cinematic grading, heavy film grain, vignette. [cite: 114, 248]
 
-SLOJ 09 (REALIZEM): Mandatory skin texture: visible pores, natural skin sheen from Ref 0. PROHIBIT any new moles or freckles. No plastic skin, no CGI, zero digital retouching.
+LAYER 09 (REALISM): Mandatory skin texture: visible pores, natural skin sheen matching image 0 DNA. [cite: 137, 139] STRICTLY PROHIBIT any new moles or freckles not present in Ref 0. [cite: 147] Match ONLY the existing skin marks and textures visible in image 0 identity. [cite: 250] No plastic skin, no CGI, zero digital retouching. [cite: 120, 121]
 
-SLOJ 10 (VZDUŠJE): Spontaneous, raw private moment, unposed production shot.
+LAYER 10 (ATMOSPHERE): Spontaneous, raw private moment, unposed production shot. [cite: 127, 253]
 
-NEGATIVE PROMPT: slimmed face, narrowed nose, refined nose, beautified face, thinner jawline, perfect skin, airbrushed, CGI, 3D render, cartoon, doll-like, beauty filter, changed face, different person, new moles, extra freckles.`;
+NEGATIVE PROMPT: perfect skin, airbrushed, CGI, soft studio lighting, clean background, 3D render, cartoon, doll-like, beauty filter, different heritage, new moles, extra freckles. [cite: 147, 257]`;
 
         document.getElementById('out').innerText = finalPrompt;
     }
