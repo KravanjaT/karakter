@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Universa - Absolute Perfection V90</title>
+    <style>
+        :root { --primary: #0f172a; --accent: #7c3aed; --bg: #f8fafc; --phase3: #ec4899; --home: #64748b; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
+        .wrapper { max-width: 1700px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; }
+        .panel { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; height: fit-content; }
+        
+        .header { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #f1f5f9; }
+        .badge { background: #000; color: #fff; padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { margin: 10px 0; font-size: 1.4rem; color: var(--primary); font-weight: 900; }
+
+        h2 { font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin: 25px 0 12px 0; border-left: 4px solid var(--accent); padding-left: 10px; }
+        .group { margin-bottom: 18px; }
+        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 6px; }
+        select { width: 100%; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 12px; background: #fff; font-size: 0.9rem; cursor: pointer; }
+        
+        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; height: 1000px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 20px; }
+        
+        .btn-copy { background: var(--accent); color: white; border: none; padding: 20px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 10px; transition: 0.3s; box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2); text-transform: uppercase; }
+        .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3); }
+        
+        /* NOVI GUMBI */
+        .btn-phase3 { background: var(--phase3); color: white; border: none; padding: 20px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; transition: 0.3s; box-shadow: 0 10px 20px rgba(236, 72, 153, 0.2); text-transform: uppercase; }
+        .btn-phase3:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(236, 72, 153, 0.3); }
+
+        .btn-home { background: var(--home); color: white; border: none; padding: 18px; width: 100%; border-radius: 14px; cursor: pointer; font-size: 1.1rem; font-weight: 800; margin-top: 12px; transition: 0.3s; text-transform: uppercase; }
+        .btn-home:hover { background: #475569; transform: translateY(-2px); }
+
+        .perfection-badge { background: #f0f7ff; color: #2563eb; padding: 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; border: 1px solid #dbeafe; margin-bottom: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="panel">
+        <div class="header">
+            <span class="badge">V90 • Absolute Perfection</span>
+            <h1>🎬 Produkcijski Studio</h1>
+        </div>
+
+        <div class="perfection-badge">
+            🎯 AKTIVIRAN 3D SKEN: Vsi vmesni koti za popolno video konsistenco.
+        </div>
+
+        <h2>1. Framing & Distance (Razdalja)</h2>
+        <div class="group">
+            <label>Kadriranje (Shot Type)</label>
+            <select id="shotType" onchange="update()">
+                <option value="extreme close-up macro shot, focus on skin texture and eyes">Ekstremni Makro (Detajli)</option>
+                <option value="close-up portrait shot, head and shoulders">Bližnji portret (Glava/Ramena)</option>
+                <option value="waist-up medium shot">Srednji posnetek (Do pasu)</option>
+                <option value="medium-long shot, from the knees up (3/4 body)">3/4 telesa (Do kolen)</option>
+                <option value="full body standing shot, head-to-toe">Celotna postava</option>
+                <option value="wide shot, subject visible in the studio distance">Široki posnetek (Od daleč)</option>
+            </select>
+        </div>
+
+        <h2>2. Geometric Rotation (Zasuki)</h2>
+        <div class="group">
+            <label>Horizontalni kot (Zasuk lika)</label>
+            <select id="angle" onchange="update()">
+                <option value="straight frontal eye-level shot (0°)">Frontalno (0°)</option>
+                <option value="slight 15-degree head turn, natural glance">Rahli zasuk (15°)</option>
+                <option value="standard three-quarter view (45° perspective)">Klasika (45° Perspektiva)</option>
+                <option value="near-profile view (75° angle), showing one eye clearly">Skoraj Profil (75°)</option>
+                <option value="strict 90-degree side profile shot">Strogi Profil (90°)</option>
+                <option value="back view shot, looking 180-degrees away">Od zadaj (180°)</option>
+                <option value="three-quarter view from behind, over-the-shoulder">Preko ramena od zadaj (OTS)</option>
+            </select>
+        </div>
+
+        <h2>3. Camera Pitch (Višina kamere)</h2>
+        <div class="group">
+            <label>Vertikalni kot (Perspektiva)</label>
+            <select id="pitch" onchange="update()">
+                <option value="at eye-level, neutral perspective">V višini oči (Nevtralno)</option>
+                <option value="low-angle shot, looking up at the subject, cinematic hero power">Nizek kot (Moč/Heroj)</option>
+                <option value="high-angle shot, looking down from above">Visok kot (Pogled od zgoraj)</option>
+                <option value="extreme low-angle ground level shot">Iz tal (Extreme Low)</option>
+            </select>
+        </div>
+
+        <h2>4. Optical Core (Sloj 5)</h2>
+        <div class="group">
+            <label>Objektiv</label>
+            <select id="lens" onchange="update()">
+                <option value="35mm lens, handheld shake, raw motion blur">35mm (Surovi realizem)</option>
+                <option value="28mm lens, subtle wide-angle distortion">28mm (Ulični dokumentarec)</option>
+                <option value="85mm prime lens, sharp facial compression">85mm (Studijska perfekcija)</option>
+                <option value="100mm macro lens, ultra-shallow depth of field">100mm (Makro tekstura)</option>
+            </select>
+        </div>
+
+        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ PERFEKTNI PROMPT</button>
+        
+        <button class="btn-phase3" onclick="window.location.href='styling_module.html'">👗 POJDI NA FAZO 3 (STILING)</button>
+        <button class="btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ NA NADZORNO PLOŠČO</button>
+    </div>
+
+    <div class="output-box" id="out"></div>
+</div>
+
+<script>
+    function update() {
+        const shot = document.getElementById('shotType').value;
+        const ang = document.getElementById('angle').value;
+        const pit = document.getElementById('pitch').value;
+        const len = document.getElementById('lens').value;
+
+        const final = `MASTER PRODUCTION PROMPT (V90 PERFECTION):
+
+Sloji 1-4 (Vsebina): Hyper-realistic raw **${shot}** captured from a **${ang}** at **${pit}**.
+[STRICT DNA LOCK]: The character in the uploaded Anchor Image is the absolute and only reference for identity, facial DNA, and bone structure.
+[ENVIRONMENT & OUTFIT LOCK]: Maintain the EXACT same studio background, lighting temperature, and fabric textures (wardrobe and footwear) as seen in the reference image. Zero deviations allowed.
+
+Sloj 5 (Kamera): Shot on ${len}. Handheld shake, digital šum, chromatic aberration for raw analog feel.
+
+Sloji 6-8 (Tehnični): Lighting setup identical to the anchor reference. On-camera flash, harsh realistic shadows. Atmosphere: dust particles, realistic condensation. Colors: dirty cinematic grading, heavy film grain, vignette.
+
+Sloji 9-10 (Realizem): Mandatory skin texture: visible pores, natural skin imperfections (moles, redness, oil sheen), zero digital retouching. Spontaneous, unposed production shot.
+
+NEGATIVE PROMPT: perfect skin, airbrushed, studio softbox lighting, clean background, symmetrical, 3D render, CGI, cartoon, doll-like, professional model pose, beauty filter, different clothing, different scene, different heritage.`;
+
+        document.getElementById('out').innerText = final;
+    }
+
+    function copy() {
+        navigator.clipboard.writeText(document.getElementById('out').innerText);
+        alert("PERFEKTNI PROMPT KOPIRAN!");
+    }
+    update();
+</script>
+</body>
+</html>
