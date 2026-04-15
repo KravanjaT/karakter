@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Asset Studio V10.2 PRO</title>
+    <title>IDENTITY OS - Master Asset Studio V10.3 PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
 
@@ -230,7 +230,7 @@
 <div class="wrapper">
     <div class="panel">
         <h1>🧬 Identity Translation</h1>
-        <div class="subtitle">DIGITAL TWIN STUDIO // V10.2 PRO</div>
+        <div class="subtitle">DIGITAL TWIN STUDIO // V10.3 PRO</div>
 
         <div class="type-selector">
             <div id="btn-face" class="type-btn active" onclick="setType('face')">Face DNA (Headshot)</div>
@@ -243,13 +243,13 @@
                 <span class="step-title" id="step1-title">Strip — Identity Extraction</span>
             </div>
             <div class="step-desc" id="step1-desc">
-                Surova fotografija → dekonstrukcija. AI izolira tvoj obrazni DNA in ga postavi v nevtralni studio brez motenj.
+                Surova fotografija → dekonstrukcija. AI izolira tvoj obrazni DNA brez dodajanja umetnih pik ali znamenj.
             </div>
             <div class="step-tags" id="step1-tags">
                 <span class="tag remove">✕ Motnje</span>
                 <span class="tag remove">✕ Očala/Kape</span>
                 <span class="tag keep">✓ Facial DNA</span>
-                <span class="tag keep">✓ Bone Structure</span>
+                <span class="tag keep">✓ Pure Skin</span>
             </div>
             <button class="btn btn-strip" id="btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT</button>
         </div>
@@ -262,13 +262,13 @@
                 <span class="step-title" id="step2-title">AI Match — Master Polish</span>
             </div>
             <div class="step-desc" id="step2-desc">
-                Dekonstruiran obraz → <strong style="color:var(--match);">Hyper-Realistic Master Asset</strong>. Tukaj zaklenemo pore, vlažnost oči in teksturo las.
+                Zapečatenje v Hyper-Realistic Master Asset. 100% fiksna mapa kože brez halucinacij znamenj.
             </div>
             <div class="step-tags" id="step2-tags">
                 <span class="tag add">+ 8K Skin Luster</span>
                 <span class="tag add">+ Luminous Eyes</span>
-                <span class="tag add">+ Hair Fidelity</span>
                 <span class="tag keep">✓ DNA Sealed</span>
+                <span class="tag keep">✓ Pigment Locked</span>
             </div>
             <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ AI MATCH PROMPT</button>
         </div>
@@ -285,107 +285,83 @@
     const DATA = {
         face: {
             strip: {
-                label: "STEP 1 — FACE IDENTITY STRIP (V10.2)",
-                text: `STEP 1 — IDENTITY STRIP (V10.2):
+                label: "STEP 1 — FACE IDENTITY STRIP (V10.3)",
+                text: `STEP 1 — IDENTITY STRIP (V10.3):
 
 Sloj 01-04 (Vsebina & Izolacija):
+[IMMUTABLE SKIN DNA]: Do NOT add moles, freckles, or skin spots. Preserve ONLY the original pigment distribution from Ref 0.
 [INPUT]: Real-life raw photograph (Ref 0).
 [TASK]: Precise deconstruction of facial identity. Place subject into clean neutral studio cyclorama.
 
 [REMOVAL — MANDATORY]:
 - Background → replace with clean studio grey (#808080)
-- Accessories → remove ALL glasses, eyewear, sunglasses, hats, jewelry. (CRITICAL: Eyes and facial DNA must be fully visible and clean).
-- Lighting → neutralize harsh environmental shadows, remove colored light casts.
-- Clothing → replace with a simple, high-quality white heavy cotton crew-neck t-shirt.
+- Accessories → remove ALL glasses, eyewear, hats.
+- Lighting → neutralize harsh shadows.
 
 [DNA LOCK — CRITICAL]:
-- Facial expression: 1:1 match to Ref 0. Do not alter emotion or intensity.
-- Geometry: Absolute lock on jawline, nose bridge, eye-to-eye distance, and philtrum length.
-- Gaze: Maintain the exact focus and direction from original photo.
-
-Sloj 05-09 (Tehnični):
-85mm prime lens at f/4.0. Eye-level perspective. No distortion. 
-Butterfly lighting setup for flat, diagnostic studio clarity. 
+- Facial expression: 1:1 match to Ref 0.
+- Geometry: Absolute lock on jawline and bone structure.
 
 Sloj 10 (Output):
-Clean, front-facing waist-up base. This is the isolated DNA reference for Step 2.`
+Clean, front-facing waist-up base. 0% added skin blemishes.
+NEGATIVE PROMPT: glasses, eyewear, freckles, moles, skin spots, added blemishes, smiling, hat, airbrushed.`
             },
             match: {
-                label: "STEP 2 — AI MATCH / MASTER POLISH (V10.2)",
-                text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V10.2):
+                label: "STEP 2 — AI MATCH / MASTER POLISH (V10.3)",
+                text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V10.3):
 
 Sloj 01-04 (Identiteta & DNA Sidro — NE SPREMINJAJ OBRAZA):
+[IMMUTABLE SKIN MAP — ABSOLUTE]: Do NOT generate or add new moles, freckles, pigment spots, or skin marks. 
+[SKIN PROTOCOL]: Focus 100% on subsurface light interaction and pore structure. 0% on adding pigmentation. 
 [INPUT]: Cleaned base image from Step 1 (Ref 0).
-[TASK]: Inject hyper-realistic AI-native detail into existing facial DNA. 
-[OUTPUT]: SEALED MASTER REFERENCE ASSET — 100% Identity Consistency.
-
-[IMMUTABLE SKIN MAP — CRITICAL]:
-- Do NOT generate or add new moles, freckles, pigment spots, or skin blemishes.
-- Strictly maintain the skin map from Ref 0. 
-- Focus 100% on pore structure and subsurface light interaction, 0% on adding new pigment marks.
+[TASK]: Inject hyper-realistic AI-native detail into existing DNA.
 
 [DNA LOCK — ABSOLUTE]:
-- Match facial geometry, jawline, and bone structure from Ref 0 exactly.
-- Keep eye shape, iris pattern, and brow height identical to Ref 0.
+- Match facial geometry and bone structure from Ref 0 exactly.
+- Preserve 1:1 original skin surface.
 
-[AI-NATIVE PRO UPGRADE — APPLY]:
-- Skin → 8K hyper-realistic pore detail. Apply subsurface scattering (SSS) for a healthy look. High hydration sheen.
-- Eyes → Complex catchlights for "Luminous Eyes". Wet cornea hydration. 
-- Hair → Individual strand separation. Natural light refraction.
-
-Sloj 05-08 (Kamera & Svetloba):
-85mm portrait lens, eye-level. Professional butterfly lighting.
+[AI-NATIVE PRO UPGRADE]:
+- Skin → 8K pore detail, healthy living look, high hydration sheen.
+- Eyes → complex catchlights, wet cornea.
 
 Sloj 09-10 (Realizem):
-Zero digital retouching. Preserve natural facial asymmetry.
-NEGATIVE PROMPT: glasses, eyewear, freckles, moles, skin spots, pigment marks, changed bone structure, different person, plastic skin, beauty filter, airbrushed, added blemishes, open mouth.`
+Zero digital retouching. Preserve natural facial asymmetry. 
+NEGATIVE PROMPT: freckles, moles, skin spots, pigment marks, added blemishes, glasses, changed bone structure, plastic skin, CGI, 3D render, beauty filter, airbrushed.`
             }
         },
         body: {
             strip: {
-                label: "STEP 1B — FULL BODY ANATOMICAL LOCK (V10.2)",
-                text: `STEP 1B — FULL BODY ANATOMICAL LOCK (V10.2):
+                label: "STEP 1B — FULL BODY ANATOMICAL LOCK (V10.3)",
+                text: `STEP 1B — FULL BODY ANATOMICAL LOCK (V10.3):
 
 Sloji 01-04 (Anatomija & Proporci):
-[INPUT]: Full-body raw photograph of the subject (Ref 0).
-[TASK]: Extract full anatomical DNA. Place subject in a neutral white studio cyclorama.
-
-[ANATOMY LOCK — CRITICAL]: 
-- Maintain exact height-to-width ratio from Ref 0.
-- Preserve 1:1 shoulder-to-waist ratio and skeletal hip structure.
-- Lock limb length and natural posture (neutral standing A-pose).
+[SKIN PRESERVATION]: No new moles or freckles on body or face. 
+[INPUT]: Full-body raw photograph (Ref 0).
+[TASK]: Extract full anatomical DNA. 1:1 height and shoulder width.
 
 [REMOVAL — MANDATORY]:
-- Clothing → replace with a plain white heavy cotton crew-neck t-shirt and simple dark straight-fit trousers.
-- Accessories → remove ALL glasses, eyewear, sunglasses, hats. 
-- Background → replace with clean studio white (#FFFFFF).
-
-Sloj 05-09 (Tehnični):
-35mm prime lens, eye-level, 5 meters distance to avoid wide-angle limb distortion.
+- Clothing → plain white heavy cotton tee and dark trousers.
+- Accessories → remove ALL glasses.
 
 Sloj 10 (Output):
-Clean, full-body standing base. This is the isolated ANATOMICAL DNA reference for Step 2.`
+Clean, full-body standing base. Original skin marks only.
+NEGATIVE PROMPT: glasses, eyewear, freckles, moles, skin spots, changed height, beauty filter.`
             },
             match: {
-                label: "STEP 2B — SKELETAL DNA MATCH (V10.2)",
-                text: `STEP 2B — SKELETAL DNA MATCH / CONSTITUTION LOCK (V10.2):
+                label: "STEP 2B — SKELETAL DNA MATCH (V10.3)",
+                text: `STEP 2B — SKELETAL DNA MATCH / CONSTITUTION LOCK (V10.3):
 
-Sloj 01-04 (Skeletna Identiteta & Poliranje):
+Sloj 01-04 (Identiteta & Poliranje):
+[IMMUTABLE PIGMENT LOCK]: Do NOT add new moles, freckles, or spots to arms, neck, or face.
 [INPUT]: Cleaned anatomical blueprint from Step 1B (Ref 0).
-[TASK]: Seal the skeletal constitution and skin texture into AI-native format.
+[TASK]: Seal the skeletal constitution into AI-native format.
 
-[IMMUTABLE SKIN MAP]:
-- Do NOT add new moles, freckles, or spots to arms, neck, or face.
-- Strictly use Ref 0 for the permanent skin map.
-
-[SKELETAL LOCK — ABSOLUTE]:
-- Absolute lock on height, shoulder width, and full-body silhouette from Ref 0.
+[SKELETAL LOCK]:
+- Absolute lock on height, shoulder width, and silhouette from Ref 0.
 
 Sloj 05-10 (Kamera & Realizem):
-35mm cinematic raw photography feel. 
-Zero digital retouching on body shape. Preserve natural asymmetry.
-
-NEGATIVE PROMPT: glasses, eyewear, freckles, moles, skin spots, body weight change, muscle alteration, limb length change, plastic skin, CGI, airbrushed, beauty filter, different person, changed posture.`
+35mm cinematic feel. Zero retouching. Preserve original skin map.
+NEGATIVE PROMPT: freckles, moles, skin spots, pigment marks, body weight change, plastic skin, airbrushed, different person.`
             }
         }
     };
@@ -397,24 +373,20 @@ NEGATIVE PROMPT: glasses, eyewear, freckles, moles, skin spots, body weight chan
         
         if(type === 'body') {
             document.getElementById('step1-title').innerText = "Strip — Anatomski Blueprint";
-            document.getElementById('step1-desc').innerText = "Izolacija proporcij telesa in višine. AI dekonstruira tvojo silhueto v nevtralnih oblačilih.";
-            document.getElementById('step1-tags').innerHTML = '<span class="tag keep">✓ Bela majica / Hlače</span><span class="tag remove">✕ Očala</span><span class="tag keep">✓ Skeletal DNA</span>';
-            
+            document.getElementById('step1-desc').innerText = "Izolacija proporcij telesa in višine brez dodajanja znamenj na kožo.";
+            document.getElementById('step1-tags').innerHTML = '<span class="tag keep">✓ Bela majica / Hlače</span><span class="tag keep">✓ Pure Skin</span><span class="tag keep">✓ Skeletal DNA</span>';
             document.getElementById('step2-title').innerText = "Match — Skeletni Zaklep";
-            document.getElementById('step2-desc').innerText = "Zapečatenje celotne konstitucije. Ustvariš bazo, ki drži tvoj skelet na mestu brez dodajanja znamenj.";
-            document.getElementById('step2-tags').innerHTML = '<span class="tag add">+ Fabric Texture</span><span class="tag add">+ Skin Fidelity</span><span class="tag keep">✓ Pigment Locked</span>';
-            
+            document.getElementById('step2-desc').innerText = "Zapečatenje konstitucije in teksture kože s trajno blokado novih pegic.";
+            document.getElementById('step2-tags').innerHTML = '<span class="tag add">+ Skin Fidelity</span><span class="tag keep">✓ Pigment Locked</span>';
             document.getElementById('btn-strip').innerText = "✂️ KOPIRAJ BODY STRIP PROMPT";
             document.getElementById('btn-match').innerText = "🔒 KOPIRAJ SKELETAL MATCH PROMPT";
         } else {
             document.getElementById('step1-title').innerText = "Strip — Identity Extraction";
-            document.getElementById('step1-desc').innerText = "Surova fotografija → dekonstrukcija. AI izolira tvoj obrazni DNA in ga postavi v nevtralni studio.";
-            document.getElementById('step1-tags').innerHTML = '<span class="tag remove">✕ Motnje</span><span class="tag remove">✕ Očala/Kape</span><span class="tag keep">✓ Facial DNA</span>';
-            
+            document.getElementById('step1-desc').innerText = "AI izolira tvoj obrazni DNA brez dodajanja umetnih pik ali znamenj.";
+            document.getElementById('step1-tags').innerHTML = '<span class="tag remove">✕ Motnje</span><span class="tag keep">✓ Facial DNA</span><span class="tag keep">✓ Pure Skin</span>';
             document.getElementById('step2-title').innerText = "AI Match — Master Polish";
-            document.getElementById('step2-desc').innerText = "Dekonstruiran obraz → Master Asset. Tukaj zaklenemo pore brez dodajanja novih znamenj.";
-            document.getElementById('step2-tags').innerHTML = '<span class="tag add">+ 8K Skin Luster</span><span class="tag add">+ Luminous Eyes</span><span class="tag add">+ Hair Fidelity</span><span class="tag keep">✓ Pigment Locked</span>';
-            
+            document.getElementById('step2-desc').innerText = "Zapečatenje v Master Asset. 100% fiksna mapa kože brez halucinacij znamenj.";
+            document.getElementById('step2-tags').innerHTML = '<span class="tag add">+ 8K Skin Luster</span><span class="tag keep">✓ DNA Sealed</span><span class="tag keep">✓ Pigment Locked</span>';
             document.getElementById('btn-strip').innerText = "✂️ KOPIRAJ STRIP PROMPT";
             document.getElementById('btn-match').innerText = "🔒 KOPIRAJ AI MATCH PROMPT";
         }
@@ -428,18 +400,14 @@ NEGATIVE PROMPT: glasses, eyewear, freckles, moles, skin spots, body weight chan
         let rendered = p.text
             .replace(/(STEP \d+[B]* —[^\n]+)/g, `<span class="${colorClass}">$1</span>`)
             .replace(/(Sloj[i]* \d+[^\n]*:)/g, '<span style="color:#f8fafc; font-weight:800;">$1</span>')
-            .replace(/(\[REMOVAL[^\]]*\]|\[PRESERVE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[AI-NATIVE[^\]]*\]|\[EXPRESSION[^\]]*\]|\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[FINAL STATE\]|\[ANATOMY LOCK[^\]]*\]|\[SKELETAL LOCK[^\]]*\]|\[IMMUTABLE SKIN MAP[^\]]*\])/g, '<span class="highlight-lock">$1</span>')
+            .replace(/(\[REMOVAL[^\]]*\]|\[PRESERVE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[AI-NATIVE[^\]]*\]|\[EXPRESSION[^\]]*\]|\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[FINAL STATE\]|\[ANATOMY LOCK[^\]]*\]|\[SKELETAL LOCK[^\]]*\]|\[IMMUTABLE SKIN MAP[^\]]*\]|\[IMMUTABLE SKIN DNA[^\]]*\]|\[SKIN PROTOCOL[^\]]*\]|\[SKIN PRESERVATION[^\]]*\]|\[IMMUTABLE PIGMENT LOCK[^\]]*\])/g, '<span class="highlight-lock">$1</span>')
             .replace(/(NEGATIVE PROMPT:[\s\S]*)/g, '<span class="highlight-neg">$1</span>');
 
         document.getElementById('out').innerHTML =
             `<div style="font-size:0.65rem; letter-spacing:2px; color:#475569; margin-bottom:20px; text-transform:uppercase;">${p.label}</div>` + rendered;
 
         navigator.clipboard.writeText(p.text);
-        const alerts = { 
-            face: { strip: "IDENTITY STRIP KOPIRAN! (V10.2) ✂️", match: "MASTER POLISH KOPIRAN! (V10.2) 🔒" },
-            body: { strip: "BODY STRIP KOPIRAN! (V10.2) ✂️", match: "SKELETAL MATCH KOPIRAN! (V10.2) 🔒" }
-        };
-        alert(alerts[currentType][step]);
+        alert("PROMPT KOPIRAN! 🚀");
     }
 </script>
 </body>
