@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDENTITY OS - Suite V2.1 PRO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
+
+        :root {
+            --bg: #020617;
+            --panel: rgba(15, 23, 42, 0.7);
+            --accent-dna: #3b82f6;     
+            --accent-lab: #22d3ee;    
+            --accent-finish: #a855f7;  
+            --accent-style: #f43f5e;   
+            --accent-video: #f59e0b;   /* Orange for Video */
+            --text-main: #f8fafc;
+            --text-dim: #64748b;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            background-image: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+            color: var(--text-main);
+            margin: 0; display: flex; justify-content: center; min-height: 100vh; padding: 40px 0;
+        }
+
+        .container { width: 100%; max-width: 1200px; padding: 0 40px; }
+        header { text-align: center; margin-bottom: 60px; }
+        h1 { font-size: 5rem; font-weight: 900; margin: 0; letter-spacing: -4px; text-transform: uppercase; background: linear-gradient(to bottom, #fff 50%, #475569); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 0.9; }
+        .tagline { color: var(--text-dim); font-size: 0.85rem; letter-spacing: 6px; text-transform: uppercase; margin-top: 15px; font-weight: 700; }
+
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); margin: 40px 0 20px 0; display: flex; align-items: center; gap: 15px; }
+        .section-label::after { content: ""; flex-grow: 1; height: 1px; background: var(--border); }
+
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+        .card {
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+
+        .card:hover { transform: translateY(-10px); background: rgba(30, 41, 59, 0.5); }
+        .icon { font-size: 2.8rem; margin-bottom: 20px; transition: transform 0.5s ease; }
+        .card:hover .icon { transform: scale(1.1) rotate(5deg); }
+        h3 { margin: 0; font-size: 1.2rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+        p { font-size: 0.75rem; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.5; }
+        .phase-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; margin-top: 20px; padding: 5px 12px; background: rgba(0,0,0,0.4); border-radius: 100px; border: 1px solid var(--border); text-transform: uppercase; }
+
+        /* Hover Accents */
+        .lab-card:hover { border-color: var(--accent-lab); }
+        .lab-card:hover .phase-tag { color: var(--accent-lab); border-color: var(--accent-lab); }
+        .finish-card:hover { border-color: var(--accent-finish); }
+        .finish-card:hover .phase-tag { color: var(--accent-finish); border-color: var(--accent-finish); }
+        .styling-card:hover { border-color: var(--accent-style); }
+        .styling-card:hover .phase-tag { color: var(--accent-style); border-color: var(--accent-style); }
+        .video-card:hover { border-color: var(--accent-video); }
+        .video-card:hover .phase-tag { color: var(--accent-video); border-color: var(--accent-video); }
+
+        footer { margin-top: 80px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 2px; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>IDENTITY OS</h1>
+        <div class="tagline">Character Production Pipeline</div>
+    </header>
+
+    <div class="section-label">01 // The Laboratory (DNA Retouching)</div>
+    <div class="grid grid-2">
+        <a href="twin_studio.html" class="card lab-card">
+            <div class="icon">🧬</div>
+            <h3>Master Asset Studio</h3>
+            <p>Izolacija obraza in skeletni zaklep brez znamenj.</p>
+            <span class="phase-tag">Faza 1 // RAW DNA Lock</span>
+        </a>
+
+        <a href="finishing_studio.html" class="card finish-card">
+            <div class="icon">✨</div>
+            <h3>Finishing Studio</h3>
+            <p>Lepotna retuša, frizura in nakit.</p>
+            <span class="phase-tag">Faza 2 // Digital Beauty</span>
+        </a>
+    </div>
+
+    <div class="section-label">02 // Final Production (Styling & Video)</div>
+    <div class="grid">
+        <a href="styling_studio.html" class="card styling-card">
+            <div class="icon">🎭</div>
+            <h3>Styling Studio</h3>
+            <p>Wardrobe & Niche produkcija na Ref 0.</p>
+            <span class="phase-tag">Faza 3 // Styling</span>
+        </a>
+
+        <a href="video_dynamics.html" class="card video-card">
+            <div class="icon">🎬</div>
+            <h3>Video Dynamics</h3>
+            <p>Temporalni prenos identitete v Veo video.</p>
+            <span class="phase-tag">Faza 4 // Motion Lab</span>
+        </a>
+
+        <a href="delivery_module.html" class="card">
+            <div class="icon">📦</div>
+            <h3>Marketplace</h3>
+            <p>Integracija in končna dostava.</p>
+            <span class="phase-tag">Faza 5 // Delivery</span>
+        </a>
+    </div>
+
+    <footer>
+        &copy; 2026 AI UNIVERSA SYSTEMS • IMMUTABLE IDENTITY ENGINE • REŽISERSKI PROTOKOL
+    </footer>
+</div>
+
+</body>
+</html>
