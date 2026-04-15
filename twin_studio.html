@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Asset Studio V10.4 PRO</title>
+    <title>IDENTITY OS - Master Asset Studio V10.5 PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
 
@@ -28,10 +28,10 @@
         }
 
         .wrapper {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 40px;
             position: relative;
             z-index: 10;
@@ -61,6 +61,7 @@
             margin-bottom: 25px;
             font-family: 'JetBrains Mono', monospace;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .type-selector {
@@ -114,7 +115,6 @@
             border-radius: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            white-space: nowrap;
         }
 
         .badge-strip { background: var(--strip); color: #000; }
@@ -152,9 +152,9 @@
             transition: 0.3s;
         }
 
-        .btn-strip { background: var(--strip); color: #000; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2); }
-        .btn-match { background: var(--match); color: #fff; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2); }
-        .btn-strip:hover, .btn-match:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-strip { background: var(--strip); color: #000; }
+        .btn-match { background: var(--match); color: #fff; }
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
         .btn-home {
             background: rgba(100, 116, 139, 0.1);
@@ -173,15 +173,15 @@
         .output-box {
             background: #000;
             color: #cbd5e1;
-            padding: 35px;
-            border-radius: 24px;
+            padding: 40px;
+            border-radius: 32px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             height: 90vh;
             overflow-y: auto;
             white-space: pre-wrap;
             line-height: 1.8;
-            border: 1px solid rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(255,255,255,0.05);
             position: sticky;
             top: 40px;
         }
@@ -197,11 +197,11 @@
 <div class="wrapper">
     <div class="panel">
         <h1>🧬 Identity Translation</h1>
-        <div class="subtitle">DIGITAL TWIN STUDIO // V10.4 PRO</div>
+        <div class="subtitle">Digital Twin Studio // V10.5 PRO</div>
 
         <div class="type-selector">
             <div id="btn-face" class="type-btn active" onclick="setType('face')">Face DNA (Headshot)</div>
-            <div id="btn-body" class="type-btn" onclick="setType('body')">Anatomical DNA (Full Body)</div>
+            <div id="btn-body" class="type-btn" onclick="setType('body')">Skeletal DNA (Full Body)</div>
         </div>
 
         <div class="step">
@@ -210,7 +210,7 @@
                 <span style="font-weight:900; text-transform:uppercase;">Identity Extraction</span>
             </div>
             <div class="step-tags">
-                <span class="tag">✕ Motnje</span><span class="tag">✕ Očala</span><span class="tag keep">✓ Facial DNA</span><span class="tag keep">✓ Vivid Skin Tone</span>
+                <span class="tag">✕ Motnje</span><span class="tag">✕ Očala</span><span class="tag keep">✓ Facial DNA</span><span class="tag keep">✓ Vivid Skin</span>
             </div>
             <button class="btn btn-strip" id="btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT</button>
         </div>
@@ -221,9 +221,9 @@
                 <span style="font-weight:900; text-transform:uppercase;">AI Match & Polish</span>
             </div>
             <div class="step-tags">
-                <span class="tag keep">✓ DNA Locked</span><span class="tag keep">✓ Pigment Locked</span><span class="tag">✓ Cinematic Color</span>
+                <span class="tag keep">✓ DNA Locked</span><span class="tag keep">✓ Pigment Locked</span><span class="tag">✓ 8K Detail</span>
             </div>
-            <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ AI MATCH PROMPT</button>
+            <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ MASTER MATCH PROMPT</button>
         </div>
 
         <button class="btn btn-home" onclick="window.location.href='index.html'">🏠 NAZAJ NA DASHBOARD</button>
@@ -238,89 +238,85 @@
     const DATA = {
         face: {
             strip: {
-                label: "STEP 1 — FACE IDENTITY STRIP (V10.4)",
-                text: `STEP 1 — IDENTITY STRIP (V10.4):
+                label: "STEP 1 — FACE IDENTITY STRIP (V10.5 FINAL PRO)",
+                text: `STEP 1 — IDENTITY STRIP (V10.5 FINAL PRO):
 
-Sloji 01-04 (Vsebina & Izolacija):
+Sloji 01-04 (Vsebina & DNA Identiteta):
 [INPUT]: Real-life raw photograph (Ref 0).
-[TASK]: Precise deconstruction of facial identity.
-[IMMUTABLE SKIN DNA]: Do NOT add moles, freckles, or skin spots. Preserve ONLY original pigment distribution.
-[COLOR FIDELITY]: Maintain 100% natural skin tones and accurate color saturation. No grayscale, no desaturation.
+[TASK]: Precise deconstruction of facial identity. Place subject into neutral studio grey cyclorama.
+[DNA LOCK]: 1:1 match of bone structure, jawline, and orbital area from Ref 0.
+[IMMUTABLE SKIN DNA]: Do NOT add moles, freckles, or any new skin spots. 0% added pigmentation.
+[REMOVAL]: Remove ALL glasses, jewelry, and hats. Clothing: white cotton tee.
+[VIVID COLOR]: Maintain 100% natural skin tones. No grayscale, no desaturation.
 
-Sloj 05 (Kamera): 
-28mm/35mm lens, handheld shake, motion blur, digital noise, chromatic aberration.
+Sloj 05 (Kamera & Optika): 
+35mm/85mm prime lens hybrid perspective. Handheld shake, digital noise, subtle chromatic aberration.
 
-Sloji 06-08 (Tehnični):
-On-camera flash, harsh shadows. 85mm prime equivalent perspective for clarity.
-[REMOVAL]: Remove ALL glasses, eyewear, hats. Replace clothing with simple white tee.
+Sloji 06-08 (Tehnični & Svetloba):
+On-camera flash, harsh cinematic shadows. Heavy film grain, vignette, sensor noise. 
 
-Sloji 09-10 (Realizem):
-Visible pores, natural imperfections, no retouching. [DNA LOCK]: Absolute match on bone structure from Ref 0.
+Sloji 09-10 (Realizem & Tekstura):
+Visible pores, natural imperfections, no retouching. Lived-in, spontaneous, private moment look.
 
-NEGATIVE PROMPT: black and white, grayscale, desaturated, glasses, eyewear, freckles, moles, skin spots, added blemishes, smiling, airbrushed.`
+Sloj 10 (Output):
+Clean, vivid color front-facing diagnostic headshot.
+
+NEGATIVE PROMPT: black and white, grayscale, desaturated, added moles, added freckles, skin spots, pigment marks, glasses, eyewear, smiling, open mouth, beauty filter, airbrushed.`
             },
             match: {
-                label: "STEP 2 — AI MATCH / MASTER POLISH (V10.4)",
-                text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V10.4):
+                label: "STEP 2 — AI MATCH / MASTER POLISH (V10.5)",
+                text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V10.5):
 
 Sloj 01-04 (Identiteta & DNA Sidro — NE SPREMINJAJ OBRAZA):
-[INPUT]: Cleaned base image from Step 1 (Ref 0).
+[INPUT]: Cleaned vivid base image from Step 1 (Ref 0).
 [IMMUTABLE SKIN MAP — ABSOLUTE]: Do NOT generate or add new moles, freckles, pigment spots, or skin marks. 
-[SKIN PROTOCOL]: 100% focus on subsurface light interaction and 8K pore structure.
-[COLOR]: Rich cinematic color grading, vibrant natural skin tones.
-
-[DNA LOCK — ABSOLUTE]:
-- Match facial geometry and bone structure from Ref 0 exactly.
-- Keep eye shape and brow height identical.
+[SKIN PROTOCOL]: Focus 100% on subsurface light interaction and pore structure. 0% focus on adding pigmentation. 
+[IDENTITY LOCK]: Absolute 1:1 match of facial geometry, orbital bone structure, and asymmetry from Ref 0.
 
 Sloj 05 (Kamera):
-35mm prime lens feel. Heavy film grain, chromatic aberration, digital sensor noise.
+85mm portrait lens, f/4.0. Cinematic sensor noise ISO 100.
 
 Sloji 06-08 (Tehnični):
-On-camera flash style lighting. Cinematic sensor response.
-[AI-NATIVE PRO UPGRADE]: 8K skin luster, healthy living sheen, luminous eyes.
+Professional studio softbox lighting. [AI-NATIVE UPGRADE]: 8K skin luster, healthy living sheen, complex catchlights.
 
 Sloji 09-10 (Realizem):
-Zero digital retouching. Visible pores. Natural facial asymmetry. 
-NEGATIVE PROMPT: grayscale, desaturated, freckles, moles, skin spots, pigment marks, added blemishes, glasses, changed bone structure, plastic skin, CGI, 3D render.`
+Zero digital retouching. Preserve 1:1 original skin surface from Ref 0. 
+
+NEGATIVE PROMPT: black and white, grayscale, added moles, added freckles, skin spots, pigment marks, changed face, plastic skin, CGI, 3D render, beauty filter, airbrushed.`
             }
         },
         body: {
             strip: {
-                label: "STEP 1B — FULL BODY ANATOMICAL LOCK (V10.4)",
-                text: `STEP 1B — FULL BODY ANATOMICAL LOCK (V10.4):
+                label: "STEP 1B — FULL BODY ANATOMICAL STRIP (V10.5)",
+                text: `STEP 1B — FULL BODY ANATOMICAL LOCK (V10.5):
 
 Sloji 01-04 (Anatomija & Proporci):
-[INPUT]: Full-body raw photograph (Ref 0).
-[SKIN PRESERVATION]: No new moles or freckles on body or face. 100% color accuracy.
-[ANATOMY LOCK]: Maintain 1:1 height, shoulder width, and skeletal silhouette from Ref 0.
+[INPUT]: Full-body photo (Ref 0).
+[TASK]: Extract full anatomical DNA. Place in white studio.
+[IMMUTABLE SKIN]: No new moles or freckles on body or face. 100% color accuracy.
+[ANATOMY LOCK]: 1:1 match of height, shoulder width, and skeletal silhouette from Ref 0.
+[REMOVAL]: Replace clothes with plain white tee and dark trousers. Remove glasses.
 
-Sloj 05 (Kamera):
-35mm lens, handheld shake, motion blur, digital noise, chromatic aberration.
+Sloj 05 (Kamera): 35mm prime lens, 5 meters distance. Zero wide-angle distortion.
+Sloji 06-10 (Tehnični): Flat studio lighting. 0% added skin blemishes. Lived-in stance.
 
-Sloji 06-10 (Tehnični & Realizem):
-On-camera flash, harsh shadows. [REMOVAL]: Replace clothes with white tee and dark trousers. Remove glasses.
-0% added skin blemishes. Lived-in, non-posed stance.
-
-NEGATIVE PROMPT: black and white, grayscale, glasses, eyewear, freckles, moles, skin spots, changed height, beauty filter.`
+NEGATIVE PROMPT: black and white, grayscale, desaturated, added moles, added freckles, skin spots, glasses, beauty filter.`
             },
             match: {
-                label: "STEP 2B — SKELETAL DNA MATCH (V10.4)",
-                text: `STEP 2B — SKELETAL DNA MATCH / CONSTITUTION LOCK (V10.4):
+                label: "STEP 2B — SKELETAL DNA MATCH (V10.5)",
+                text: `STEP 2B — SKELETAL DNA MATCH / CONSTITUTION LOCK (V10.5):
 
-Sloj 01-04 (Identiteta & Poliranje):
-[INPUT]: Cleaned anatomical blueprint from Step 1B (Ref 0).
+Sloj 01-04 (Skeletna Identiteta & Poliranje):
+[INPUT]: Blueprint from Step 1B (Ref 0).
+[SKELETAL LOCK]: Absolute lock on height, shoulder width, and silhouette from Ref 0.
 [IMMUTABLE PIGMENT LOCK]: Do NOT add new moles, freckles, or spots.
-[COLOR]: Cinematic grading, heavy film grain, vignette. Vibrant authentic colors.
 
-Sloj 05 (Kamera):
-35mm lens. Handheld shake, digital noise.
-
-Sloji 06-10 (Realizem):
-[SKELETAL LOCK]: Absolute lock on proportions from Ref 0.
+Sloj 05-10 (Realizem):
+35mm cinematic professional studio setup. 
 [SKIN]: 8K pore detail, subsurface scattering for living skin. Zero retouching.
+[CLOTHING]: Realistic heavy cotton texture.
 
-NEGATIVE PROMPT: grayscale, desaturated, freckles, moles, skin spots, pigment marks, body weight change, plastic skin, different person.`
+NEGATIVE PROMPT: added moles, added freckles, skin spots, pigment marks, muscle change, plastic skin, CGI, airbrushed.`
             }
         }
     };
@@ -329,12 +325,7 @@ NEGATIVE PROMPT: grayscale, desaturated, freckles, moles, skin spots, pigment ma
         currentType = type;
         document.getElementById('btn-face').className = 'type-btn' + (type === 'face' ? ' active' : '');
         document.getElementById('btn-body').className = 'type-btn' + (type === 'body' ? ' active' : '');
-        
-        if(type === 'body') {
-            document.getElementById('out').innerHTML = '<span style="color:#10b981;">// Anatomski Studio pripravljen... (Color Mode: ON)</span>';
-        } else {
-            document.getElementById('out').innerHTML = '<span style="color:#10b981;">// Face DNA Studio pripravljen... (Color Mode: ON)</span>';
-        }
+        document.getElementById('out').innerHTML = '<span style="color:#10b981;">// DNA Laboratorij pripravljen za extraction.</span>';
     }
 
     function showAndCopy(step) {
@@ -344,13 +335,11 @@ NEGATIVE PROMPT: grayscale, desaturated, freckles, moles, skin spots, pigment ma
         let rendered = p.text
             .replace(/(STEP \d+[B]* —[^\n]+)/g, `<span class="${colorClass}">$1</span>`)
             .replace(/(Sloj[i]* \d+[^\n]*:)/g, '<span style="color:#f8fafc; font-weight:800; border-bottom:1px solid #1e293b;">$1</span>')
-            .replace(/(\[IMMUTABLE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[SKELETAL LOCK[^\]]*\]|\[ANATOMY LOCK[^\]]*\]|\[SKIN PROTOCOL[^\]]*\]|\[SKIN PRESERVATION[^\]]*\]|\[IMMUTABLE PIGMENT LOCK[^\]]*\]|\[COLOR FIDELITY\])/g, '<span class="highlight-lock">$1</span>')
-            .replace(/(\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[REMOVAL\]|\[AI-NATIVE[^\]]*\]|\[COLOR\])/g, '<span style="color:var(--accent); font-weight:800;">$1</span>')
+            .replace(/(\[IMMUTABLE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[SKELETAL LOCK[^\]]*\]|\[ANATOMY LOCK[^\]]*\]|\[IDENTITY LOCK[^\]]*\]|\[SKIN PROTOCOL[^\]]*\]|\[IMMUTABLE PIGMENT LOCK[^\]]*\]|\[VIVID COLOR\])/g, '<span class="highlight-lock">$1</span>')
+            .replace(/(\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[REMOVAL\]|\[AI-NATIVE[^\]]*\])/g, '<span style="color:var(--accent); font-weight:800;">$1</span>')
             .replace(/(NEGATIVE PROMPT:[\s\S]*)/g, '<span class="highlight-neg">$1</span>');
 
-        document.getElementById('out').innerHTML =
-            `<div style="font-size:0.65rem; letter-spacing:2px; color:#475569; margin-bottom:20px; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">${p.label}</div>` + rendered;
-
+        document.getElementById('out').innerHTML = rendered;
         navigator.clipboard.writeText(p.text);
         alert("PROMPT KOPIRAN! 🚀");
     }
