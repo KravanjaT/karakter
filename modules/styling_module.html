@@ -18,7 +18,25 @@
         h2 { font-size: 0.75rem; text-transform: uppercase; color: #64748b; margin: 25px 0 10px 0; letter-spacing: 1px; }
         select { width: 100%; padding: 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: #1e293b; color: #fff; font-size: 0.95rem; margin-bottom: 15px; }
         .output-box { background: #000; color: var(--green); padding: 35px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 90vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.8; border: 1px solid #1e293b; position: sticky; top: 40px; }
+        
+        /* Gumbi */
         .btn-copy { background: var(--accent); color: white; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; }
+        .btn-home {
+            background: rgba(100, 116, 139, 0.1);
+            color: #94a3b8;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            padding: 15px;
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+        .btn-home:hover { background: rgba(100, 116, 139, 0.25); color: #f1f5f9; }
+
         .lock-status { font-size: 0.65rem; color: var(--green); font-weight: 900; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
@@ -48,6 +66,8 @@
         <div class="group"><label>Akcija (Interaction)</label><select id="object" onchange="updatePrompt()"></select></div>
 
         <button class="btn-copy" onclick="copy()">🚀 KOPIRAJ FINALNI PROMPT</button>
+        
+        <button class="btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
 
     <div class="output-box" id="out"></div>
@@ -67,12 +87,10 @@
             business: { outfits: ["Full pinstripe tailored suit", "Wool overcoat over suit", "Bespoke charcoal waistcoat set", "Corporate chinos & blazer", "Trench coat & trousers"], footwear: ["Polished leather Oxfords", "Suede Chelsea boots", "Italian leather loafers", "Minimalist white dress sneakers", "Handcrafted brogues"], scenes: ["Walking in rainy financial district", "Modernist office lobby", "Stepping out of executive sedan", "Rooftop terrace overlooking city", "High-end conference hallway"], objects: ["Walking with a leather briefcase", "Holding a thin laptop sleeve", "Looking at a phone while walking", "Adjusting coat while moving", "Leaning on a glass railing"] },
             luxury: { outfits: ["Full bespoke linen suit", "Elegant silk evening gown", "Cashmere long coat & trousers", "Custom velvet tuxedo set", "Designer wrap dress"], footwear: ["Designer leather mules", "Gold-buckle loafers", "Bespoke evening boots", "Velvet slippers", "Minimalist high-fashion boots"], scenes: ["Private yacht deck at sunset", "Luxury hotel balcony view", "Grand marble staircase", "Exclusive VIP entrance", "Private estate courtyard"], objects: ["Tossing luxury car keys", "Holding a champagne flute", "Carrying a designer clutch", "Opening a heavy car door", "Walking confidently towards camera"] },
             fitness: { outfits: ["Full athletic compression set", "Oversized training hoodie set", "Technical windbreaker outfit", "Seamless athletic wear", "Industrial CrossFit gear"], footwear: ["Lifting shoes", "Carbon running trainers", "Muddy trail boots", "Classic gym sneakers", "Boxing boots"], scenes: ["Empty stadium stairs", "Industrial CrossFit box floor", "Misty mountain path", "Urban workout park", "Post-workout locker room"], objects: ["Carrying a heavy kettlebell", "Adjusting a fitness watch", "Holding a rolled yoga mat", "Drinking from a shaker", "Stretching against a wall"] },
-            urban: { outfits: ["Techwear cargo set", "Distressed denim outfit", "Oversized graphic tracksuit", "Puffer jacket & wide jeans", "Streetwear utility vest set"], footwear: ["Limited high-top sneakers", "Platform combat boots", "Retro chunky trainers", "Canvas skater shoes", "Designer urban slides"], scenes: ["Subway platform with motion blur", "Neon-lit alleyway graffiti", "Skatepark concrete bowls", "Busy street market walk", "Underground parking garage"], objects: ["Carrying a skateboard", "Holding a brown paper bag", "Using a vintage camera", "Wearing a casual backpack", "Walking with an umbrella"] },
+            urban: { outfits: ["Techwear cargo set", "Distressed denim outfit", "Oversized graphic tracksuit", "Puffer jacket & wide jeans", "Streetwear utility vest set"], footwear: ["Limited high-top sneakers", "Platform combat boots", "Retro chunky trainers", "Canvas skater shoes", "Designer urban slides"], scenes: ["Subway platform with motion blur", "Neon-lit alleyway graffiti", "Skatepark concrete bowls", "Busy street market walk", "Underground parking garage"], objects: ["Carrying a skateboard", "Holding a brown paper bag", "Using a vintage camera", "Wearing a backpack", "Walking with an umbrella"] },
             home: { outfits: ["Full cashmere lounge set", "Silk pajamas full set", "Heavy knit morning robe", "Ribbed knit loungewear", "Linen house set"], footwear: ["Sheepskin slippers", "Knitted wool socks", "Barefoot on wood floor", "Suede home loafers", "Memory foam house mules"], scenes: ["Modern minimalist kitchen", "Living room with soft fire", "Green garden patio", "Morning sun-filled bedroom", "Cozy window nook"], objects: ["Carrying a breakfast tray", "Watering a house plant", "Holding a small pet", "Fixing a pillow", "Opening a balcony door"] }
         }
     };
-
-    // Dodatne niše (Nature, Tech, Medical, Auto, Casual) bi dodali na enak način.
 
     function setShotType(type) {
         currentShotType = type;
