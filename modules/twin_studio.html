@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Asset Studio V9.0</title>
+    <title>IDENTITY OS - Master Asset Studio V10.0 PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
 
@@ -58,9 +58,38 @@
         .subtitle {
             font-size: 0.8rem;
             color: #64748b;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             font-family: 'JetBrains Mono', monospace;
             letter-spacing: 1px;
+        }
+
+        /* Preklopnik med Face in Body */
+        .type-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: rgba(0,0,0,0.3);
+            padding: 8px;
+            border-radius: 18px;
+        }
+
+        .type-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            border: 1px solid transparent;
+        }
+
+        .type-btn.active {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
         }
 
         .step {
@@ -143,14 +172,14 @@
             color: #000;
             box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2);
         }
-        .btn-strip:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(6, 182, 212, 0.35); }
+        .btn-strip:hover { transform: translateY(-2px); }
 
         .btn-match {
             background: var(--match);
             color: #fff;
             box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2);
         }
-        .btn-match:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(168, 85, 247, 0.35); }
+        .btn-match:hover { transform: translateY(-2px); }
 
         .btn-home {
             background: rgba(100, 116, 139, 0.2);
@@ -158,7 +187,6 @@
             border: 1px solid rgba(100,116,139,0.3);
             margin-top: 10px;
         }
-        .btn-home:hover { background: rgba(100,116,139,0.35); color: #f1f5f9; }
 
         .arrow {
             text-align: center;
@@ -194,23 +222,28 @@
 <div class="wrapper">
     <div class="panel">
         <h1>🧬 Identity Translation</h1>
-        <div class="subtitle">REAL-TO-AI BRIDGE // V9.0 PRO</div>
+        <div class="subtitle">DIGITAL TWIN STUDIO // V10.0 PRO</div>
+
+        <div class="type-selector">
+            <div id="btn-face" class="type-btn active" onclick="setType('face')">Face DNA (Headshot)</div>
+            <div id="btn-body" class="type-btn" onclick="setType('body')">Anatomical DNA (Full Body)</div>
+        </div>
 
         <div class="step">
             <div class="step-header">
                 <span class="step-badge badge-strip">Korak 1</span>
-                <span class="step-title">Strip — Identity Extraction</span>
+                <span class="step-title" id="step1-title">Strip — Identity Extraction</span>
             </div>
-            <div class="step-desc">
+            <div class="step-desc" id="step1-desc">
                 Surova fotografija → dekonstrukcija. AI izolira tvoj obrazni DNA in ga postavi v nevtralni studio brez motenj.
             </div>
-            <div class="step-tags">
+            <div class="step-tags" id="step1-tags">
                 <span class="tag remove">✕ Motnje</span>
                 <span class="tag remove">✕ Očala/Kape</span>
                 <span class="tag keep">✓ Facial DNA</span>
                 <span class="tag keep">✓ Bone Structure</span>
             </div>
-            <button class="btn btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT (V9.0)</button>
+            <button class="btn btn-strip" id="btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT</button>
         </div>
 
         <div class="arrow">↓</div>
@@ -218,18 +251,18 @@
         <div class="step">
             <div class="step-header">
                 <span class="step-badge badge-match">Korak 2</span>
-                <span class="step-title">AI Match — Master Polish</span>
+                <span class="step-title" id="step2-title">AI Match — Master Polish</span>
             </div>
-            <div class="step-desc">
-                Dekonstruiran obraz → <strong style="color:var(--match);">Hyper-Realistic Master Asset</strong>. Tukaj zaklenemo pore, vlažnost oči in teksturo las za vrhunsko konsistenco.
+            <div class="step-desc" id="step2-desc">
+                Dekonstruiran obraz → <strong style="color:var(--match);">Hyper-Realistic Master Asset</strong>. Tukaj zaklenemo pore, vlažnost oči in teksturo las.
             </div>
-            <div class="step-tags">
+            <div class="step-tags" id="step2-tags">
                 <span class="tag add">+ 8K Skin Luster</span>
                 <span class="tag add">+ Luminous Eyes</span>
                 <span class="tag add">+ Hair Fidelity</span>
                 <span class="tag keep">✓ DNA Sealed</span>
             </div>
-            <button class="btn btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ AI MATCH PROMPT (V9.0)</button>
+            <button class="btn btn-match" id="btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ AI MATCH PROMPT</button>
         </div>
 
         <button class="btn btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
@@ -239,10 +272,13 @@
 </div>
 
 <script>
-    const prompts = {
-        strip: {
-            label: "STEP 1 — IDENTITY STRIP (V9.0 PRO)",
-            text: `STEP 1 — IDENTITY STRIP (V9.0):
+    let currentType = 'face';
+
+    const DATA = {
+        face: {
+            strip: {
+                label: "STEP 1 — FACE IDENTITY STRIP (V9.0 PRO)",
+                text: `STEP 1 — IDENTITY STRIP (V9.0):
 
 Sloj 01-04 (Vsebina & Izolacija):
 [INPUT]: Real-life raw photograph (Ref 0).
@@ -268,10 +304,10 @@ Sloj 10 (Output):
 Clean, front-facing waist-up base. This is the isolated DNA reference for Step 2.
 
 NEGATIVE PROMPT: smiling, open mouth, accessories, sunglasses, hat, complex background, dramatic shadows, fashion clothes, beauty filter, skin smoothing, airbrushed, changed eye color.`
-        },
-        match: {
-            label: "STEP 2 — AI MATCH / MASTER POLISH (V9.0 PRO)",
-            text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V9.0):
+            },
+            match: {
+                label: "STEP 2 — AI MATCH / MASTER POLISH (V9.0 PRO)",
+                text: `STEP 2 — AI DNA MATCH & MASTER POLISH (V9.0):
 
 Sloj 01-04 (Identiteta & DNA Sidro — NE SPREMINJAJ OBRAZA):
 [INPUT]: Cleaned base image from Step 1 (Ref 0).
@@ -301,25 +337,118 @@ STRICTLY PROHIBIT: plastic skin, CGI face, beauty filter, adding new blemishes.
 [FINAL STATE]: SEALED image. Ready for all future backgrounds, outfits, and lighting.
 
 NEGATIVE PROMPT: changed bone structure, different person, plastic skin, 3D render, beauty filter, airbrushed, added moles, added freckles, changed eye color, open mouth.`
+            }
+        },
+        body: {
+            strip: {
+                label: "STEP 1B — FULL BODY ANATOMICAL LOCK (V10.0)",
+                text: `STEP 1B — FULL BODY ANATOMICAL LOCK (V10.0):
+
+Sloji 01-04 (Anatomija & Proporci):
+[INPUT]: Full-body raw photograph of the subject (Ref 0).
+[TASK]: Extract full anatomical DNA. Place subject in a neutral white studio cyclorama.
+
+[ANATOMY LOCK — CRITICAL]: 
+- Maintain exact height-to-width ratio from Ref 0.
+- Preserve 1:1 shoulder-to-waist ratio and skeletal hip structure.
+- Lock limb length and natural posture (neutral standing A-pose).
+- Maintain 1:1 facial DNA and bone structure established in Ref 0.
+
+[REMOVAL — MANDATORY]:
+- Clothing → replace with minimalist, form-fitting neutral grey activewear (to clearly see anatomical silhouette).
+- Background → replace with clean studio white (#FFFFFF).
+- Environment → remove all distracting furniture or scenery.
+
+Sloj 05-09 (Tehnični):
+35mm prime lens, eye-level, 5 meters distance to avoid wide-angle limb distortion.
+High-key white studio lighting. Flat fill lighting to avoid shadows distorting the body shape.
+
+Sloj 10 (Output):
+Clean, full-body standing base. This is the isolated ANATOMICAL DNA reference for Step 2.
+
+NEGATIVE PROMPT: bulky clothes, baggy clothing, changed height, altered body proportions, wide-angle distortion, shadows, furniture, smiling, tilted head, beauty filter.`
+            },
+            match: {
+                label: "STEP 2B — SKELETAL DNA MATCH (V10.0)",
+                text: `STEP 2B — SKELETAL DNA MATCH / CONSTITUTION LOCK (V10.0):
+
+Sloj 01-04 (Skeletna Identiteta & Poliranje):
+[INPUT]: Cleaned anatomical blueprint from Step 1B (Ref 0).
+[TASK]: Seal the skeletal constitution and skin texture into AI-native format.
+[OUTPUT]: SEALED FULL-BODY MASTER ASSET — 100% Anatomical Consistency.
+
+[SKELETAL LOCK — ABSOLUTE]:
+- Absolute lock on height, shoulder width, and full-body silhouette from Ref 0.
+- Preserve natural posture and spine alignment.
+- Maintain exact muscular or anatomical definition from original.
+
+[AI-NATIVE PRO POLISH]:
+- Skin Fidelity → apply hyper-realistic pore detail and natural sheen across entire visible skin (arms, legs, neck).
+- Consistency → ensure identical skin tone and subsurface scattering across all limbs.
+- Feet/Hands → High-detail rendering of fingers and toes based on Ref 0 geometry.
+
+Sloj 05-10 (Kamera & Realizem):
+35mm cinematic raw photography feel. Film grain ISO 400. 
+Zero digital retouching on body shape. Preserve natural asymmetry.
+
+[FINAL STATE]: ANATOMICAL MASTER ASSET. Ready for wardrobe layering and environment placement.
+
+NEGATIVE PROMPT: body weight change, muscle alteration, limb length change, plastic skin, CGI, airbrushed, beauty filter, different person, distorted fingers, changed posture.`
+            }
         }
     };
 
-    function showAndCopy(type) {
-        const p = prompts[type];
-        const colorClass = type === 'strip' ? 'highlight-strip' : 'highlight-match';
+    function setType(type) {
+        currentType = type;
+        document.getElementById('btn-face').className = 'type-btn' + (type === 'face' ? ' active' : '');
+        document.getElementById('btn-body').className = 'type-btn' + (type === 'body' ? ' active' : '');
+        
+        if(type === 'body') {
+            document.getElementById('step1-title').innerText = "Strip — Anatomski Blueprint";
+            document.getElementById('step1-desc').innerText = "Izolacija proporcij telesa in višine. AI dekonstruira tvojo silhueto za popolno anatomsko sidro.";
+            document.getElementById('step1-tags').innerHTML = '<span class="tag remove">✕ Oblačila</span><span class="tag remove">✕ Ozadje</span><span class="tag keep">✓ Skeletal DNA</span><span class="tag keep">✓ Proporci 1:1</span>';
+            
+            document.getElementById('step2-title').innerText = "Match — Skeletni Zaklep";
+            document.getElementById('step2-desc').innerText = "Zapečatenje celotne konstitucije. Ustvariš bazo, ki AI-ju prepove spreminjanje tvoje višine ali širine ramen.";
+            document.getElementById('step2-tags').innerHTML = '<span class="tag add">+ Full Body Luster</span><span class="tag add">+ Skin Fidelity</span><span class="tag keep">✓ Silhouette Sealed</span>';
+            
+            document.getElementById('btn-strip').innerText = "✂️ KOPIRAJ BODY STRIP PROMPT";
+            document.getElementById('btn-match').innerText = "🔒 KOPIRAJ SKELETAL MATCH PROMPT";
+        } else {
+            // Ponastavi na Face nastavitve (tvoj originalni V9.0)
+            document.getElementById('step1-title').innerText = "Strip — Identity Extraction";
+            document.getElementById('step1-desc').innerText = "Surova fotografija → dekonstrukcija. AI izolira tvoj obrazni DNA in ga postavi v nevtralni studio.";
+            document.getElementById('step1-tags').innerHTML = '<span class="tag remove">✕ Motnje</span><span class="tag remove">✕ Očala/Kape</span><span class="tag keep">✓ Facial DNA</span><span class="tag keep">✓ Bone Structure</span>';
+            
+            document.getElementById('step2-title').innerText = "AI Match — Master Polish";
+            document.getElementById('step2-desc').innerText = "Dekonstruiran obraz → Hyper-Realistic Master Asset. Tukaj zaklenemo pore in teksturo las.";
+            document.getElementById('step2-tags').innerHTML = '<span class="tag add">+ 8K Skin Luster</span><span class="tag add">+ Luminous Eyes</span><span class="tag add">+ Hair Fidelity</span><span class="tag keep">✓ DNA Sealed</span>';
+            
+            document.getElementById('btn-strip').innerText = "✂️ KOPIRAJ STRIP PROMPT (V9.0)";
+            document.getElementById('btn-match').innerText = "🔒 KOPIRAJ AI MATCH PROMPT (V9.0)";
+        }
+        document.getElementById('out').innerHTML = '<span style="color:#1e293b;">// Način zamenjan. Kopiraj prompt...</span>';
+    }
+
+    function showAndCopy(step) {
+        const p = DATA[currentType][step];
+        const colorClass = step === 'strip' ? 'highlight-strip' : 'highlight-match';
 
         let rendered = p.text
-            .replace(/(STEP \d+ —[^\n]+)/g, `<span class="${colorClass}">$1</span>`)
-            .replace(/(Sloj \d+[^\n]*:)/g, '<span style="color:#f8fafc; font-weight:800;">$1</span>')
-            .replace(/(\[REMOVAL[^\]]*\]|\[PRESERVE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[AI-NATIVE[^\]]*\]|\[EXPRESSION[^\]]*\]|\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[FINAL STATE\])/g, '<span class="highlight-lock">$1</span>')
+            .replace(/(STEP \d+[B]* —[^\n]+)/g, `<span class="${colorClass}">$1</span>`)
+            .replace(/(Sloj[i]* \d+[^\n]*:)/g, '<span style="color:#f8fafc; font-weight:800;">$1</span>')
+            .replace(/(\[REMOVAL[^\]]*\]|\[PRESERVE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[AI-NATIVE[^\]]*\]|\[EXPRESSION[^\]]*\]|\[INPUT\]|\[TASK\]|\[OUTPUT\]|\[FINAL STATE\]|\[ANATOMY LOCK[^\]]*\]|\[SKELETAL LOCK[^\]]*\])/g, '<span class="highlight-lock">$1</span>')
             .replace(/(NEGATIVE PROMPT:[\s\S]*)/g, '<span class="highlight-neg">$1</span>');
 
         document.getElementById('out').innerHTML =
             `<div style="font-size:0.65rem; letter-spacing:2px; color:#475569; margin-bottom:20px; text-transform:uppercase;">${p.label}</div>` + rendered;
 
         navigator.clipboard.writeText(p.text);
-        const alerts = { strip: "IDENTITY STRIP KOPIRAN! (V9.0) ✂️", match: "MASTER POLISH KOPIRAN! (V9.0) 🔒" };
-        alert(alerts[type]);
+        const alerts = { 
+            face: { strip: "IDENTITY STRIP KOPIRAN! (V9.0) ✂️", match: "MASTER POLISH KOPIRAN! (V9.0) 🔒" },
+            body: { strip: "BODY STRIP KOPIRAN! (V10.0) ✂️", match: "SKELETAL MATCH KOPIRAN! (V10.0) 🔒" }
+        };
+        alert(alerts[currentType][step]);
     }
 </script>
 </body>
