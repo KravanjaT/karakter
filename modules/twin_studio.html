@@ -2,89 +2,360 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Master Asset Studio V7.0</title>
+    <title>IDENTITY OS - Master Asset Studio V8.0</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
-        :root { --primary: #0f172a; --accent: #22d3ee; --bg: #020617; --home: #64748b; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #f8fafc; padding: 40px; margin: 0; }
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events: none; z-index: 100; }
-        .wrapper { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; position: relative; z-index: 10; }
-        .panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px); padding: 40px; border-radius: 32px; border: 1px solid rgba(34, 211, 238, 0.3); }
-        h1 { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 900; margin-top: 0; }
-        .instruction { background: rgba(34, 211, 238, 0.05); padding: 20px; border-radius: 16px; border-left: 4px solid var(--accent); margin-bottom: 25px; font-size: 0.8rem; color: #a5f3fc; }
-        .group { margin-bottom: 20px; }
-        label { display: block; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; letter-spacing: 1px; }
-        textarea, select, input { width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.9rem; }
-        .output-box { background: #0f172a; color: #cbd5e1; padding: 30px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 1000px; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; position: sticky; top: 40px; }
-        .btn-copy { background: var(--accent); color: #000; border: none; padding: 20px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; margin-top: 20px; }
+
+        :root { --bg: #020617; --accent: #22d3ee; --strip: #06b6d4; --match: #a855f7; --home: #64748b; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: #f8fafc;
+            padding: 40px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 32px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            height: fit-content;
+        }
+
+        h1 {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+            margin: 0 0 8px 0;
+            font-size: 1.4rem;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 35px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        .step {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .step-badge {
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 5px 12px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .badge-strip { background: var(--strip); color: #000; }
+        .badge-match { background: var(--match); color: #fff; }
+
+        .step-title {
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .step-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .step-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #cbd5e1;
+        }
+
+        .tag.remove { border-color: rgba(239,68,68,0.3); color: #fca5a5; }
+        .tag.keep   { border-color: rgba(16,185,129,0.3); color: #6ee7b7; }
+        .tag.add    { border-color: rgba(168,85,247,0.3); color: #d8b4fe; }
+
+        .btn {
+            width: 100%;
+            border: none;
+            padding: 18px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-strip {
+            background: var(--strip);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2);
+        }
+        .btn-strip:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(6, 182, 212, 0.35); }
+
+        .btn-match {
+            background: var(--match);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2);
+        }
+        .btn-match:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(168, 85, 247, 0.35); }
+
+        .btn-home {
+            background: rgba(100, 116, 139, 0.2);
+            color: #94a3b8;
+            border: 1px solid rgba(100,116,139,0.3);
+            margin-top: 10px;
+        }
+        .btn-home:hover { background: rgba(100,116,139,0.35); color: #f1f5f9; }
+
+        .arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #334155;
+            margin: -5px 0;
+        }
+
+        .output-box {
+            background: #0a0f1e;
+            color: #cbd5e1;
+            padding: 35px;
+            border-radius: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            height: 90vh;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            line-height: 1.8;
+            border: 1px solid rgba(34, 211, 238, 0.1);
+            position: sticky;
+            top: 40px;
+        }
+
+        .highlight-strip { color: #06b6d4; font-weight: 800; }
+        .highlight-match { color: #a855f7; font-weight: 800; }
+        .highlight-lock  { color: #10b981; }
+        .highlight-neg   { color: #f87171; }
     </style>
 </head>
 <body>
+
 <div class="wrapper">
     <div class="panel">
-        <h1>👤 Identity Blueprint Lock</h1>
-        <div class="instruction">
-            <strong>IDENTITY PRESERVATION:</strong><br>
-            Uporabi to za obdelavo "čiste" fotografije. AI bo sliko le tehnično nadgradil (tekstura, svetloba), medtem ko bo tvoj obraz in frizuro ohranil 100 % identična.
+        <h1>🧬 Identity Translation</h1>
+        <div class="subtitle">REAL-TO-AI BRIDGE // V8.0</div>
+
+        <div class="step">
+            <div class="step-header">
+                <span class="step-badge badge-strip">Korak 1</span>
+                <span class="step-title">Strip — Očisti Sliko</span>
+            </div>
+            <div class="step-desc">
+                Realna fotografija → odstrani vse kar ni permanentno. Rezultat je čist nevtralen obraz na sivem ozadju, pripravljen za Korak 2.
+            </div>
+            <div class="step-tags">
+                <span class="tag remove">✕ Ozadje</span>
+                <span class="tag remove">✕ Očala / Kape</span>
+                <span class="tag remove">✕ Nakit</span>
+                <span class="tag remove">✕ Sence</span>
+                <span class="tag keep">✓ Obraz 100%</span>
+                <span class="tag keep">✓ Lasje</span>
+                <span class="tag keep">✓ Kožni ton</span>
+            </div>
+            <button class="btn btn-strip" onclick="showAndCopy('strip')">✂️ KOPIRAJ STRIP PROMPT</button>
         </div>
 
-        <div class="group">
-            <label>1. DNA Identiteta (Opiši realno stanje)</label>
-            <input type="text" id="faceDNA" placeholder="npr. oval face, light hazel eyes, specific jawline..." oninput="update()">
-            <input type="text" id="hairDNA" style="margin-top:10px;" placeholder="npr. dark brown wavy hair, specific messy bun texture..." oninput="update()">
+        <div class="arrow">↓</div>
+
+        <div class="step">
+            <div class="step-header">
+                <span class="step-badge badge-match">Korak 2</span>
+                <span class="step-title">AI Match — Zakleni DNA</span>
+            </div>
+            <div class="step-desc">
+                Čista baza → AI-native nadgradnja teksture in svetlobe. Rezultat je <strong style="color:#d8b4fe;">zaklenjen Master Asset</strong> — pripravljen za dodajanje ozadij, oblačil in predmetov.
+            </div>
+            <div class="step-tags">
+                <span class="tag add">+ 8K Koža</span>
+                <span class="tag add">+ Studio Svetloba</span>
+                <span class="tag add">+ Hair Detail</span>
+                <span class="tag keep">✓ Geometrija zaklenjena</span>
+                <span class="tag keep">✓ Styling ready</span>
+            </div>
+            <button class="btn btn-match" onclick="showAndCopy('match')">🔒 KOPIRAJ AI MATCH PROMPT</button>
         </div>
 
-        <div class="group">
-            <label>2. Tip Master Obdelave</label>
-            <select id="lockMode" onchange="update()">
-                <option value="IMAGE-TO-IMAGE BLUEPRINT: Use Ref 0 as an absolute pixel-perfect blueprint for facial geometry. No changes to bone structure or hair volume.">Popolno ujemanje geometrije (Blueprint)</option>
-                <option value="STUDIO ENHANCEMENT: Keep original face and hair, only upgrade skin texture to professional 8K studio quality.">Studijska nadgradnja teksture</option>
-            </select>
-        </div>
-
-        <div class="group">
-            <label>3. Svetloba & Studio</label>
-            <select id="studio" onchange="update()">
-                <option value="against a professional grey cyclorama studio wall with high-end lighting">Professional Grey Studio</option>
-                <option value="inside a clean minimalist white studio with natural soft shadows">White Fashion Studio</option>
-            </select>
-        </div>
-
-        <button class="btn-copy" onclick="copy()">📋 KOPIRAJ BLUEPRINT LOCK PROMPT</button>
-        <button style="margin-top:15px; background:var(--home); color:white;" class="btn-copy" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
+        <button class="btn btn-home" onclick="window.location.href='../index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
-    <div class="output-box" id="out"></div>
+
+    <div class="output-box" id="out"><span style="color:#1e293b;">// Klikni gumb za prikaz prompta...</span></div>
 </div>
 
 <script>
-    function update() {
-        const face = document.getElementById('faceDNA').value || "exact facial features from Ref 0";
-        const hair = document.getElementById('hairDNA').value || "exact hair texture from Ref 0";
-        const lock = document.getElementById('lockMode').value;
-        const studio = document.getElementById('studio').value;
+    const prompts = {
+        strip: {
+            label: "STEP 1 — STRIP PROMPT",
+            text: `STEP 1 — IDENTITY STRIP (V8.0):
 
-        const final = `MASTER ASSET BLUEPRINT (V7.0 - IDENTITY LOCK):
+Sloj 01-04 (Vsebina):
+[INPUT]: Real-life raw photograph (Ref 0).
+[TASK]: Extract the subject. Remove all non-essential elements.
 
-SLOJI 1-4 (Identiteta): 
-[IMAGE 0 BLUEPRINT]: Use Reference Image 0 as the absolute, immutable source for identity. 
-[STRICT DNA LOCK]: Subject must match the exact ${face} and ${hair}. 
-[GEOMETRY]: Zero changes to facial bone structure, forehead height, or eyebrow shape. 
-[ENVIRONMENT]: Set the subject ${studio}.
+[REMOVAL — MANDATORY]:
+- Background → replace with solid neutral grey (#808080)
+- All accessories → glasses, sunglasses, hats, caps, scarves, jewelry, bags
+- Environmental shadows → neutralize to flat even light
+- Complex clothing → simplify to plain neutral crew-neck (white or grey)
 
-SLOJ 5 (Kamera): 35mm lens, tripod-mounted for stability, minor digital noise for raw realism.
+[PRESERVE — DO NOT TOUCH]:
+- Facial bone structure (100% locked — zero changes)
+- Eye shape, iris color, pupil position
+- Nose bridge width and tip
+- Lip shape and thickness
+- Hairline position and natural hair texture
+- Skin tone, undertone, natural skin marks (moles, freckles — permanent only)
 
-SLOJI 6-8 (Tehnični): Professional studio lighting. Direct on-camera flash combined with soft-box fill. Harsh realistic shadows. Atmosphere: visible dust particles. Dirty cinematic grading, heavy film grain, vignette.
+Sloj 05 (Kamera):
+Shot on 85mm prime lens, tripod-mounted, eye-level neutral angle.
+No tilt, no wide-angle distortion.
 
-SLOJ 9 (Realizem): Mandatory skin texture: visible pores, natural skin sheen matching Ref 0 identity. STRICTLY PROHIBIT any new moles. Match ONLY existing skin marks. No plastic skin, no CGI, zero retouching.
+Sloj 06-08 (Svetloba):
+Butterfly lighting setup. Flat, even, shadowless fill.
+No dramatic shadows. No colored gels. Pure neutral white light.
+Background: clean solid grey cyclorama.
 
-SLOJ 10 (Vzdušje): Professional reference asset shot. Spontaneous, raw production anchor.
+Sloj 09 (Realizem):
+Natural skin texture preserved from Ref 0.
+No retouching. No smoothing. No added imperfections.
+Match exact skin marks from original.
 
-NEGATIVE PROMPT: perfect skin, airbrushed, CGI, 3D render, beauty filter, different face, different hair, extra volume, symmetrical, cartoon, doll-like, extra moles, freckles.`;
+Sloj 10 (Output):
+Front-facing or slight 3/4 view. Neutral expression.
+Waist-up medium shot. Clean air, absolute clarity.
+This is the RAW BASE for Step 2 processing.
 
-        document.getElementById('out').innerText = final;
+NEGATIVE PROMPT: sunglasses, hat, cap, jewelry, earrings, necklace, rings, watch, complex background, dramatic shadows, colored shadows, heavy makeup, beauty filter, skin smoothing, airbrushed.`
+        },
+        match: {
+            label: "STEP 2 — AI MATCH PROMPT",
+            text: `STEP 2 — AI DNA MATCH / IDENTITY LOCK (V8.0):
+
+Sloj 01-04 (Identiteta):
+[INPUT]: Cleaned base image from Step 1 (Ref 0).
+[TASK]: Translate real facial DNA into AI-native hyper-realistic format.
+[OUTPUT]: MASTER REFERENCE ASSET — sealed, locked, ready for styling.
+
+[DNA LOCK — ABSOLUTE ZERO CHANGES TO]:
+- Facial geometry, bone structure, jawline shape
+- Eye shape, iris color, pupil position, eyelid fold
+- Nose bridge width, nose tip shape
+- Lip thickness, cupid's bow curve
+- Hairline position, hair volume, hair texture
+- Skin tone, undertone, all permanent skin marks
+
+[AI-NATIVE UPGRADE — APPLY]:
+- Skin → 8K hyper-realistic pore detail, natural oil sheen,
+  subsurface scattering, realistic asymmetry
+- Hair → individual strand separation, natural light refraction,
+  flyaway strands, root-to-tip texture gradient
+- Eyes → realistic catchlights, natural iris depth and limbal ring,
+  wet realistic cornea
+- Overall → cinematic raw photography feel, film grain ISO 400
+
+Sloj 05 (Kamera):
+85mm prime lens, tripod-mounted, eye-level.
+Slight digital noise for raw analog feel.
+
+Sloj 06-08 (Svetloba):
+Professional butterfly lighting. Neutral white fill.
+Soft-box fill from both sides. No colored gels.
+Background: clean solid grey cyclorama, no vignette.
+
+Sloj 09 (Realizem):
+Mandatory: visible pores, natural skin sheen.
+STRICTLY PRESERVE: only existing permanent skin marks from Ref 0.
+STRICTLY PROHIBIT: adding new moles, freckles, blemishes.
+Zero digital retouching, zero beauty filter.
+
+Sloj 10 (Master Asset Output):
+This sealed image accepts:
+[+] New backgrounds (drop-in composition ready)
+[+] New clothing and outfits (layer-on ready)
+[+] New props and objects (compositing ready)
+[+] New lighting setups (re-lighting ready)
+[+] New environments and scenes
+
+NEGATIVE PROMPT: changed bone structure, different eye color, different hair, airbrushed skin, plastic skin, CGI face, 3D render, beauty filter, symmetrical face, cartoon, doll-like, extra moles, added freckles, changed jawline, different person.`
+        }
+    };
+
+    function showAndCopy(type) {
+        const p = prompts[type];
+        const colorClass = type === 'strip' ? 'highlight-strip' : 'highlight-match';
+
+        let rendered = p.text
+            .replace(/(STEP \d+ —[^\n]+)/g, `<span class="${colorClass}">$1</span>`)
+            .replace(/(Sloj \d+[^\n]*:)/g, '<span style="color:#f8fafc; font-weight:800;">$1</span>')
+            .replace(/(\[REMOVAL[^\]]*\]|\[PRESERVE[^\]]*\]|\[DNA LOCK[^\]]*\]|\[AI-NATIVE[^\]]*\]|\[INPUT\]|\[TASK\]|\[OUTPUT\])/g, '<span class="highlight-lock">$1</span>')
+            .replace(/(NEGATIVE PROMPT:[\s\S]*)/g, '<span class="highlight-neg">$1</span>');
+
+        document.getElementById('out').innerHTML =
+            `<div style="font-size:0.65rem; letter-spacing:2px; color:#475569; margin-bottom:20px; text-transform:uppercase;">${p.label}</div>` + rendered;
+
+        navigator.clipboard.writeText(p.text);
+        alert(type === 'strip' ? "STRIP PROMPT KOPIRAN! ✂️" : "AI MATCH PROMPT KOPIRAN! 🔒");
     }
-    function copy() { navigator.clipboard.writeText(document.getElementById('out').innerText); alert("BLUEPRINT PROMPT KOPIRAN!"); }
-    update();
 </script>
 </body>
 </html>
