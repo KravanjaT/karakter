@@ -2,57 +2,66 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Video Dynamics V1.2</title>
+    <title>IDENTITY OS - Video Dynamics V1.3 PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --bg: #020617; --accent: #f59e0b; --panel: #0f172a; --text: #f8fafc; --green: #10b981; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 40px; color: var(--text); margin: 0; }
         .wrapper { max-width: 1750px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .panel { background: var(--panel); padding: 40px; border-radius: 32px; border: 1px solid rgba(245, 158, 11, 0.4); box-shadow: 0 0 30px rgba(245, 158, 11, 0.1); }
+        .panel { background: var(--panel); padding: 40px; border-radius: 32px; border: 1px solid rgba(245, 158, 11, 0.4); }
         .header { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
         .badge { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 8px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
         h1 { margin: 15px 0 5px 0; font-size: 1.8rem; font-weight: 900; color: var(--accent); }
         h2 { font-size: 0.75rem; text-transform: uppercase; color: #64748b; margin: 25px 0 10px 0; letter-spacing: 1px; }
-        select { width: 100%; padding: 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: #1e293b; color: #fff; font-size: 0.95rem; margin-bottom: 15px; appearance: none; }
+        select { width: 100%; padding: 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: #1e293b; color: #fff; font-size: 0.95rem; margin-bottom: 15px; appearance: none; cursor: pointer; }
         .output-box { background: #000; color: var(--green); padding: 35px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 85vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.8; border: 1px solid #1e293b; position: sticky; top: 40px; }
         .btn-copy { background: var(--accent); color: #000; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; }
         .btn-home { background: rgba(100, 116, 139, 0.1); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 15px; }
-        .status { font-size: 0.65rem; color: #3b82f6; font-weight: 900; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+        
+        /* TOAST NOTIFICATION */
+        #toast { visibility: hidden; min-width: 250px; background-color: var(--green); color: #000; text-align: center; border-radius: 12px; padding: 16px; position: fixed; z-index: 1000; left: 50%; transform: translateX(-50%); top: 30px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1s; }
+        @keyframes fadein { from {top: 0; opacity: 0;} to {top: 30px; opacity: 1;} }
+        @keyframes fadeout { from {top: 30px; opacity: 1;} to {top: 0; opacity: 0;} }
     </style>
 </head>
 <body>
 
+<div id="toast">Prompt kopiran! 🎬</div>
+
 <div class="wrapper">
     <div class="panel">
         <div class="header">
-            <span class="badge">VEO ENGINE • 1-FRAME & 2-FRAME SYNC</span>
-            <h1>🎬 Video Dynamics V1.2</h1>
-            <div class="status">● FRAME ANCHORING ENABLED (Fixed Background & Asset)</div>
+            <span class="badge">VEO • Commercial Motion Engine</span>
+            <h1>🎬 Video Dynamics V1.3</h1>
         </div>
 
-        <h2>1. NAČIN ANIMACIJE</h2>
+        <h2>1. NAČIN GENERIRANJA</h2>
         <select id="mode" onchange="updatePrompt()">
-            <option value="Image-to-Video (Start Frame Only)">Image-to-Video (Samo začetni frame)</option>
-            <option value="Frame-to-Frame interpolation (Start & End Frame Lock)">Frame-to-Frame (Začetni + Končni frame)</option>
+            <option value="Image-to-Video">Start Frame Lock (Ref 0)</option>
+            <option value="Frame-to-Frame">Start & End Frame Interpolation (Ref 0 to Ref 1)</option>
         </select>
 
-        <h2>2. SPECIFIKACIJA GIBANJA (Motion Only)</h2>
+        <h2>2. KOMERCIALNO GIBANJE (Sales-Ready)</h2>
         <select id="motion" onchange="updatePrompt()">
-            <option value="subtle micro-movements: natural breathing, slow blinking, slight eye darting">Mikro-premiki (Dihanje & Blink)</option>
-            <option value="gentle head tilt and shift in body weight while holding the object">Nežen nagib glave in telesa</option>
-            <option value="subject slowly turns head to look directly into the camera lens">Obrat glave proti objektivu</option>
-            <option value="hands subtly adjust the object being held, natural finger movements">Naravno premikanje prstov na predmetu</option>
-            <option value="a slight knowing smile forms and fades, maintaining eye contact">Sproščen nasmeh in pogled</option>
+            <option value="subtle micro-movement: natural breathing, slow blinking, soft eye engagement">Micro-Lifestyle (Dihanje & Blink)</option>
+            <option value="confident walking movement towards lens, maintaining 1:1 eye contact">The Runway (Hoja proti objektivu)</option>
+            <option value="subject slowly turns head to show side profile, then looks back with a knowing smile">The Look-Back (Obrat in nasmeh)</option>
+            <option value="hands gently adjusting sunglasses/jewelry/collar, showing material texture">Product Focus (Prilagajanje dodatkov)</option>
+            <option value="taking a slow sip from a cup/glass, natural throat movement">Lifestyle Sip (Uporaba predmeta)</option>
+            <option value="subtle hand gestures while talking to someone off-screen, professional posture">The Interview (Poslovna kretnja)</option>
         </select>
 
-        <h2>3. TEMPORALNA OPTIKA (10-Layer System)</h2>
+        <h2>3. PRODAJNA OPTIKA (Lens & Vibes)</h2>
         <select id="optics" onchange="updatePrompt()">
-            <option value="handheld 35mm shake, motion blur, digital sensor noise, film grain">35mm Handheld (Surova dinamika)</option>
-            <option value="steady gimbal movement, cinematic slow-motion at 60fps feel">Steady Slow-mo (Fiksna stabilnost)</option>
-            <option value="paparazzi flash-burst effect with high shutter speed jitter">Flash Jitter (Paparazzi style)</option>
+            <option value="handheld 35mm lens, handheld organic shake, raw candid sensor noise">Candid Raw (Social Media avtentičnost)</option>
+            <option value="slow cinematic gimbal zoom, 85mm prime lens compressed depth, ultra-stable">Luxury Smooth (Visoka moda / Parfumi)</option>
+            <option value="rapid on-camera flash bursts, paparazzi jitter, harsh high-contrast shadows">Paparazzi Editorial (Flash & Jitter)</option>
+            <option value="dynamic focus pull: shifting focus from the held object to the subject's eyes">Macro Focus Pull (Prodaja predmeta)</option>
+            <option value="35mm low-angle tracking shot, cinematic motion blur on movement">Urban Tracking (Ulični stil)</option>
         </select>
 
-        <button class="btn-copy" onclick="copy()">🚀 KOPIRAJ VEO MOTION PROMPT</button>
+        <button class="btn-copy" onclick="copy()">🚀 KOPIRAJ VEO PROMPT</button>
         <button class="btn-home" onclick="window.location.href='index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
 
@@ -65,32 +74,34 @@
         const motion = document.getElementById('motion').value;
         const optics = document.getElementById('optics').value;
 
-        const final = `VEO VIDEO PROTOCOL (V1.2 - PURE MOTION ONLY):
+        const final = `VEO PRODUCTION PROTOCOL (V1.3 - SALES & MOTION):
 
-Sloji 1-4 (Identiteta & Scena - NEDOTAKLJIVO):
-[FRAME ANCHORING]: ${mode === 'Image-to-Video (Start Frame Only)' ? 'Use Ref 0 as the absolute start frame.' : 'Generate video between Ref 0 (start) and Ref 1 (end).'}
-[SCENE LOCK]: Background, lighting, and object positions are FIXED. Do NOT alter the environment or asset DNA.
-[IMMUTABLE ASSET]: 1:1 identity consistency from Ref 0 across all frames.
+Sloji 1-4 (Identiteta & Scena - ZAKLENJENO):
+[FRAME ANCHORING]: ${mode === 'Image-to-Video' ? 'Reference Image 0 is the absolute starting state.' : 'Interpolate motion between Ref 0 and Ref 1.'}
+[IMMUTABLE ASSET]: Maintain 1:1 facial DNA, bone structure, and permanent skin markers from Ref 0.
+[SCENE LOCK]: Background, object physics, and global lighting are FIXED. 0% environmental drift.
 
-Sloji 5-7 (Dinamika gibanja):
+Sloji 5-7 (Komercialna Dinamika):
 [MOTION]: ${motion}.
-[PHYSICS]: Natural gravity and material interaction. No morphing or identity drift.
-[INTERACTION]: Maintain 1:1 contact with the object from the reference image.
+[PHYSICS]: Fluid anatomical motion. No identity warping or facial morphing.
+[INTERACTION]: Maintain stable contact with objects and clothing from Ref 0.
 
-Sloji 8-10 (Temporalni Realizem - tvoj sistem):
-[OPTICS]: ${optics}.
-[LAYERS]: Apply handheld shake, motion blur, digital noise, and film grain as temporal layers.
-[SKIN]: 8K skin texture persistence. Visible pores and subsurface scattering must remain stable.
-[LIGHT]: On-camera flash aesthetic with harsh shadows must remain consistent throughout the clip.
+Sloji 8-10 (Temporalni Realizem - 10 Layer System):
+[OPTICS & CAMERA]: ${optics}.
+[LAYERS]: Apply handheld shake, motion blur, and film grain as consistent temporal filters.
+[SKIN FIDELITY]: 8K texture persistence. Visible pores and skin moisture must remain stable across frames.
+[VIBE]: On-camera flash aesthetic, harsh shadows, dirty cinematic grading.
 
-NEGATIVE PROMPT: background change, object morphing, changing clothes, identity drift, facial warping, flickering, skin smoothing, CGI look, added moles, added freckles.`;
+NEGATIVE PROMPT: background drift, changing clothes, identity morphing, flickering, beauty filter, skin smoothing, CGI look, added moles, added freckles.`;
 
         document.getElementById('out').innerText = final;
     }
 
     function copy() {
         navigator.clipboard.writeText(document.getElementById('out').innerText);
-        alert("VEO MOTION PROMPT KOPIRAN! 🎬");
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1500);
     }
 
     updatePrompt();
