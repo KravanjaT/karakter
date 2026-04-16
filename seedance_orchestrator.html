@@ -1,49 +1,134 @@
-<div class="panel" style="border-color: #3b82f6; margin-top: 30px;">
-    <div class="header">
-        <span class="badge" style="background: #3b82f6;">V1.4 • Video Film Engine</span>
-        <h1>🎬 Seedance Orchestra: Film Selector</h1>
-        <div class="status">● PHYSICS ENGINE: 2026 CINEMATIC READY</div>
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>IDENTITY OS - Seedance Orchestra V4.0 PRO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
+        :root { --bg: #020617; --accent: #8b5cf6; --panel: #0f172a; --text: #f8fafc; --green: #10b981; --blue: #3b82f6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); padding: 40px; color: var(--text); margin: 0; }
+        .wrapper { max-width: 1750px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
+        .panel { background: var(--panel); padding: 40px; border-radius: 32px; border: 1px solid rgba(139, 92, 246, 0.4); position: sticky; top: 40px; }
+        h1 { margin: 0 0 10px 0; font-size: 1.6rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; }
+        p.desc { color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px; line-height: 1.5; }
+        
+        select, textarea { width: 100%; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 18px; color: #fff; font-size: 0.95rem; margin-bottom: 20px; box-sizing: border-box; }
+        textarea { height: 120px; resize: none; }
+        
+        .orchestra-btn { background: var(--accent); color: #fff; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; transition: 0.3s; box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2); }
+        .orchestra-btn:hover { background: #7c3aed; transform: translateY(-2px); }
+        
+        .output-box { background: #000; color: #a78bfa; padding: 40px; border-radius: 28px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 90vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.7; border: 1px solid #1e293b; }
+        .badge { background: var(--blue); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 900; vertical-align: middle; margin-left: 10px; }
+        #toast { visibility: hidden; min-width: 250px; background-color: var(--green); color: #000; text-align: center; border-radius: 12px; padding: 16px; position: fixed; z-index: 1000; left: 50%; transform: translateX(-50%); top: 30px; font-weight: 900; }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 1.5s; }
+        h2 { font-size: 0.7rem; text-transform: uppercase; color: #64748b; margin-bottom: 8px; letter-spacing: 1px; }
+        @keyframes fadein { from {top: 0; opacity: 0;} to {top: 30px; opacity: 1;} }
+        @keyframes fadeout { from {top: 30px; opacity: 1;} to {top: 30px; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+<div id="toast">ORCHESTRA SKRIPTA PRIPRAVLJENA! 🎞️</div>
+
+<div class="wrapper">
+    <div class="panel">
+        <h1>🎬 Seedance Orchestra <span class="badge">V4.0 PRO</span></h1>
+        <p class="desc">Vnesi vizijo. Sistem bo zgeneriral Storyboard (A->B->C) in tehnični video prompt na podlagi tvojih 5 elitnih filmskih profilov.</p>
+        
+        <h2>1. IZBERI FILM ENGINE (Physics & Lighting)</h2>
+        <select id="filmEngine">
+            <option value="duel">Film 1: The Duel (Reflections & Close-combat)</option>
+            <option value="reveal">Film 2: The Reveal (Atmosphere & Mechanical)</option>
+            <option value="combat">Film 3: The Combat (High-Impact & Dust)</option>
+            <option value="vibe">Film 4: The Vibe (Slow Push-In & Urban Neon)</option>
+            <option value="urban">Film 5: The Urban (Orbit Motion & Night Bokeh)</option>
+        </select>
+
+        <h2>2. REŽISERSKA VIZIJA SCENE</h2>
+        <textarea id="vision" placeholder="Npr.: Lik v belo-modri jakni hodi po deževnem Tokiu, v roki drži kavo, neonski odsevi na obrazu..."></textarea>
+        
+        <button class="orchestra-btn" onclick="orchestrate()">🚀 GENERIRAJ PRODUKCIJSKI PAKET</button>
+        <button class="btn-home" style="background:none; border:none; color:#64748b; cursor:pointer; width:100%; margin-top:20px; font-weight:800; text-transform:uppercase; font-size:0.75rem;" onclick="window.location.href='index.html'">🏠 NAZAJ NA DASHBOARD</button>
     </div>
 
-    <h2>1. IZBERI TEHNIČNI PROFIL FILMA</h2>
-    <select id="filmEngine" onchange="updateVideoMaster()">
-        <option value="duel">Film 1: The Duel (Reflections & Close-combat)</option>
-        <option value="reveal">Film 2: The Reveal (Atmosphere & Mechanical)</option>
-        <option value="combat">Film 3: The Combat (High-Impact & Dust Particles)</option>
-        <option value="vibe">Film 4: The Vibe (Slow Push-In & Urban Neon)</option>
-        <option value="urban">Film 5: The Urban (Orbit Motion & Night Bokeh)</option>
-    </select>
-
-    <h2>2. VIDEO STABILIZACIJA (Seedance 2.0)</h2>
-    <select id="stability">
-        <option value="Ultra-Consistent (Fixed Identity)">Ultra-Consistent (Fixed Identity)</option>
-        <option value="Dynamic Motion (High Energy)">Dynamic Motion (High Energy)</option>
-    </select>
-
-    <button class="btn-copy" style="background: #3b82f6;" onclick="copyVideoMaster()">🚀 KOPIRAJ VIDEO MASTER PROMPT</button>
+    <div id="out" class="output-box">// Čakam na tvojo vizijo za orkestracijo...</div>
 </div>
 
 <script>
-    const FILM_SPECS = {
-        duel: "[ENGINE: REFLECTION]: Sync all mirrors with Ref 0 DNA. [LIGHT]: 6000K Fluorescent. [CAMERA]: Handheld shake, tight macro crops on facial impact.",
-        reveal: "[ENGINE: MECHANICAL]: Butterfly door physics, slow hydraulic motion. [ATMOS]: Volumetric haze, red LED light-leak. [CAMERA]: Smooth gimbal tracking.",
-        combat: "[ENGINE: IMPACT]: Kinetic energy transfer, dust reaction on collision. [STORYBOARD]: Frame A (stare) -> Frame B (strike) -> Frame C (knockback).",
-        vibe: "[ENGINE: SUBTLE]: Micro-facial expressions, lollipop interaction physics. [LIGHT]: Amber/Teal split lighting. [CAMERA]: Constant velocity push-in.",
-        urban: "[ENGINE: BOKEH]: Real-time background blur shift. [LIGHT]: Smartphone screen glow as key light. [CAMERA]: 360-degree orbit, 24fps motion blur."
+    const ENGINES = {
+        duel: {
+            name: "THE DUEL",
+            physics: "[ENGINE: REFLECTION MAPPING] Sync all mirror surfaces with Ref 0. Fluid combat choreography.",
+            light: "Cool 6000K fluorescent overhead, clinical shadows, polished reflective tile surfaces.",
+            camera: "Tight macro crops, handheld shake, fast-paced shutter speed."
+        },
+        reveal: {
+            name: "THE REVEAL",
+            physics: "[ENGINE: MECHANICAL] Precision hydraulic motion (butterfly doors), realistic smoke billows.",
+            light: "Single overhead spotlight, red LED tail-light glow, high-contrast night setting.",
+            camera: "Low-angle steady tracking, slow cinematic pan."
+        },
+        combat: {
+            name: "THE COMBAT",
+            physics: "[ENGINE: IMPACT] Kinetic energy transfer, dust particles reacting to strikes (palm/knee).",
+            light: "Dramatic single-source overhead, dust beams, gritty industrial high-contrast.",
+            camera: "Action-intercut angles, wide to close-up transitions."
+        },
+        vibe: {
+            name: "THE VIBE",
+            physics: "[ENGINE: SUBTLE] Micro-facial expressions (boredom), organic lollipop/liquid physics.",
+            light: "Mixed lighting: Warm machine glow + cool fluorescent, muted teal/amber palette.",
+            camera: "Constant velocity push-in, shallow depth of field."
+        },
+        urban: {
+            name: "THE URBAN",
+            physics: "[ENGINE: BOKEH SHIFT] Real-time background blur adjustment based on camera orbit.",
+            light: "Key light: Smartphone screen glow on skin. Background: Night urban bokeh.",
+            camera: "360-degree facial orbit, candid handheld micro-movement."
+        }
     };
 
-    function updateVideoMaster() {
-        const engine = document.getElementById('filmEngine').value;
-        const out = document.getElementById('out');
+    function orchestrate() {
+        const vision = document.getElementById('vision').value;
+        const engineKey = document.getElementById('filmEngine').value;
+        const eng = ENGINES[engineKey];
+        if (!vision) return;
+
+        let res = `SEEDANCE ORCHESTRA PRODUCTION LOG - V4.0\n`;
+        res += `ENGINE: ${eng.name} PROTOCOL\n`;
+        res += `===========================================================\n\n`;
+
+        res += `STEP 1: GENERATE KEYFRAME IMAGES (The Pillars)\n`;
+        res += `[IMAGE 0 - START]: DNA Anchor (Ref 0) + ${vision} + Standing Position.\n`;
+        res += `[IMAGE 1 - MID]: DNA Anchor (Ref 0) + ${vision} + Mid-action/Movement.\n`;
+        res += `[IMAGE 2 - END]: DNA Anchor (Ref 0) + ${vision} + Final Pose/Outcome.\n`;
+        res += `-----------------------------------------------------------\n\n`;
+
+        res += `STEP 2: THE 10-LAYER DNA MASTER (For Stills Generation)\n`;
+        res += `[PROMPT]: High-fidelity candid photo, subject from Ref 0. ${vision}.\n`;
+        res += `Sloji 1-4: hyper-realistic, raw, lived-in, natural proportions.\n`;
+        res += `Sloj 5: ${eng.camera}, 24fps motion blur, digital noise.\n`;
+        res += `Sloji 6-8: ${eng.light}, heavy film grain, cinematic grading.\n`;
+        res += `Sloji 9-10: Visible pores, natural imperfections, 100% Identity Lock.\n`;
+        res += `[NEGATIVE]: CGI, plastic skin, airbrushed, beauty filter, morphing.\n`;
+        res += `-----------------------------------------------------------\n\n`;
+
+        res += `STEP 3: SEEDANCE ORCHESTRA GLUE (Video Prompt)\n`;
+        res += `[TRANSITION PROTOCOL]: Seamlessly interpolate from Image 0 to Image 2.\n`;
+        res += `[PHYSICS]: ${eng.physics}\n`;
+        res += `[LIGHTING]: ${eng.light}\n`;
+        res += `[PACING]: 0.5x Cinematic Slow-Motion. No flicker, no identity drift.\n`;
+        res += `[LOCKED ASSET]: Maintain 1:1 geometry of Ref 0 subject and objects throughout 20s.\n`;
+        res += `===========================================================\n`;
+
+        document.getElementById('out').innerText = res;
+        navigator.clipboard.writeText(res);
         
-        const finalVideoPrompt = `SEEDANCE ORCHESTRA MASTER PROTOCOL:
-
-[FILM SPECIFICATION]: ${FILM_SPECS[engine]}
-[IDENTITY DNA]: Use Ref 0 Anchors for 100% facial consistency.
-[TEMPORAL COHERENCE]: Maintain structural integrity across 20-second sequence.
-[PHYSICS]: Enable gravity and particle collision for ${engine === 'combat' ? 'dust and impact' : 'smoke and hair'}.
-[OUTPUT]: Cinematic 4K, 24fps, No morphing, No flickering.`;
-
-        document.getElementById('out').innerText = finalVideoPrompt;
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1500);
     }
 </script>
+</body>
+</html>
