@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>IDENTITY OS - Finishing Studio V1.1 PRO</title>
+    <title>IDENTITY OS - Finishing Studio V1.2 PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
         :root { --bg: #020617; --accent: #a855f7; --panel: #0f172a; --text: #f8fafc; --green: #10b981; }
@@ -17,7 +17,6 @@
         .output-box { background: #000; color: var(--green); padding: 35px; border-radius: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; height: 85vh; overflow-y: auto; white-space: pre-wrap; line-height: 1.8; border: 1px solid #1e293b; position: sticky; top: 40px; }
         .btn-copy { background: var(--accent); color: white; border: none; padding: 22px; width: 100%; border-radius: 16px; cursor: pointer; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
         .btn-home { background: rgba(100, 116, 139, 0.1); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.2); padding: 15px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-top: 10px; }
-        .btn-home:hover { background: rgba(100, 116, 139, 0.25); color: #f1f5f9; }
         .status { font-size: 0.65rem; color: #10b981; font-weight: 900; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
@@ -26,34 +25,27 @@
 <div class="wrapper">
     <div class="panel">
         <div class="header">
-            <span class="badge">V1.1 • Digital Finishing Lab</span>
-            <h1>✨ Lepotna Retuša</h1>
-            <div class="status">● SKIN DNA LOCK ACTIVE (NO ADDED MARKS)</div>
+            <span class="badge">V1.2 • Pro Stylist & Jewelry Edition</span>
+            <h1>✨ Lepotna Retuša PRO</h1>
+            <div class="status">● REAL-TIME IDENTITY DNA LOCK ACTIVE</div>
         </div>
 
-        <h2>1. IZBERI SPOL (Določa stil in dodatke)</h2>
+        <h2>1. IZBERI SPOL</h2>
         <select id="gender" onchange="updateOptions()">
-            <option value="female">Ženska Oseba</option>
-            <option value="male">Moška Oseba</option>
+            <option value="female">Ženska Oseba (High-End Styling)</option>
+            <option value="male">Moška Oseba (Executive Grooming)</option>
         </select>
 
-        <h2>2. BARVA LAS (Natural Tones)</h2>
-        <select id="hairColor" onchange="updatePrompt()">
-            <option value="keep original color">Ohrani originalno barvo</option>
-            <option value="natural honey blonde with subtle highlights">Naravno medena blond</option>
-            <option value="deep espresso brown, rich and glossy">Globoka espresso rjava</option>
-            <option value="soft ash brown with cool undertones">Pepelnato rjava</option>
-            <option value="natural auburn red, warm copper tones">Naravna bakreno rdeča</option>
-            <option value="classic midnight black, high-shine finish">Naravna polnočna črna</option>
-        </select>
+        <h2>2. BARVA LAS (Advanced Color Palette)</h2>
+        <select id="hairColor" onchange="updatePrompt()"></select>
 
-        <h2>3. PRIČESKA (Precision Cut)</h2>
+        <h2>3. PRIČESKA (Master Cut)</h2>
         <select id="hairStyle" onchange="updatePrompt()"></select>
 
-        <h2>4. NAKIT (Prestige Details)</h2>
+        <h2>4. NAKIT (Prestige Materials)</h2>
         <select id="jewelry" onchange="updatePrompt()"></select>
 
-        <h2>5. DODATKI (Optical & Tech)</h2>
+        <h2>5. DODATKI (Premium Optics)</h2>
         <select id="accessories" onchange="updatePrompt()"></select>
 
         <button class="btn-copy" onclick="copy()">🚀 KOPIRAJ FINISHING PROMPT</button>
@@ -66,49 +58,86 @@
 <script>
     const GENDER_DATA = {
         female: {
+            colors: [
+                { val: "keep original hair color", text: "Ohrani original" },
+                { val: "creamy vanilla blonde with cool ash undertones", text: "Vanilijeva blond" },
+                { val: "sun-kissed caramel balayage, seamless transition", text: "Karamelni Balayage" },
+                { val: "deep multidimensional espresso brown, mirror-like shine", text: "Espresso rjava (Mirror Shine)" },
+                { val: "rich mahogany with subtle violet reflections", text: "Mahagonij s pridihom vijolične" },
+                { val: "natural strawberry blonde, warm golden copper", text: "Jagodna blond" },
+                { val: "icy platinum blonde, near-white high-fashion tone", text: "Platinasta ledena blond" },
+                { val: "dark chocolate brown with honey highlights", text: "Temna čokolada z medom" },
+                { val: "vibrant ginger red, high-saturation copper", text: "Živo rdeča (Ginger)" },
+                { val: "soft silver-ash grey, sophisticated mature tone", text: "Srebrno-pepelnata siva" },
+                { val: "warm chestnut brown with auburn glints", text: "Kostanjevo rjava" },
+                { val: "champagne blonde, neutral balanced tone", text: "Šampanjec blond" },
+                { val: "midnight onyx black, blue-black iridescent shine", text: "Oniks črna (Midnight)" },
+                { val: "rose gold tinted blonde, metallic finish", text: "Rose-Gold blond" },
+                { val: "smoky quartz brown, muted cool tone", text: "Dimni kremen rjava" }
+            ],
             styles: [
-                { val: "keep original hair structure", text: "Ohrani originalno pričesko" },
-                { val: "precision-cut textured bob, slight volume at roots", text: "Elegantni bob (Bob Cut)" },
-                { val: "long soft waves, flowing naturally over shoulders", text: "Dolgi valoviti lasje (Soft Waves)" },
-                { val: "slicked-back low ponytail, clean professional part", text: "Nizek čop (Sleek Ponytail)" },
-                { val: "voluminous messy bun with loose side strands", text: "Sproščena figa (Messy Bun)" }
+                { val: "keep original structure", text: "Ohrani original" },
+                { val: "sleek center-parted glass hair, dead-straight, high gloss", text: "Glass Hair (Ravno/Sijaj)" },
+                { val: "voluminous Hollywood glam waves, deep side part", text: "Hollywoodski valovi" },
+                { val: "modern shaggy wolf cut with curtain bangs", text: "Wolf Cut s frufrujem" },
+                { val: "tight high-fashion sleek bun, ultra-smooth finish", text: "Visoka gladka figa" },
+                { val: "loose beach waves, natural salt-water texture", text: "Beach Waves (Sproščeno)" },
+                { val: "precision A-line bob, sharp chin-length cut", text: "Ostri A-Line Bob" },
+                { val: "soft layers with face-framing highlights, 90s blowout", text: "90s Blowout (Volumen)" },
+                { val: "elegant French twist, sophisticated updo", text: "Francoski zvitek (Twist)" },
+                { val: "messy low ponytail with face-framing strands", text: "Nizek čop s prameni" },
+                { val: "short textured pixie cut, edgy feathered layers", text: "Textured Pixie" }
             ],
             jewelry: [
                 { val: "no jewelry", text: "Brez nakita" },
-                { val: "minimalist 14k gold geometric hoop earrings", text: "Zlati obroči (Gold Hoops)" },
-                { val: "small diamond stud earrings, 2-carat brilliance", text: "Diamantni uhani (Studs)" },
-                { val: "elegant single-strand white pearl necklace", text: "Biseri okoli vratu (Pearls)" },
-                { val: "modern silver ear-cuff, architectural design", text: "Srebrna ušesna sponka (Ear-cuff)" }
+                { val: "18k yellow gold 20mm classic hoop earrings", text: "Zlati obroči (18k Gold)" },
+                { val: "3-carat solitaire diamond studs, platinum setting", text: "Diamantni uhani (3ct)" },
+                { val: "vintage-style sapphire and diamond drop earrings", text: "Safirni viseči uhani" },
+                { val: "minimalist 925 sterling silver snake chain necklace", text: "Srebrna verižica (Snake Chain)" },
+                { val: "luxury South Sea pearl necklace, uniform 10mm pearls", text: "Ogrlica iz biserov" },
+                { val: "architectural rose gold ear cuff on upper cartilage", text: "Ušesna sponka (Rose Gold)" }
             ],
             accessories: [
                 { val: "no accessories", text: "Brez dodatkov" },
-                { val: "designer cat-eye optical glasses, tortoise-shell frame", text: "Mačja očala (Cat-eye)" },
-                { val: "thin rose-gold wireframe reading glasses", text: "Tanka rožnato-zlata očala" },
-                { val: "premium oversized black sunglasses, high-end acetate", text: "Velika sončna očala (Oversized)" },
-                { val: "delicate silk scarf tied loosely around the neck", text: "Svilena ruta (Silk Scarf)" }
+                { val: "oversized black acetate butterfly sunglasses, dark lenses", text: "Butterfly sončna očala" },
+                { val: "retro gold-rimmed optical glasses, round frames", text: "Retro okrogla očala" },
+                { val: "silk floral headscarf tied in a classic 60s style", text: "Svilena ruta (60s style)" },
+                { val: "delicate thin black velvet choker", text: "Žametni ovratnik (Choker)" },
+                { val: "modern clear-frame blue-light blocking glasses", text: "Prozorna očala" }
             ]
         },
         male: {
+            colors: [
+                { val: "keep original hair color", text: "Ohrani original" },
+                { val: "matte charcoal black, no reflections", text: "Mat ogljeno črna" },
+                { val: "natural salt and pepper, sophisticated grey blend", text: "Salt & Pepper (Sivo-črna)" },
+                { val: "deep walnut brown, warm natural tones", text: "Orehovo rjava" },
+                { val: "cool slate grey, uniform professional silver", text: "Skrilasto siva (Slate)" },
+                { val: "sun-bleached dirty blonde, sandy highlights", text: "Peščena blond" },
+                { val: "dark bronze brown with copper undertones", text: "Bronasta rjava" }
+            ],
             styles: [
-                { val: "keep original hair structure", text: "Ohrani originalno pričesko" },
-                { val: "classic executive taper fade, short sides, neat top", text: "Poslovni Taper Fade" },
-                { val: "textured modern pompadour, natural matte finish", text: "Moderni Pompadour" },
-                { val: "rugged buzz cut, uniform length, clean hairline", text: "Buzz Cut (Kratko)" },
-                { val: "natural messy bedhead look, textured strands", text: "Sproščen 'Bedhead' videz" }
+                { val: "keep original structure", text: "Ohrani original" },
+                { val: "executive side-part fade, razor-sharp hairline", text: "Executive Side-Part" },
+                { val: "modern textured quiff, matte clay finish", text: "Textured Quiff (Mat)" },
+                { val: "military buzz cut, uniform 3mm length", text: "Buzz Cut (Vojaško)" },
+                { val: "slicked back undercut, high contrast", text: "Sleek Undercut" },
+                { val: "natural messy top with mid-skin fade", text: "Messy Top + Fade" },
+                { val: "classic tapered crew cut, neat and professional", text: "Crew Cut" }
             ],
             jewelry: [
                 { val: "no jewelry", text: "Brez nakita" },
-                { val: "single minimalist stainless steel stud in one ear", text: "Enojni jekleni uhan (Stud)" },
-                { val: "rugged brushed titanium wedding band on finger", text: "Titanov prstan (Ring)" },
-                { val: "small silver cross earring, polished finish", text: "Majhen srebrni križ" },
-                { val: "minimalist black carbon fiber ear-stud", text: "Črn karbonski uhan" }
+                { val: "brushed titanium 8mm wedding band on ring finger", text: "Titanov prstan (Mat)" },
+                { val: "single small black diamond stud in left earlobe", text: "Črn diamantni uhan" },
+                { val: "minimalist heavy silver curb chain necklace", text: "Srebrna verižica (Curb Chain)" },
+                { val: "luxury Swiss automatic watch, steel bracelet, visible under cuff", text: "Luksuzna ura (Steel)" }
             ],
             accessories: [
                 { val: "no accessories", text: "Brez dodatkov" },
-                { val: "classic black wayfarer optical glasses", text: "Wayfarer očala" },
-                { val: "modern square matte black metal frames", text: "Oglata mat črna očala" },
-                { val: "vintage gold-rimmed aviator sunglasses", text: "Aviator sončna očala" },
-                { val: "minimalist wireless tech earbuds in ears", text: "Brezžične slušalke (Earbuds)" }
+                { val: "classic dark tortoise-shell wayfarer glasses", text: "Wayfarer (Tortoise)" },
+                { val: "matte black square tactical sunglasses", text: "Taktična sončna očala" },
+                { val: "minimalist silver-frame aviator glasses", text: "Aviator (Srebrna)" },
+                { val: "premium leather-wrapped wireless headphones", text: "Usnjene slušalke" }
             ]
         }
     };
@@ -122,6 +151,7 @@
             el.innerHTML = list.map(item => `<option value="${item.val}">${item.text}</option>`).join('');
         };
 
+        populate('hairColor', data.colors);
         populate('hairStyle', data.styles);
         populate('jewelry', data.jewelry);
         populate('accessories', data.accessories);
@@ -134,25 +164,31 @@
         const jewelry = document.getElementById('jewelry').value;
         const acc = document.getElementById('accessories').value;
 
-        const final = `MASTER FINISHING PROMPT (V1.1 - IDENTITY LOCK):
+        const final = `MASTER FINISHING PROMPT (V1.2 - PRO STYLIST):
 
-Layers 1-3 (Identity & DNA - DO NOT ALTER):
-[IMMUTABLE BASE]: Use Reference Image 0 as the absolute template. 
-[IDENTITY LOCK]: Maintain 1:1 facial bone structure, jawline, and natural asymmetry from Ref 0.
-[SKIN DNA PRESERVATION]: Strictly preserve all original permanent skin markers (moles, beauty marks) from Ref 0. 
-[ANTI-PIGMENTATION]: Do NOT generate new moles, freckles, or skin spots. 0% added pigmentation.
+[LAYER 1-3: IDENTITY ANCHORS]
+Ref 0 is the absolute structural source. 1:1 facial geometry. 
+Strictly lock all original skin markers (permanent moles, scars, birthmarks). 
+Anti-hallucination: Do NOT add new freckles or blemishes.
 
-Layers 4-7 (Digital Retouching):
-[HAIR MODIFICATION]: Hair color is ${color}. Hair style is ${style}. Ensure perfect integration with original hairline. High-fidelity strand detail.
-[JEWELRY ADDITION]: Add ${jewelry}. Realistic metal physics, light reflections, and accurate placement.
-[ACCESSORIES]: Add ${acc}. Match fit to Ref 0 facial geometry.
+[LAYER 4-6: ADVANCED GROOMING]
+HAIR COLOR: ${color}. 
+HAIR STYLE: ${style}. 
+Integration: Ultra-realistic hair-to-skin transition, individual strand physics, natural root shadow.
 
-Layers 8-10 (Optics & Realism):
-Shot on 85mm macro lens. Razor-sharp focus on additions. 
-[SKIN TEXTURE]: Visible pores and micro-hairs ONLY. Zero digital retouching.
-Professional studio softbox lighting.
+[LAYER 7-8: JEWELRY & OPTICS]
+JEWELRY: ${jewelry}. 
+Materials: Accurate light refraction for metals (gold/silver/platinum) and stones. 
+Placement: Anatomically correct interaction with ears/neck.
+ACCESSORIES: ${acc}. 
+Optics: High-end lens reflections, realistic frame-to-face fit, slight occlusion on skin where frames touch.
 
-NEGATIVE PROMPT: added moles, added freckles, new skin spots, changed face, changed bone structure, CGI, 3D render, plastic skin, airbrushed, beauty filter, blurry jewelry, messy hairline.`;
+[LAYER 9-10: MASTER FINISH]
+Lens: 85mm Prime, f/2.8. 
+Texture: RAW skin texture, visible micro-pores, natural oil sheen. 
+Lighting: High-end commercial softbox setup, precise catchlights in eyes.
+
+NEGATIVE: airbrushed, plastic skin, CGI, new moles, added freckles, blurry jewelry, distorted frames, messy edges.`;
 
         document.getElementById('out').innerText = final;
     }
@@ -162,22 +198,19 @@ NEGATIVE PROMPT: added moles, added freckles, new skin spots, changed face, chan
         btnFeedback(document.querySelector(".btn-copy"));
     }
 
-    // Inicializacija
-    updateOptions();
+    function btnFeedback(btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✅ PROMPT READY!';
+        btn.style.background = '#10b981';
+        btn.style.color = '#000';
+        setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.style.background = '';
+            btn.style.color = '';
+        }, 1500);
+    }
 
-function btnFeedback(btn) {
-    const orig = btn.innerHTML;
-    btn.innerHTML = '✅ COPIED!';
-    btn.style.background = '#10b981';
-    btn.style.color = '#000';
-    btn.disabled = true;
-    setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-    }, 1500);
-}
+    updateOptions();
 </script>
 </body>
 </html>
